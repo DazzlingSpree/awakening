@@ -66,7 +66,7 @@
             --accent-hover: #ff1e2a;
             --accent-gold: #c5a059;
             --text-main: #e8e8e8;
-            --text-muted: #c0c0c0; /* Improved contrast for accessibility */
+            --text-muted: #d0d0d0; /* Increased contrast */
             --font-display: 'Cinzel', serif;
             --font-body: 'Inter', sans-serif;
             --shadow-core: 0 0 20px rgba(229, 9, 20, 0.15);
@@ -110,6 +110,8 @@
         li { margin-bottom: 0.8rem; }
         strong { color: #fff; font-weight: 600; }
         em { color: var(--accent-gold); font-style: italic; }
+        
+        .text-muted { color: var(--text-muted) !important; }
 
         /* ==========================================================================
            3. LAYOUT & CONTAINERS
@@ -220,7 +222,6 @@
         .skiptranslate > iframe.skiptranslate { display: none !important; }
         body { top: 0 !important; }
 
-        /* Custom Elegant Wrapper */
         .custom-lang-selector {
             position: relative;
             font-family: var(--font-display);
@@ -441,7 +442,7 @@
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 
         /* ==========================================================================
-           8. SPECIALIZED ESOTERIC ELEMENTS
+           8. SPECIALIZED ESOTERIC ELEMENTS & ANIMATIONS
            ========================================================================== */
         .reality-shatter {
             background: linear-gradient(135deg, #150000 0%, #050000 100%);
@@ -524,12 +525,19 @@
             100% { opacity: 0.4; }
         }
 
+        @keyframes floatAnim {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
         .anim-spin { transform-origin: 50px 50px; animation: rotateSlow 15s linear infinite; }
         .anim-spin-reverse { transform-origin: 50px 50px; animation: rotateSlowReverse 20s linear infinite; }
         .anim-pulse { animation: pulseOpacity 3s ease-in-out infinite; }
+        .anim-float { animation: floatAnim 4s ease-in-out infinite; }
 
         /* ==========================================================================
-           9. INTERACTIVE COMPONENTS
+           9. INTERACTIVE COMPONENTS & DEBATE SHIELDS
            ========================================================================== */
         details {
             background: rgba(20, 0, 0, 0.4);
@@ -563,9 +571,57 @@
             color: var(--text-muted);
         }
 
+        /* Debate Shield Table Styles */
+        .debate-shield {
+            background: rgba(197,160,89,0.05); 
+            border-color: var(--accent-gold);
+            margin-top: 2rem;
+        }
+        .debate-shield summary { color: var(--accent-gold); font-size: 1.1rem; }
+        .debate-shield summary::after { color: var(--accent-gold); }
+        .debate-shield[open] { border-color: var(--accent-gold); background: rgba(197,160,89,0.1); }
+        
+        .debate-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            text-align: left;
+        }
+        .debate-table th {
+            color: var(--accent-gold);
+            padding: 1rem;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+        }
+        .debate-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        .debate-table tr:hover td {
+            background: rgba(255,255,255,0.03);
+        }
+        .debate-table a { color: var(--accent-primary); text-decoration: underline; }
+        
+        @media (max-width: 768px) {
+            .debate-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .debate-table th, .debate-table td {
+                min-width: 200px;
+                white-space: normal;
+            }
+        }
+
         /* Mental health clarification boxes */
         .mental-health-note {
-            background: rgba(0, 128, 0, 0.08); /* subtle green for calm/health tone */
+            background: rgba(0, 128, 0, 0.08);
             border-left: 5px solid #4caf50;
             padding: 1.5rem 2rem;
             margin: 2.5rem auto;
@@ -927,6 +983,20 @@
 </head>
 <body>
 
+    <!-- INITIAL LOAD DISCLAIMER MODAL -->
+    <div id="disclaimerModal" class="modal-overlay no-print" style="display: none; background: rgba(0,0,0,0.95);">
+        <div class="glass-card modal-content" style="max-width: 700px; padding: 3rem 2rem; border-color: var(--accent-gold); box-shadow: 0 0 50px rgba(197, 160, 89, 0.2);">
+            <h2 style="color: var(--accent-gold); font-family: var(--font-display); letter-spacing: 2px; border: none; margin-bottom: 1.5rem;">IMPORTANT DISCLAIMER</h2>
+            <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; text-align: left;">
+                This Codex is offered as a philosophical interpretation and esoteric hypothesis—not as proven science, history, medical, legal, or financial advice. It is not a substitute for professional therapy, psychiatric care, or religious guidance. Claims within are open to individual discernment; extraordinary ideas remain claims until personally tested.
+            </p>
+            <p style="color: #4caf50; font-size: 1.05rem; font-style: italic; line-height: 1.8; margin-bottom: 2.5rem; text-align: left; background: rgba(0, 128, 0, 0.08); padding: 1rem; border-left: 4px solid #4caf50;">
+                <strong>Mental Health Note:</strong> Extreme, erratic, or "possessed"-appearing behavior is almost always the result of a chemical brain imbalance or severe psychiatric condition. These require professional medical and hospital care, not exorcisms or rituals. We honor the continuity of consciousness, but never at the expense of rational mental healthcare.
+            </p>
+            <button class="btn-nav" onclick="acceptDisclaimer()" style="width: 100%; color: var(--bg-base); background: var(--accent-gold); border-color: var(--accent-gold); font-weight: bold;">I Understand & Proceed</button>
+        </div>
+    </div>
+
     <!-- GLOBAL NAVIGATION -->
     <nav class="global-nav no-print">
         <div class="container nav-inner">
@@ -1042,13 +1112,26 @@
             </p>
 
             <div class="glass-card" style="border-left: 6px solid var(--accent-gold); background: rgba(197,160,89,0.08); margin: 2rem auto 4rem auto; max-width: 900px; padding: 3rem 2rem;">
-                <h2 style="color: var(--accent-gold); text-align: center; margin-bottom: 1.5rem; border: none; font-family: var(--font-display); letter-spacing: 2px; text-transform: uppercase;">A Sovereign Philosophical Lens</h2>
-                <p style="font-size: 1.15rem; line-height: 1.7; color: var(--text-main); margin-bottom: 1.5rem; font-style: italic; text-align: center;">
-                    This is one philosophical lens that has helped many people reclaim their sovereignty and direct relationship with the divine within.
-                </p>
-                <p style="font-size: 1.15rem; line-height: 1.7; color: var(--text-main);">
-                    God is not outside you. God is the living spirit inside your body — the same divine consciousness that fires up your system every morning, wakes you, breathes you, thinks through you. <strong>This inner divine never dies.</strong> After the body falls away, it continues — fully aware, fully present, eternally existing — exactly as the security guard spoke to Miss Abigail and the family saw the grandmother still standing by the door.
-                </p>
+                <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap-reverse;">
+                    <div style="flex: 2; min-width: 300px;">
+                        <h2 style="color: var(--accent-gold); text-align: left; margin-bottom: 1.5rem; border: none; font-family: var(--font-display); letter-spacing: 2px; text-transform: uppercase;">A Sovereign Philosophical Lens</h2>
+                        <p style="font-size: 1.15rem; line-height: 1.7; color: var(--text-main); margin-bottom: 1.5rem; font-style: italic;">
+                            This is one philosophical lens that has helped many people reclaim their sovereignty and direct relationship with the divine within.
+                        </p>
+                        <p style="font-size: 1.15rem; line-height: 1.7; color: var(--text-main);">
+                            God is not outside you. God is the living spirit inside your body — the same divine consciousness that fires up your system every morning, wakes you, breathes you, thinks through you. <strong>This inner divine never dies.</strong> After the body falls away, it continues — fully aware, fully present, eternally existing — exactly as the security guard spoke to Miss Abigail and the family saw the grandmother still standing by the door.
+                        </p>
+                    </div>
+                    <div style="flex: 1; min-width: 200px; text-align: center;">
+                        <div class="sacred-geometry">
+                            <svg viewBox="0 0 100 100" class="no-spin" aria-label="Geometric eye of consciousness" role="img">
+                                <circle cx="50" cy="50" r="40" stroke="var(--accent-gold)" stroke-width="1" fill="none" class="anim-pulse" style="animation-duration: 4s;"/>
+                                <path d="M 15,50 Q 50,15 85,50 Q 50,85 15,50 Z" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
+                                <circle cx="50" cy="50" r="12" fill="var(--accent-gold)" class="anim-pulse"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
                 <p style="font-size: 1.15rem; line-height: 1.7; color: var(--text-main); margin-top: 1.5rem;">
                     Every major religion today was built upon ancient pagan rituals turned external: circling and kissing the Kaaba while directing prayers toward it, idolizing Jesus as an outside savior instead of the living example of the divine within, pressing foreheads against the Temple wall, worshipping statues and gurus in Hinduism and Sikhism, or bowing to Buddha images. Institutions layered these practices on top to keep human attention directed outward — requiring mercy, repentance, external approval, and sometimes conflict — instead of the simple truth Jesus taught: “The kingdom of heaven is within you.”
                 </p>
@@ -1059,7 +1142,7 @@
                 </p>
             </div>
             
-            <div style="background: rgba(197,160,89,0.15); padding: 2rem; border-left: 6px solid var(--accent-gold); margin: 2rem auto 4rem auto; max-width: 900px; border-radius: 8px;">
+            <div style="background: rgba(197,160,89,0.15); padding: 2rem; border-left: 6px solid var(--accent-gold); margin: 2rem auto 4rem auto; max-width: 900px; border-radius: 8px; box-shadow: var(--shadow-core);">
                 <strong style="color:var(--accent-gold); font-size:1.3rem;">Simple Version:</strong><br><br>
                 <span style="color: #fff;">God isn’t a man in the sky. God is the alive feeling inside your chest that wakes you up every morning. That feeling never dies. When your body stops, the real you just keeps walking around like the security guard saw Miss Abigail doing. You are that eternal part. Always have been.</span>
             </div>
@@ -1071,7 +1154,15 @@
 
             <div class="grid-2">
                 <div class="glass-card">
-                    <h3>The Prophets as Quantum Observers</h3>
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div class="sacred-geometry" style="margin: 0 auto; filter: none;">
+                            <svg viewBox="0 0 100 50" class="no-spin" style="height: 60px; width: 120px;" aria-label="Frequency wave" role="img">
+                                <path d="M 0,25 Q 12.5,5 25,25 T 50,25 T 75,25 T 100,25" stroke="var(--accent-primary)" stroke-width="2" fill="none" class="anim-pulse"/>
+                                <circle cx="50" cy="25" r="4" fill="var(--accent-gold)"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 style="text-align: center; border: none; margin-bottom: 1rem;">The Prophets as Quantum Observers</h3>
                     <p>When examining historical figures like Jesus, Buddha, and Krishna, we must strip away the mythological dogma added by Roman emperors and ancient kings. These beings were not exceptions to the human rule; they were prime examples of it.</p>
                     <p>They understood the observer effect before it was named. They knew that consciousness collapses the wave function of reality into physical matter. Their "miracles" were not the breaking of natural law, but the mastery of it.</p>
                     <ul>
@@ -1132,7 +1223,7 @@
                         </div>
                         <div style="flex: 1; min-width: 200px; text-align: center;">
                             <div class="sacred-geometry">
-                                <svg viewBox="0 0 100 100" class="no-spin" aria-label="Geometric circle representation" role="img">
+                                <svg viewBox="0 0 100 100" class="no-spin anim-float" aria-label="Geometric circle representation" role="img">
                                     <g class="anim-spin">
                                         <path d="M 50,10 L 85,75 L 15,75 Z" stroke="var(--accent-primary)" stroke-width="1" fill="none"/>
                                         <path d="M 50,90 L 15,25 L 85,25 Z" stroke="var(--text-muted)" stroke-width="1" fill="none" opacity="0.5"/>
@@ -1143,6 +1234,21 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <details class="debate-shield">
+                        <summary>Common Debates & Balanced Views: The Anunnaki</summary>
+                        <div class="details-content">
+                            <table class="debate-table">
+                                <tr><th>Claim</th><th>Mainstream/Academic Consensus</th><th>Philosophical Metaphor (Codex Lens)</th></tr>
+                                <tr>
+                                    <td>Anunnaki are "Those who from heaven to earth came."</td>
+                                    <td>Scholars view them as a pantheon of ancient Sumerian/Akkadian gods governing nature and society. "Ancient Astronaut" theories are widely rejected by archaeologists.</td>
+                                    <td>The term is used here as a metaphor for the <strong>eternal human consciousness</strong> that "descends" into physical form to experience a 3D hologram. Not literal aliens, but our own divine spark.</td>
+                                </tr>
+                            </table>
+                            <p style="margin-top:1rem; font-size:0.85rem; color:var(--text-muted);">We honor the historical texts while reframing them as psychological and spiritual archetypes for empowerment.</p>
+                        </div>
+                    </details>
                 </div>
             </div>
         </section>
@@ -1260,6 +1366,21 @@
             </p>
         </section>
 
+        <section class="codex-section container no-print">
+            <details style="background: rgba(197,160,89,0.08); border-color: var(--accent-gold); margin: 3rem auto; max-width: 900px;">
+                <summary style="color: var(--accent-gold); font-size: 1.2rem;">Sources & Balanced Further Reading</summary>
+                <div class="details-content" style="column-count: 2; column-gap: 2rem;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.8rem;"><strong>Observer Effect & Quantum Misuse:</strong> <br><a href="https://en.wikipedia.org/wiki/Observer_effect_(physics)" target="_blank">Wikipedia</a> • <a href="https://www.scientificamerican.com/article/quantum-physics-misunderstood/" target="_blank">SciAm</a></li>
+                        <li style="margin-bottom: 0.8rem;"><strong>Maharishi Effect Studies:</strong> <br><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3304062/" target="_blank">1993 D.C. Study</a> • <a href="https://skepticalinquirer.org/2010/01/the_maharishi_effect/" target="_blank">Skeptical Critique</a></li>
+                        <li style="margin-bottom: 0.8rem;"><strong>Epigenetics & Mind-Body:</strong> <br><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5579396/" target="_blank">Stress & Gene Expression</a></li>
+                        <li style="margin-bottom: 0.8rem;"><strong>NDEs & Consciousness:</strong> <br><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6172100/" target="_blank">Pim van Lommel Lancet Study</a> • <a href="https://www.scientificamerican.com/article/what-near-death-experiences-reveal-about-the-brain/" target="_blank">SciAm Brain-Based View</a></li>
+                        <li style="margin-bottom: 0.8rem;"><strong>Anunnaki Historical View:</strong> <br><a href="https://en.wikipedia.org/wiki/Anunnaki" target="_blank">Wikipedia (Scholarly)</a> • <a href="https://www.sitchiniswrong.com/" target="_blank">Sitchin Critique</a></li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
         <section class="codex-section container">
             <div class="codex-matrix">
                 <h4>Codex Matrix Synchronization</h4>
@@ -1295,7 +1416,7 @@
                 <h2>The Observer <span>Effect</span></h2>
                 <p>The Double-Slit experiment offers a striking parallel often drawn in consciousness studies, suggesting that matter does not exist in a solid state until it is observed by a conscious entity.</p>
                 
-                <div style="background: rgba(197,160,89,0.15); padding: 2rem; border-left: 6px solid var(--accent-gold); margin: 2rem auto; border-radius: 8px; max-width: 800px; text-align: left;">
+                <div style="background: rgba(197,160,89,0.15); padding: 2rem; border-left: 6px solid var(--accent-gold); margin: 2rem auto; border-radius: 8px; max-width: 800px; text-align: left; box-shadow: var(--shadow-core);">
                     <strong style="color:var(--accent-gold); font-size:1.3rem;">Simple Version:</strong><br><br>
                     <span style="color: #fff;">Imagine your life is a Netflix show with a million possible endings. Whatever you expect and speak about the most is the ending that plays. Your words are the remote control. Speak “I’m broke” = broke ending plays. Speak “Money flows to me easily” = rich ending plays. That simple.</span>
                 </div>
@@ -1311,10 +1432,26 @@
                         <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.95rem; font-style: italic;">
                             The observer effect is used here as a metaphor for how focused attention and belief shape experience — not as a literal claim about subatomic physics.
                         </p>
+                        
+                        <details class="debate-shield">
+                            <summary>Common Debates & Balanced Views</summary>
+                            <div class="details-content">
+                                <table class="debate-table">
+                                    <tr><th>Claim</th><th>Scientific Consensus</th><th>Philosophical Metaphor (Codex Lens)</th></tr>
+                                    <tr>
+                                        <td>Consciousness collapses the quantum wave function, shaping reality.</td>
+                                        <td>In physics, "observation" refers to measurement by an instrument, not human consciousness. Extrapolating to macro-reality is widely debated.</td>
+                                        <td>Used as a powerful metaphor: Focused belief, intention, and spoken word literally rewire the brain's reticular activating system, causing the individual to perceive and construct a new reality.</td>
+                                    </tr>
+                                </table>
+                                <p style="margin-top:1rem; font-size:0.85rem; color:var(--text-muted);">Skeptics often point out the jump from micro-physics to macro-reality. Here, we embrace the metaphor because of its undeniable psychological and experiential power to create personal change.</p>
+                            </div>
+                        </details>
+
                     </div>
                     <div style="flex: 1; min-width: 300px; text-align: center;">
                         <div class="sacred-geometry">
-                            <svg viewBox="0 0 100 100" class="no-spin" aria-label="Geometric representation of quantum collapse" role="img">
+                            <svg viewBox="0 0 100 100" class="no-spin anim-float" aria-label="Geometric representation of quantum collapse" role="img">
                                 <path d="M 0,50 Q 25,10 50,50 T 100,50" stroke="var(--text-muted)" stroke-dasharray="2,2"/>
                                 <circle cx="50" cy="50" r="8" fill="var(--accent-primary)"/>
                                 <circle cx="50" cy="50" r="15" stroke="var(--accent-primary)" stroke-width="1" fill="none" class="anim-pulse"/>
@@ -1391,10 +1528,24 @@
                         <p>440Hz is said to favor left-hemisphere dominance (analytical, survival-oriented thinking), potentially contributing to subtle anxiety or disconnection in some listeners. In contrast, 432Hz aligns more closely with harmonic ratios associated with balance, heart coherence, and whole-brain integration.</p>
                         <p>This concept gains intriguing support from declassified CIA documents on the Gateway Process (1983), where the Monroe Institute's <strong>Hemi-Sync</strong> technology used binaural beats to deliberately synchronize left and right brain hemispheres. The goal was enhanced coherence, focus, and entry into theta brainwave states (4–8 Hz) — deep relaxation where the logical "firewall" of the left brain quiets, allowing subconscious reprogramming, intention setting, and expanded awareness.</p>
                         <p>The CIA report describes this synchronization as a way to "bring enhanced strength, focus and coherence to the amplitude and frequency of brainwave output between the left and right hemispheres so as to alter consciousness." Theta states are particularly noted for creativity, reduced fear, and bypassing habitual thought patterns — aligning closely with practices like listening to intention-layered audio during sleep onset.</p>
+                    
+                        <details class="debate-shield">
+                            <summary>Common Debates & Balanced Views: 432Hz vs 440Hz</summary>
+                            <div class="details-content">
+                                <table class="debate-table">
+                                    <tr><th>Claim</th><th>Acoustic / Scientific Reality</th><th>Philosophical Metaphor (Codex Lens)</th></tr>
+                                    <tr>
+                                        <td>440Hz causes anxiety; 432Hz heals DNA and aligns with the universe.</td>
+                                        <td>440Hz is simply an arbitrary ISO standardization. Pitch is relative. No large-scale peer-reviewed studies prove 432Hz heals DNA. However, many report subjective calming effects.</td>
+                                        <td>The <em>intention</em> behind the tuning is what matters. Listening to 432Hz or Theta waves acts as a powerful placebo and ritualistic anchor, signaling the nervous system to enter a relaxed, receptive, "sovereign" state.</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </details>
                     </div>
                     <div style="flex: 1; min-width: 250px; text-align: center;">
                         <div class="sacred-geometry">
-                            <svg viewBox="0 0 100 100" class="no-spin" aria-label="Overlapping cymatic rings" role="img">
+                            <svg viewBox="0 0 100 100" class="no-spin anim-float" aria-label="Overlapping cymatic rings" role="img">
                                 <g class="anim-spin">
                                     <circle cx="50" cy="30" r="20" stroke="var(--text-muted)" stroke-width="1" fill="none"/>
                                     <circle cx="50" cy="70" r="20" stroke="var(--text-muted)" stroke-width="1" fill="none"/>
@@ -1418,6 +1569,7 @@
                     
                     <div class="custom-audio-controls">
                         <audio id="thetaAudio" preload="metadata">
+                            <!-- Safe fallback URL using dl=1 -->
                             <source src="https://www.dropbox.com/scl/fi/3w7zymq0d5bj7uq6nkff0/4-7hzPUREThetaWavesCIAHemiSync.mp3?rlkey=rc1szisakebnyeahvubqis88x&st=4n7dfb1p&dl=1" type="audio/mpeg">
                             Your browser does not support audio.
                         </audio>
@@ -1453,7 +1605,15 @@
         <section class="codex-section container">
             <div class="grid-2">
                 <div class="glass-card">
-                    <h3>Historical Proof of Acoustic Prophecy</h3>
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div class="sacred-geometry" style="margin: 0 auto; filter: none;">
+                            <svg viewBox="0 0 100 50" class="no-spin" style="height: 60px; width: 120px;" aria-label="Audio waveform geometry" role="img">
+                                <path d="M 10,25 Q 20,5 30,25 T 50,25 T 70,25 T 90,25" stroke="var(--accent-gold)" stroke-width="2" fill="none" class="anim-pulse"/>
+                                <path d="M 10,25 Q 20,45 30,25 T 50,25 T 70,25 T 90,25" stroke="var(--accent-primary)" stroke-width="2" fill="none" class="anim-pulse" style="animation-delay: 1.5s;"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 style="text-align: center; border: none;">Historical Proof of Acoustic Prophecy</h3>
                     <p>Music has never just been entertainment. It is mass ritual manifestation.</p>
                     <ul>
                         <li><strong>The Spirituals:</strong> Enslaved populations encoded literal escape routes and manifested the abolitionist movement through the unified singing of spirituals in the fields.</li>
@@ -1513,10 +1673,24 @@
                         <p>In 1993, a groundbreaking experiment took place in Washington D.C. A group of 4,000 practitioners engaged in deep, coherent Transcendental Meditation aimed at reducing violent crime in the city.</p>
                         <p>The result? Violent crime dropped by an astounding 23.3%. This was heavily documented and peer-reviewed. The local police chief had previously stated that the only thing that could drop crime that much would be "20 inches of snow."</p>
                         <p>This proves a foundational law of the Codex: Consciousness is not localized to the skull. It is a field. When a critical mass of individuals achieves coherence (heart and mind synchronization), they act as a massive magnet, pulling the chaotic waveforms of the surrounding population into order.</p>
+                        
+                        <details class="debate-shield">
+                            <summary>Common Debates & Balanced Views: The Maharishi Effect</summary>
+                            <div class="details-content">
+                                <table class="debate-table">
+                                    <tr><th>Claim</th><th>Scientific Critique</th><th>Philosophical Metaphor (Codex Lens)</th></tr>
+                                    <tr>
+                                        <td>Group meditation literally lowers city crime rates.</td>
+                                        <td>Statisticians often argue confounding variables (weather, police presence) weren't perfectly controlled. Many consider the studies to suffer from bias.</td>
+                                        <td>Whether literal magnetic field effect or deep placebo, group intention binds human focus. Forming a "node" of 8 positive people radically alters <em>your</em> local reality and emotional field.</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </details>
                     </div>
                     <div style="flex: 1; min-width: 250px; text-align: center;">
                         <div class="sacred-geometry">
-                            <svg viewBox="0 0 100 100" class="no-spin" aria-label="Geometric network of nodes" role="img">
+                            <svg viewBox="0 0 100 100" class="no-spin anim-float" aria-label="Geometric network of nodes" role="img">
                                 <g class="anim-spin">
                                     <line x1="50" y1="50" x2="50" y2="15" stroke="var(--text-muted)" stroke-dasharray="2,2"/>
                                     <line x1="50" y1="50" x2="85" y2="30" stroke="var(--text-muted)" stroke-dasharray="2,2"/>
@@ -1613,7 +1787,16 @@
                     <p>The 3D reality is dense. It has a time delay. When you change your frequency, the physical world takes time to catch up. The resistance you feel is not failure; it is the friction of the old holographic code dissolving.</p>
                 </div>
                 <div class="reality-shatter">
-                    <h3>Alchemical Micro-Practices</h3>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div class="sacred-geometry" style="margin: 0 auto; filter: none;">
+                            <svg viewBox="0 0 100 100" class="no-spin anim-float" style="height: 80px; width: 80px;" aria-label="Geometric gateway" role="img">
+                                <path d="M 30,80 L 30,30 L 70,30 L 70,80" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
+                                <path d="M 40,80 L 40,40 L 60,40 L 60,80" stroke="var(--accent-gold)" stroke-width="1" fill="none" class="anim-pulse"/>
+                                <circle cx="50" cy="50" r="4" fill="var(--text-muted)"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 style="border: none;">Alchemical Micro-Practices</h3>
                     <ul style="text-align:left; margin-top: 1.5rem; color: var(--text-muted);">
                         <li><strong>The Doorway Trigger:</strong> Every time you walk through a physical door, silently declare: <em>"I step into my highest timeline."</em> You walk through dozens of doors daily. Anchor the habit.</li>
                         <li><strong>Password Magic:</strong> Change your digital passwords to sigils of your intent. (e.g., <code>I@mWealth<span class="dyn-year-next">2027</span>!</code>). You type it multiple times a day, subconsciously firing the intent.</li>
@@ -1661,6 +1844,20 @@
             <div class="section-header">
                 <h2>The Many-Worlds <span>Interpretation</span></h2>
                 <p>Hugh Everett's Many-Worlds theory in quantum mechanics states that every possible outcome of every event exists in an alternate universe. There is a timeline where you are impoverished, and a timeline where you are unimaginably wealthy and powerful. Both are broadcasting right now. You are simply tuned into one channel.</p>
+                
+                <details class="debate-shield" style="max-width: 800px; margin: 1rem auto; text-align: left;">
+                    <summary>Common Debates & Balanced Views: Many Worlds</summary>
+                    <div class="details-content">
+                        <table class="debate-table">
+                            <tr><th>Claim</th><th>Scientific Perspective</th><th>Philosophical Metaphor (Codex Lens)</th></tr>
+                            <tr>
+                                <td>You can consciously jump between alternate physical universes.</td>
+                                <td>Hugh Everett's theory is a mathematical interpretation of quantum mechanics; it does not suggest human consciousness can actively traverse or "jump" between these parallel branches.</td>
+                                <td>"Jumping" is a profound psychological framework for identity shifting. By adopting the emotional state of a future self, you reorganize your present behavior, effectively "shifting" your life trajectory to a new reality.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </details>
             </div>
 
             <div class="glass-card">
@@ -1672,7 +1869,7 @@
                     </div>
                     <div style="flex: 1; min-width: 250px; text-align: center;">
                         <div class="sacred-geometry" style="margin: 0 auto;">
-                            <svg viewBox="0 0 100 100" class="no-spin" aria-label="Geometric timeline fork" role="img">
+                            <svg viewBox="0 0 100 100" class="no-spin anim-float" aria-label="Geometric timeline fork" role="img">
                                 <path d="M 10,50 Q 50,50 90,20" stroke="var(--text-muted)" stroke-dasharray="3,3" fill="none"/>
                                 <path d="M 10,50 Q 50,50 90,80" stroke="var(--text-muted)" stroke-dasharray="3,3" fill="none"/>
                                 <path d="M 10,50 L 90,50" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
@@ -1744,6 +1941,12 @@
                     <h3 style="color: #4caf50;">Biological Mastery</h3>
                     <p>Your DNA is not fixed; it is a dynamic receiver of consciousness. Epigenetics proves that environmental signals—primarily your thoughts and perceptions—turn genes on and off.</p>
                     <p>To heal, stop identifying with the label of the disease. Do not say "my arthritis" or "my anxiety." You do not own it. Speak to your cells directly. Command perfect replication. View food not as calories, but as light-codes entering your biological temple.</p>
+                    <details class="debate-shield" style="margin-top: 1rem;">
+                        <summary style="font-size:0.95rem;">Scientific Context</summary>
+                        <div class="details-content" style="font-size:0.85rem;">
+                            Epigenetics confirms environment influences gene expression. While positive thinking aids immune function and stress reduction, it is not a literal replacement for treating severe disease. Use this as a psychological empowerment tool alongside medical care.
+                        </div>
+                    </details>
                 </div>
                 
                 <div class="glass-card">
@@ -1755,7 +1958,7 @@
                 <div class="glass-card">
                     <div style="text-align: center; margin-bottom: 1.5rem;">
                         <div class="sacred-geometry" style="margin: 0 auto; filter: none;">
-                            <svg viewBox="0 0 100 50" class="no-spin" style="height: 60px; width: 120px;" aria-label="Infinity entanglement loop" role="img">
+                            <svg viewBox="0 0 100 50" class="no-spin anim-float" style="height: 60px; width: 120px;" aria-label="Infinity entanglement loop" role="img">
                                 <path d="M 25,25 C 25,5 50,25 50,25 C 50,25 75,45 75,25 C 75,5 50,25 50,25 C 50,25 25,45 25,25 Z" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
                                 <circle cx="25" cy="25" r="4" fill="var(--accent-gold)" class="anim-pulse"/>
                                 <circle cx="75" cy="25" r="4" fill="var(--accent-gold)" class="anim-pulse" style="animation-delay: 1.5s;"/>
@@ -1868,7 +2071,7 @@
                         </div>
                         <div style="flex: 1; min-width: 250px; text-align: center;">
                             <div class="sacred-geometry">
-                                <svg viewBox="0 0 100 100" class="no-spin" aria-label="Geometric glowing shield" role="img">
+                                <svg viewBox="0 0 100 100" class="no-spin anim-float" aria-label="Geometric glowing shield" role="img">
                                     <circle cx="50" cy="50" r="10" fill="var(--accent-gold)" class="anim-pulse"/>
                                     <circle cx="50" cy="50" r="25" stroke="var(--accent-primary)" stroke-width="1" stroke-dasharray="5,5" fill="none" class="anim-spin"/>
                                     <circle cx="50" cy="50" r="35" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="10,5" fill="none" class="anim-spin-reverse"/>
@@ -1883,39 +2086,60 @@
 
         <section class="codex-section container">
             <div class="glass-card" style="margin-bottom: 3rem;">
-                <h3 style="text-align: center; border:none;">Advanced Matrix-Breaking – Going Deeper Than Ever</h3>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Old collective patterns may still briefly reappear through media, news, and familiar beliefs until you fully re-anchor in sovereignty. Here is how to dissolve them permanently.</p>
-                <div class="grid-3">
-                    <details>
-                        <summary>Label Buster</summary>
-                        <div class="details-content">
-                            Every time you hear a limiting phrase (“that’s impossible,” “you’re crazy”), say out loud: <em>“That is old Cube programming. I choose truth now.”</em>
+                <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+                    <div style="flex: 2; min-width: 300px;">
+                        <h3 style="text-align: left; border:none;">Advanced Matrix-Breaking – Going Deeper Than Ever</h3>
+                        <p style="text-align: left; max-width: 800px; margin: 0 0 2rem 0;">Old collective patterns may still briefly reappear through media, news, and familiar beliefs until you fully re-anchor in sovereignty. Here is how to dissolve them permanently.</p>
+                        <div class="grid-2">
+                            <details>
+                                <summary>Label Buster</summary>
+                                <div class="details-content">
+                                    Every time you hear a limiting phrase (“that’s impossible,” “you’re crazy”), say out loud: <em>“That is old Cube programming. I choose truth now.”</em>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>News Fast with Replacement</summary>
+                                <div class="details-content">
+                                    Limit news to 5 minutes a day, then immediately listen to your prophecy track and declare the opposite positive reality.
+                                </div>
+                            </details>
+                            <details>
+                                <summary>Full Moon Release</summary>
+                                <div class="details-content">
+                                    Write old Cube beliefs on paper, read them aloud, then burn or tear them while saying <em>“These are gone forever.”</em>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>Sovereignty Walk</summary>
+                                <div class="details-content">
+                                    Walk in nature saying <em>“I am sovereign. The matrix has no power over me.”</em> The earth amplifies it.
+                                </div>
+                            </details>
+                            <details>
+                                <summary>Permanent Anchor</summary>
+                                <div class="details-content">
+                                    Choose one word or symbol (example: a small drawing of a broken cube) and say <em>“This reminds me I am forever free.”</em> Look at it daily.
+                                </div>
+                            </details>
                         </div>
-                    </details>
-                    <details>
-                        <summary>News Fast with Replacement</summary>
-                        <div class="details-content">
-                            Limit news to 5 minutes a day, then immediately listen to your prophecy track and declare the opposite positive reality.
+                    </div>
+                    <div style="flex: 1; min-width: 250px; text-align: center;">
+                        <div class="sacred-geometry">
+                            <svg viewBox="0 0 100 100" class="no-spin" aria-label="Shattering cube geometry" role="img">
+                                <g class="anim-spin">
+                                    <!-- Hexagon outline (2D cube projection) -->
+                                    <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="4,4" fill="none" opacity="0.5"/>
+                                    <!-- Inner Y lines -->
+                                    <line x1="50" y1="50" x2="50" y2="15" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+                                    <line x1="50" y1="50" x2="80" y2="68" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+                                    <line x1="50" y1="50" x2="20" y2="68" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+                                </g>
+                                <!-- Breaking energy -->
+                                <circle cx="50" cy="50" r="10" fill="var(--accent-primary)" class="anim-pulse"/>
+                                <path d="M 50,50 L 95,10 M 50,50 L 5,90 M 50,50 L 95,90 M 50,50 L 5,10" stroke="var(--accent-gold)" stroke-width="2" fill="none" class="anim-pulse" style="animation-duration: 2s;"/>
+                            </svg>
                         </div>
-                    </details>
-                    <details>
-                        <summary>Full Moon Release</summary>
-                        <div class="details-content">
-                            Write old Cube beliefs on paper, read them aloud, then burn or tear them while saying <em>“These are gone forever.”</em>
-                        </div>
-                    </details>
-                    <details>
-                        <summary>Sovereignty Walk</summary>
-                        <div class="details-content">
-                            Walk in nature saying <em>“I am sovereign. The matrix has no power over me.”</em> The earth amplifies it.
-                        </div>
-                    </details>
-                    <details>
-                        <summary>Permanent Anchor</summary>
-                        <div class="details-content">
-                            Choose one word or symbol (example: a small drawing of a broken cube) and say <em>“This reminds me I am forever free.”</em> Look at it daily.
-                        </div>
-                    </details>
+                    </div>
                 </div>
             </div>
 
@@ -1974,6 +2198,15 @@
 
             <div class="grid-2" style="align-items: start;">
                 <div class="glass-card">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div class="sacred-geometry" style="margin: 0 auto; filter: none;">
+                            <svg viewBox="0 0 100 100" class="no-spin anim-float" style="height: 80px; width: 80px;" aria-label="Global signal ripple" role="img">
+                                <circle cx="50" cy="50" r="15" fill="var(--accent-primary)"/>
+                                <circle cx="50" cy="50" r="30" stroke="var(--accent-gold)" stroke-width="2" fill="none" class="anim-pulse"/>
+                                <circle cx="50" cy="50" r="45" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="4,4" fill="none" class="anim-pulse" style="animation-delay: 1s;"/>
+                            </svg>
+                        </div>
+                    </div>
                     <h3>Everyday Ways to Share Without Forcing It</h3>
                     <p style="color:var(--text-muted);">The golden rule: Never argue. Never push. Always invite and demonstrate.</p>
                     <ul>
@@ -2064,7 +2297,7 @@
                     </div>
                     <div style="flex: 1; min-width: 250px; text-align: center;">
                         <div class="sacred-geometry">
-                            <svg viewBox="0 0 100 100" class="no-spin" aria-label="Geometric expanding star" role="img">
+                            <svg viewBox="0 0 100 100" class="no-spin anim-float" aria-label="Geometric expanding star" role="img">
                                 <g stroke="var(--accent-gold)" stroke-width="1" class="anim-spin">
                                     <line x1="50" y1="5" x2="50" y2="95" />
                                     <line x1="5" y1="50" x2="95" y2="50" />
@@ -2159,6 +2392,15 @@
 
         <section class="codex-section container no-print">
             <div class="glass-card" style="text-align: center; padding: 4rem 2rem;">
+                <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+                    <div class="sacred-geometry" style="margin: 0;">
+                        <svg viewBox="0 0 100 100" class="no-spin anim-float" aria-label="Lotus geometry" role="img">
+                            <path d="M50 80 Q 20 60 50 20 Q 80 60 50 80 Z" stroke="var(--accent-gold)" stroke-width="1" fill="rgba(197, 160, 89, 0.1)"/>
+                            <path d="M50 80 Q 5 50 50 20 Q 95 50 50 80 Z" stroke="var(--accent-gold)" stroke-width="1" fill="none"/>
+                            <circle cx="50" cy="65" r="5" fill="var(--accent-primary)" class="anim-pulse"/>
+                        </svg>
+                    </div>
+                </div>
                 <h2 style="font-family: var(--font-display); color: var(--accent-gold); font-size: 2.5rem; margin-bottom: 2rem;">The Complete Codex Summary</h2>
                 <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 2rem;">You now possess every tool, every activation, every proof. The Saturn Cube illusion is shattered. The Anunnaki divine power inside you is fully awake.</p>
                 
@@ -2304,6 +2546,15 @@
             </div>
 
             <div class="glass-card philosophy-box" style="max-width: 1000px; margin: 0 auto 3rem auto; padding: 3rem; font-size: 1.15rem; line-height: 1.9;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <div class="sacred-geometry" style="margin: 0 auto; filter: none;">
+                        <svg viewBox="0 0 100 100" class="no-spin anim-float" aria-label="Roaming soul orb" role="img">
+                            <path d="M 30,80 C 30,50 70,50 70,80" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none" stroke-dasharray="2,2"/>
+                            <circle cx="50" cy="40" r="15" fill="none" stroke="var(--accent-gold)" stroke-width="1" class="anim-pulse"/>
+                            <circle cx="50" cy="40" r="5" fill="#fff" class="anim-pulse" style="animation-duration: 2s; box-shadow: 0 0 20px #fff;"/>
+                        </svg>
+                    </div>
+                </div>
                 <p>Reader, imagine for a moment that everything you have ever been taught about death, gods, and the afterlife is not a distant mystery but a simple misunderstanding of what has always been happening right here on Earth. What follows is not speculation or myth—it is the gentle unfolding of a truth witnessed again and again in ordinary moments, preserved in ancient records, and hidden in plain sight across every culture. This is the story of two clear encounters that reveal the same reality: the human soul does not vanish, travel to another realm, or dissolve into nothing. It simply rises free and continues walking the same world it has always known, accessible to anyone whose awareness briefly tunes into its frequency. These encounters are not anomalies. They are the key that unlocks the entire human story.</p>
 
                 <p>Consider first the security footage that has circulated widely since 2023, captured in a dimly lit hallway during a quiet night shift. A living security guard stands alone in the frame, speaking calmly into his radio as if addressing an ordinary visitor. He describes a lady he saw walking by the store, one who is looking for Mr. Griffin. “Her name is Miss Abigail,” he says clearly. The dispatcher on the other end of the radio pauses, then asks in growing disbelief, “Did you say Miss Abigail?” The guard confirms yes, adding that he told her the store was closed and she should return in the morning to see Mr. Griffin. The dispatcher’s voice cracks with shock: “Are you sure you’re saying Miss Abigail… like she’s been passed on for two years now? Miss Abigail… she died two years ago.”</p>
@@ -2482,7 +2733,7 @@
                     </div>
                     <div style="text-align: center; display: flex; align-items: center; justify-content: center;">
                         <div class="sacred-geometry">
-                            <svg viewBox="0 0 100 100" class="no-spin" aria-hidden="true" role="img">
+                            <svg viewBox="0 0 100 100" class="no-spin anim-float" aria-label="Geometric holographic sphere" role="img">
                                 <g class="anim-spin">
                                     <circle cx="50" cy="50" r="45" stroke="var(--accent-gold)" stroke-width="1" fill="none"/>
                                     <circle cx="50" cy="50" r="30" stroke="var(--text-muted)" stroke-width="1" fill="none"/>
@@ -2603,7 +2854,7 @@
     <footer class="no-print">
         <div class="container" style="text-align: center; padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); font-size: 0.9rem; font-family: var(--font-display); letter-spacing: 2px;">
             <p style="font-size: 0.95rem; font-family: var(--font-body); letter-spacing: normal; text-transform: none; color: var(--text-muted); text-align: center; margin: 0 auto 2rem auto; max-width: 900px; padding: 1rem; background: rgba(197,160,89,0.05); border-radius: 8px; line-height: 1.6; font-style: italic;">
-                All content on this site is offered strictly as philosophical interpretation, personal hypothesis, and one possible lens for understanding human experience — not as proven scientific fact, historical scholarship, or replacement for any existing religious faith. Extraordinary claims remain exactly that: claims open to individual discernment, critical thinking, and personal exploration. The intention is always empowerment, never to dismiss or disrespect any tradition, belief system, or lived experience.<br><br><strong>Mental health note:</strong> Extreme or "possessed"-appearing behavior is typically a chemical brain imbalance or medical condition — not demonic possession. Seek professional hospital/psychiatric care, not exorcism. Possession by deceased spirits remains unproven and extremely rare.
+                All content on this site is offered strictly as philosophical interpretation, personal hypothesis, and one possible lens for understanding human experience — not as proven scientific fact, historical scholarship, or replacement for any existing religious faith. Extraordinary claims remain exactly that: claims open to individual discernment, critical thinking, and personal exploration. The intention is always empowerment, never to dismiss or disrespect any tradition, belief system, or lived experience.
             </p>
             <p>THE ULTIMATE AWAKENING CODEX &copy; <span class="dyn-year-current">2026</span></p>
             <p style="font-size: 0.7rem; margin-top: 1rem; opacity: 0.5;">TRANSMISSION COMPLETE. YOU ARE THE AUTHOR NOW.</p>
@@ -2611,7 +2862,7 @@
                 P.S. Movies like Sixth Sense show it: Dead keep "surviving" normal — clothed, needs, loved ones. That's your eternal self in the hologram universe. Keep remembering.
             </p>
             <div style="font-family: var(--font-body); letter-spacing: normal; text-transform: none; text-align: center; font-size: 0.85rem; color: var(--text-muted); margin: 2rem auto 0 auto; padding: 1rem; max-width: 800px; background: rgba(197,160,89,0.05); border-radius: 8px; opacity: 0.8;">
-                If you are in emotional pain or crisis, please reach out for immediate support (e.g., 988 in the US, or local crisis lines). The divine within you is eternal — you are never alone — but professional help is always valuable alongside inner remembrance.
+                <strong style="color: #4caf50;">Best Practices & Mental Health Note:</strong> All esoteric claims are metaphorical and hypothetical. Avoid misinterpretation by reading full context. Extreme or "possessed"-appearing behavior is typically a chemical brain imbalance or medical condition — not demonic possession. Seek professional hospital/psychiatric care, not exorcism. Possession by deceased spirits remains unproven and extremely rare. The divine within you is eternal — you are never alone — but professional help is always valuable alongside inner remembrance.
             </div>
         </div>
     </footer>
@@ -2633,8 +2884,29 @@
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
+        // Disclaimer Modal Logic
+        function acceptDisclaimer() {
+            localStorage.setItem('codexDisclaimerAccepted', 'true');
+            document.getElementById('disclaimerModal').style.display = 'none';
+        }
+        
         // Dynamic Dates Injection
         document.addEventListener('DOMContentLoaded', () => {
+            // Show disclaimer if not accepted
+            if (!localStorage.getItem('codexDisclaimerAccepted')) {
+                document.getElementById('disclaimerModal').style.display = 'flex';
+            }
+
+            // Auto-scroll to debate shields on mobile
+            if (window.innerWidth <= 768) {
+                const firstShield = document.querySelector('.debate-shield');
+                if (firstShield) {
+                    setTimeout(() => {
+                        firstShield.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 800);
+                }
+            }
+
             const now = new Date();
             const currentYear = now.getFullYear();
             const currentMonth = now.getMonth() + 1; // 1-12
@@ -2643,7 +2915,7 @@
             document.querySelectorAll('.dyn-year-current').forEach(el => el.textContent = currentYear);
             document.querySelectorAll('.dyn-year-next').forEach(el => el.textContent = nextYear);
 
-            // --- Word Count Logic ---
+            // --- Word Count Logic (Debounced) ---
             function countWordsInElement(element) {
                 if (!element) return 0;
                 // Exclude hidden elements, navigation, controls, and script tags
@@ -2655,6 +2927,7 @@
                 return words.filter(word => word.length > 0).length;
             }
 
+            let lastWordCount = 0;
             function updateWordCountDisplay() {
                 let totalWords = 0;
                 // Count words in all volume sections (vol1 to vol13)
@@ -2664,26 +2937,37 @@
                         // Create a clone to safely modify for counting
                         const clone = volElement.cloneNode(true);
                         // Remove elements we don't want to count from the clone
-                        const elementsToExclude = clone.querySelectorAll('.vol-controls, .codex-matrix, .instruction-text, .cert-actions');
+                        const elementsToExclude = clone.querySelectorAll('.vol-controls, .codex-matrix, .instruction-text, .cert-actions, .debate-shield');
                         elementsToExclude.forEach(el => el.remove());
                         
                         totalWords += countWordsInElement(clone);
                     }
                 }
                 
-                // Format the number with commas
-                const formattedCount = totalWords.toLocaleString();
-                
-                // Update the elements displaying the word count
-                const countDisplay1 = document.getElementById('wordCount1');
-                const countDisplay2 = document.getElementById('wordCount2');
-                
-                if (countDisplay1) countDisplay1.textContent = formattedCount;
-                if (countDisplay2) countDisplay2.textContent = formattedCount;
+                if (totalWords !== lastWordCount && totalWords > 0) {
+                    lastWordCount = totalWords;
+                    // Format the number with commas
+                    const formattedCount = totalWords.toLocaleString();
+                    
+                    // Update the elements displaying the word count
+                    const countDisplay1 = document.getElementById('wordCount1');
+                    const countDisplay2 = document.getElementById('wordCount2');
+                    
+                    if (countDisplay1) countDisplay1.textContent = formattedCount;
+                    if (countDisplay2) countDisplay2.textContent = formattedCount;
+                }
             }
             
             // Run the word count calculation
             updateWordCountDisplay();
+            
+            // Setup debounce observer for translations
+            let wordCountTimeout;
+            const wordCountObserver = new MutationObserver(() => {
+                clearTimeout(wordCountTimeout);
+                wordCountTimeout = setTimeout(updateWordCountDisplay, 500); 
+            });
+            wordCountObserver.observe(document.body, { childList: true, subtree: true, characterData: true });
 
             // --- 2. Shareable Certificate Verification Logic ---
             
@@ -2767,6 +3051,18 @@
                         linkedInBtn.href = `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodedTitle}&organizationName=${encodedOrg}&issueYear=${currentYear}&issueMonth=${currentMonth}&certId=${certId}&certUrl=${encodedUrl}&skills=${encodedSkills}`;
                     }
                 };
+                
+                // Add validation constraint to the LinkedIn button click
+                if(linkedInBtn) {
+                    linkedInBtn.addEventListener('click', (e) => {
+                        const nameVal = nameField ? nameField.textContent.trim() : '';
+                        const sigVal = sigField ? sigField.textContent.trim() : '';
+                        if (!nameVal || nameVal === '[ Click to Enter Your Name ]' || !sigVal || sigVal === '[ Click to Sign ]') {
+                            e.preventDefault();
+                            alert('Please enter your name and signature to validate your certificate.');
+                        }
+                    });
+                }
 
                 // Listen for typing in the editable fields to dynamically update local storage & LinkedIn link
                 if(nameField) nameField.addEventListener('input', updateLinkedInButton);
