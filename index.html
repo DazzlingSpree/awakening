@@ -923,7 +923,7 @@
 
                 <!-- Text-to-Speech Audio Button -->
                 <button class="lang-btn notranslate" id="ttsBtn" aria-label="Listen to Volume">
-                    <svg id="ttsIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg id="ttsIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" role="img">
                         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                         <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
                     </svg>
@@ -933,9 +933,9 @@
                 <!-- Custom Elegant Dropdown -->
                 <div class="custom-lang-selector notranslate">
                     <button class="lang-btn" id="langBtn" aria-label="Select Language">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" role="img"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                         <span id="currentLang">English</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" role="img"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     
                     <ul class="lang-dropdown" id="langDropdown">
@@ -1011,6 +1011,10 @@
                     Let the different stories exist — and watch the anger dissolve.
                 </p>
             </div>
+            
+            <p style="text-align: center; font-style: italic; color: var(--text-muted); margin-top: -1rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                This isn’t about disrespecting anyone’s faith. It’s about remembering the power Jesus, Muhammad, and every great teacher pointed to — the power that’s already inside YOU.
+            </p>
 
             <div class="glass-card" style="border-left: 6px solid var(--accent-gold); background: rgba(197,160,89,0.08); margin: 2rem auto 4rem auto; max-width: 900px; padding: 3rem 2rem;">
                 <h2 style="color: var(--accent-gold); text-align: center; margin-bottom: 1.5rem; border: none; font-family: var(--font-display); letter-spacing: 2px; text-transform: uppercase;">A Sovereign Philosophical Lens</h2>
@@ -1028,6 +1032,11 @@
                     You do not need to radicalize or kill in the name of an external Allah, Yahweh, or priestly approval.<br>
                     <strong>You are the living proof of God within — eternal, sovereign, and already home.</strong>
                 </p>
+            </div>
+            
+            <div style="background: rgba(197,160,89,0.15); padding: 2rem; border-left: 6px solid var(--accent-gold); margin: 2rem auto 4rem auto; max-width: 900px; border-radius: 8px;">
+                <strong style="color:var(--accent-gold); font-size:1.3rem;">Simple Version:</strong><br><br>
+                <span style="color: #fff;">God isn’t a man in the sky. God is the alive feeling inside your chest that wakes you up every morning. That feeling never dies. When your body stops, the real you just keeps walking around like the security guard saw Miss Abigail doing. You are that eternal part. Always have been.</span>
             </div>
 
             <div class="section-header">
@@ -1098,7 +1107,7 @@
                         </div>
                         <div style="flex: 1; min-width: 200px; text-align: center;">
                             <div class="sacred-geometry">
-                                <svg viewBox="0 0 100 100" class="no-spin">
+                                <svg viewBox="0 0 100 100" class="no-spin" aria-hidden="true" role="img">
                                     <g class="anim-spin">
                                         <path d="M 50,10 L 85,75 L 15,75 Z" stroke="var(--accent-primary)" stroke-width="1" fill="none"/>
                                         <path d="M 50,90 L 15,25 L 85,25 Z" stroke="var(--text-muted)" stroke-width="1" fill="none" opacity="0.5"/>
@@ -1242,6 +1251,11 @@
             <div class="section-header" id="v2-quantum">
                 <h2>The Observer <span>Effect</span></h2>
                 <p>The Double-Slit experiment offers a striking parallel often drawn in consciousness studies, suggesting that matter does not exist in a solid state until it is observed by a conscious entity.</p>
+                
+                <div style="background: rgba(197,160,89,0.15); padding: 2rem; border-left: 6px solid var(--accent-gold); margin: 2rem auto; border-radius: 8px; max-width: 800px; text-align: left;">
+                    <strong style="color:var(--accent-gold); font-size:1.3rem;">Simple Version:</strong><br><br>
+                    <span style="color: #fff;">Imagine your life is a Netflix show with a million possible endings. Whatever you expect and speak about the most is the ending that plays. Your words are the remote control. Speak “I’m broke” = broke ending plays. Speak “Money flows to me easily” = rich ending plays. That simple.</span>
+                </div>
             </div>
 
             <div class="glass-card">
@@ -1257,7 +1271,7 @@
                     </div>
                     <div style="flex: 1; min-width: 300px; text-align: center;">
                         <div class="sacred-geometry">
-                            <svg viewBox="0 0 100 100" class="no-spin">
+                            <svg viewBox="0 0 100 100" class="no-spin" aria-hidden="true" role="img">
                                 <path d="M 0,50 Q 25,10 50,50 T 100,50" stroke="var(--text-muted)" stroke-dasharray="2,2"/>
                                 <circle cx="50" cy="50" r="8" fill="var(--accent-primary)"/>
                                 <circle cx="50" cy="50" r="15" stroke="var(--accent-primary)" stroke-width="1" fill="none" class="anim-pulse"/>
@@ -1316,7 +1330,7 @@
             <div class="container">
                 <h1>Acoustic Genesis</h1>
                 <p class="subtitle">Volume III: Music as the Global Prophecy Engine and Collective Awakening</p>
-                <p class="highlight-subtitle">They control the radio to control the reality. Take back the frequency.</p>
+                <p class="highlight-subtitle">You are the one holding the remote.</p>
             </div>
         </header>
 
@@ -1337,7 +1351,7 @@
                     </div>
                     <div style="flex: 1; min-width: 250px; text-align: center;">
                         <div class="sacred-geometry">
-                            <svg viewBox="0 0 100 100" class="no-spin">
+                            <svg viewBox="0 0 100 100" class="no-spin" aria-hidden="true" role="img">
                                 <g class="anim-spin">
                                     <circle cx="50" cy="30" r="20" stroke="var(--text-muted)" stroke-width="1" fill="none"/>
                                     <circle cx="50" cy="70" r="20" stroke="var(--text-muted)" stroke-width="1" fill="none"/>
@@ -1361,10 +1375,10 @@
                     
                     <div class="custom-audio-controls">
                         <audio id="thetaAudio" preload="metadata">
-                            <source src="4-7hzpurethetawavesciahemisync.mp3" type="audio/mpeg">
+                            <source src="https://www.dropbox.com/scl/fi/3w7zymq0d5bj7uq6nkff0/4-7hzPUREThetaWavesCIAHemiSync.mp3?rlkey=rc1szisakebnyeahvubqis88x&st=4n7dfb1p&dl=1" type="audio/mpeg">
                             Your browser does not support audio.
                         </audio>
-                        <button id="playPauseBtn" class="play-pause-btn" aria-label="Play">
+                        <button id="playPauseBtn" class="play-pause-btn" aria-label="Play theta waves for brain synchronization">
                             <!-- Play Icon -->
                             <svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg>
                             <!-- Pause Icon (hidden initially) -->
@@ -1386,6 +1400,9 @@
                 
                 <p style="margin-top: 1.5rem; font-style: italic; color: var(--accent-gold);">
                     Free Hemi-Sync-inspired theta tracks (binaural beats designed for hemisphere synchronization) are widely available on YouTube — search terms like "Hemi-Sync theta waves," "Gateway Experience theta," or "binaural beats brain synchronization." Many listeners report entering relaxed, coherent states quickly. These interpretations draw from declassified government exploration, esoteric sound traditions, and anecdotal reports; large-scale scientific consensus on DNA-level or long-term hemispheric effects remains limited and debated.
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.95rem; font-style: italic; color: #fff; background: rgba(197,160,89,0.15); padding: 1rem; border-radius: 8px;">
+                    Some people feel 432Hz music helps them relax more. Try both and see what feels better for you — there’s no wrong answer.
                 </p>
             </div>
         </section>
@@ -1456,7 +1473,7 @@
                     </div>
                     <div style="flex: 1; min-width: 250px; text-align: center;">
                         <div class="sacred-geometry">
-                            <svg viewBox="0 0 100 100" class="no-spin">
+                            <svg viewBox="0 0 100 100" class="no-spin" aria-hidden="true" role="img">
                                 <g class="anim-spin">
                                     <line x1="50" y1="50" x2="50" y2="15" stroke="var(--text-muted)" stroke-dasharray="2,2"/>
                                     <line x1="50" y1="50" x2="85" y2="30" stroke="var(--text-muted)" stroke-dasharray="2,2"/>
@@ -1612,7 +1629,7 @@
                     </div>
                     <div style="flex: 1; min-width: 250px; text-align: center;">
                         <div class="sacred-geometry" style="margin: 0 auto;">
-                            <svg viewBox="0 0 100 100" class="no-spin">
+                            <svg viewBox="0 0 100 100" class="no-spin" aria-hidden="true" role="img">
                                 <path d="M 10,50 Q 50,50 90,20" stroke="var(--text-muted)" stroke-dasharray="3,3" fill="none"/>
                                 <path d="M 10,50 Q 50,50 90,80" stroke="var(--text-muted)" stroke-dasharray="3,3" fill="none"/>
                                 <path d="M 10,50 L 90,50" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
@@ -1695,7 +1712,7 @@
                 <div class="glass-card">
                     <div style="text-align: center; margin-bottom: 1.5rem;">
                         <div class="sacred-geometry" style="margin: 0 auto; filter: none;">
-                            <svg viewBox="0 0 100 50" class="no-spin" style="height: 60px; width: 120px;">
+                            <svg viewBox="0 0 100 50" class="no-spin" style="height: 60px; width: 120px;" aria-hidden="true" role="img">
                                 <path d="M 25,25 C 25,5 50,25 50,25 C 50,25 75,45 75,25 C 75,5 50,25 50,25 C 50,25 25,45 25,25 Z" stroke="var(--accent-primary)" stroke-width="2" fill="none"/>
                                 <circle cx="25" cy="25" r="4" fill="var(--accent-gold)" class="anim-pulse"/>
                                 <circle cx="75" cy="25" r="4" fill="var(--accent-gold)" class="anim-pulse" style="animation-delay: 1.5s;"/>
@@ -1758,6 +1775,9 @@
         <section class="codex-section container">
             <div class="section-header">
                 <h2>Why Protection and Cleansing Are <span>Essential</span></h2>
+                <p style="font-size: 1.2rem; color: #fff; font-weight: bold; max-width: 800px; margin: 0 auto 1.5rem auto;">
+                    Protection isn’t fighting evil. It’s simply turning the volume down on fear so your own good reality can come through louder.
+                </p>
                 
                 <p style="color: var(--accent-gold); font-size: 1.15rem; font-weight: 500; margin: 0 auto 2rem auto; max-width: 800px; padding: 1.5rem; background: rgba(197, 160, 89, 0.05); border-left: 3px solid var(--accent-gold); text-align: left;">
                     The Saturn Cube only appears to have power because billions of sleeping observers are still feeding it attention. Once you stop observing the cube and start observing your sovereign field instead, the external ‘threats’ lose their waveform entirely. The protection practices are not defenses against an enemy—they are simply the final calibration that helps your nervous system stop looking for the cube so the new reality can stabilize faster.
@@ -1796,7 +1816,7 @@
                         </div>
                         <div style="flex: 1; min-width: 250px; text-align: center;">
                             <div class="sacred-geometry">
-                                <svg viewBox="0 0 100 100" class="no-spin">
+                                <svg viewBox="0 0 100 100" class="no-spin" aria-hidden="true" role="img">
                                     <circle cx="50" cy="50" r="10" fill="var(--accent-gold)" class="anim-pulse"/>
                                     <circle cx="50" cy="50" r="25" stroke="var(--accent-primary)" stroke-width="1" stroke-dasharray="5,5" fill="none" class="anim-spin"/>
                                     <circle cx="50" cy="50" r="35" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="10,5" fill="none" class="anim-spin-reverse"/>
@@ -1992,7 +2012,7 @@
                     </div>
                     <div style="flex: 1; min-width: 250px; text-align: center;">
                         <div class="sacred-geometry">
-                            <svg viewBox="0 0 100 100" class="no-spin">
+                            <svg viewBox="0 0 100 100" class="no-spin" aria-hidden="true" role="img">
                                 <g stroke="var(--accent-gold)" stroke-width="1" class="anim-spin">
                                     <line x1="50" y1="5" x2="50" y2="95" />
                                     <line x1="5" y1="50" x2="95" y2="50" />
@@ -2372,6 +2392,11 @@
                     The universe is not a random accident.<br>
                     It is the living memory of the first I AM ever spoken.
                 </p>
+                
+                <div style="background: rgba(197,160,89,0.15); padding: 2rem; border-radius: 8px; margin: 2rem 0; text-align: left;">
+                    <strong style="color:var(--accent-gold); font-size: 1.3rem;">Simple Version:</strong><br><br>
+                    <span style="color: #fff;">Imagine the universe is one giant dream. You (the eternal part of you) had the very first dream and said “Let there be light.” That dream is still happening. You are still the dreamer. Your daily thoughts and words are just you continuing the dream right now.</span>
+                </div>
             </div>
         </section>
 
@@ -2388,7 +2413,7 @@
                     </div>
                     <div style="text-align: center; display: flex; align-items: center; justify-content: center;">
                         <div class="sacred-geometry">
-                            <svg viewBox="0 0 100 100" class="no-spin">
+                            <svg viewBox="0 0 100 100" class="no-spin" aria-hidden="true" role="img">
                                 <g class="anim-spin">
                                     <circle cx="50" cy="50" r="45" stroke="var(--accent-gold)" stroke-width="1" fill="none"/>
                                     <circle cx="50" cy="50" r="30" stroke="var(--text-muted)" stroke-width="1" fill="none"/>
@@ -2846,6 +2871,18 @@
                         }
                     }
                 }
+                
+                // Determine right volume indicator to load immediately
+                const indicator = document.getElementById('currentVolIndicator');
+                const volNumber = parseInt(initialVol.replace('vol','')) || 1;
+                if(volNumber >= 11) {
+                    indicator.style.color = "var(--accent-gold)";
+                    indicator.style.borderColor = "var(--accent-gold)";
+                    indicator.textContent = volNumber === 11 ? "THE FINALE" : volNumber === 12 ? "BONUS REVELATION" : "COSMIC GENESIS";
+                } else {
+                    indicator.textContent = `VOLUME ${volNumber} / 13`;
+                }
+
                 navTo(initialVol, initialSection);
             }
 
