@@ -1,6 +1,6 @@
 # awakening
 The Ultimate Awakening Codex
-This repository contains the complete source code for The Ultimate Awakening Codex, a 13-volume interactive digital masterwork. This project serves as a philosophical and esoteric manual designed to explore consciousness, the observer effect, and the sovereignty of the human spirit.
+This repository contains the complete source code for The Ultimate Awakening Codex, a 14-volume interactive digital masterwork. This project serves as a philosophical and esoteric manual designed to explore consciousness, the observer effect, and the sovereignty of the human spirit.
 
 🌌 Project Overview
 The Ultimate Awakening Codex is a high-end, single-page web application (SPA) that guides users through a multi-volume journey of self-realization. It combines advanced front-end design, interactive storytelling, and immersive audio components to deliver a unique "transmission" of ideas.
