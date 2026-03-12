@@ -1269,7 +1269,7 @@
                     <details>
                         <summary>Judaism: Tefillin & Hexagram</summary>
                         <div class="details-content">
-                            Orthodox practitioners bind black leather cubes to their heads and arms, tethering the intellect and action to the frequency of Saturn. The Star of David, a 2D hexagram, perfectly forms a 3D cube when folded along its lines.
+                            Orthodox practitioners bind black leather cubes to their heads and arms, tethering the intellect and action to the frequency of Saturn. The Star of David, a 2D hexagram, perfectly forms a 3D cube when folded along Teaching the lines.
                         </div>
                     </details>
                     <details>
@@ -1568,9 +1568,12 @@
                     </p>
                     
                     <div class="custom-audio-controls">
-                        <audio id="thetaAudio" preload="metadata">
-                            <!-- Safe fallback URL using dl=1 -->
-                            <source src="https://www.dropbox.com/scl/fi/3w7zymq0d5bj7uq6nkff0/4-7hzPUREThetaWavesCIAHemiSync.mp3?rlkey=rc1szisakebnyeahvubqis88x&st=4n7dfb1p&dl=1" type="audio/mpeg">
+                        <!-- Added playsinline to prevent iOS from forcing fullscreen native player -->
+                        <audio id="thetaAudio" preload="metadata" playsinline webkit-playsinline>
+                            <!-- Try loading local file first -->
+                            <source src="4-7hzpurethetawavesciahemisync.mp3" type="audio/mpeg">
+                            <!-- Fallback to Dropbox streaming using raw=1 for iOS Safari compatibility -->
+                            <source src="https://www.dropbox.com/scl/fi/3w7zymq0d5bj7uq6nkff0/4-7hzPUREThetaWavesCIAHemiSync.mp3?rlkey=rc1szisakebnyeahvubqis88x&st=4n7dfb1p&raw=1" type="audio/mpeg">
                             Your browser does not support audio.
                         </audio>
                         <button id="playPauseBtn" class="play-pause-btn" aria-label="Play theta waves for brain synchronization">
