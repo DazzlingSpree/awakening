@@ -580,6 +580,7 @@
             margin-top: 1rem;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: var(--text-muted);
+            overflow-x: auto;
         }
 
         /* Debate Shield Table Styles */
@@ -599,37 +600,29 @@
             font-size: 0.95rem;
             color: var(--text-main);
             text-align: left;
+            display: block;
+            overflow-x: auto;
+        }
+        .debate-table th, .debate-table td {
+            padding: 1rem;
+            min-width: 250px;
+            vertical-align: top;
+            line-height: 1.6;
         }
         .debate-table th {
             color: var(--accent-gold);
-            padding: 1rem;
             border-bottom: 1px solid rgba(197, 160, 89, 0.3);
             font-family: var(--font-display);
             letter-spacing: 1px;
         }
         .debate-table td {
-            padding: 1rem;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            vertical-align: top;
-            line-height: 1.6;
         }
         .debate-table tr:hover td {
             background: rgba(255,255,255,0.03);
         }
         .debate-table a { color: var(--accent-primary); text-decoration: underline; }
         
-        @media (max-width: 768px) {
-            .debate-table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-            .debate-table th, .debate-table td {
-                min-width: 200px;
-                white-space: normal;
-            }
-        }
-
         /* Mental health clarification boxes */
         .mental-health-note {
             background: rgba(0, 128, 0, 0.08);
