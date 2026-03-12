@@ -79,7 +79,35 @@
            ========================================================================== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        html { scroll-behavior: smooth; font-size: 16px; }
+        html { 
+            scroll-behavior: smooth; 
+            font-size: 16px; 
+            scrollbar-width: thin; /* Firefox global scrollbar */
+            scrollbar-color: var(--accent-gold) var(--bg-surface);
+        }
+
+        /* Global Webkit Scrollbars (Chrome, Safari, Edge) */
+        ::-webkit-scrollbar {
+            width: 12px;  /* Vertical scrollbar width */
+            height: 10px; /* Horizontal scrollbar height */
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-surface);
+            border-left: 1px solid rgba(197, 160, 89, 0.1);
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-gold);
+            border-radius: 6px;
+            border: 3px solid var(--bg-surface); /* Creates a sleek padded/floating look */
+            transition: var(--transition-smooth);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-primary); /* Turns red when interacting */
+        }
+        ::-webkit-scrollbar-corner {
+            background: var(--bg-surface);
+        }
         
         body {
             font-family: var(--font-body);
