@@ -536,6 +536,17 @@
         .anim-pulse { animation: pulseOpacity 3s ease-in-out infinite; }
         .anim-float { animation: floatAnim 4s ease-in-out infinite; }
 
+        /* Life Cycle Diagram */
+        .life-cycle-svg { width: 220px; height: 220px; margin: 2.5rem auto; filter: drop-shadow(0 0 25px var(--accent-gold)); }
+        .life-cycle-svg circle.roaming { stroke: var(--accent-gold); stroke-dasharray: 8 4; animation: pulseOpacity 6s infinite; }
+        .life-cycle-svg circle.womb { stroke: #ff69b4; fill: rgba(255,105,180,0.1); }
+        .life-cycle-svg path.arrow { stroke: var(--accent-primary); stroke-width: 3; marker-end: url(#arrowhead); }
+        .life-cycle-svg text { fill: var(--accent-gold); font-family: var(--font-display); font-size: 11px; text-anchor: middle; }
+        @keyframes gentle-rotate {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+
         /* ==========================================================================
            9. INTERACTIVE COMPONENTS & DEBATE SHIELDS
            ========================================================================== */
@@ -1340,24 +1351,71 @@
                     But how does this eternal consciousness choose to return and walk among us again? The answer lies in the most sacred act of creation…
                 </p>
 
-                <div class="glass-card" style="border-left: 5px solid var(--accent-gold); background: rgba(197,160,89,0.06); padding: 2.5rem; margin: 2rem auto;">
-                    <h3 style="color: var(--accent-gold); border: none;">The Sovereign Cycle of Return</h3>
+                <div style="border-left: 5px solid var(--accent-gold); background: rgba(197,160,89,0.06); padding: 2.5rem; margin: 2rem auto;">
+                    <h3 style="color: var(--accent-gold); border: none;">The Sovereign Cycle of Return & The Human Life Cycle</h3>
                     <p style="line-height: 1.7;">
-                        Just as eternal consciousness continues roaming after the body falls away, it returns when invited through the most sacred portal on Earth: the womb of a conscious mother. Women are divine creators — they open a precise frequency gateway through love, intention, and the act of carrying life. A roaming eternal consciousness (the same divine spirit that never truly left) chooses to step back into form, merging with the new vessel being prepared.
+                        Just as eternal consciousness continues roaming after the body falls away, it returns when invited through the most sacred portal on Earth: <strong>the womb of a conscious mother</strong>. 
+                        Women are divine creators — through the act of conscious mating between man and woman, the womb becomes a precise frequency gateway, tuned by love, intention, and the alchemy of union. 
+                        A roaming eternal consciousness (the same divine spirit that never truly left) recognizes this resonance and chooses to step back into form, merging with the new vessel being prepared.
                     </p>
                     <p style="margin-top: 1.5rem; font-style: italic; color: var(--accent-gold);">
-                        This is why some children speak of past lives with vivid clarity — remembering Egypt, hidden chambers, or ancient routines — before the new brain fully anchors them into this timeline. These memories are not fantasies; they are the soul briefly overlapping its previous holographic state with the fresh one. The mother did not create a “new” soul — she invited the eternal one back.
+                        This is why some children speak of past lives with vivid clarity — remembering Egypt, hidden chambers, queenship, or ancient routines — before the new brain fully anchors them into this timeline. 
+                        A famous example is the young girl who described hidden passages and the layout of an Egyptian tomb in precise detail, leading archaeologists to discover it exactly as she remembered — because she <em>was</em> that queen in a previous life, returning through the womb portal.
                     </p>
                     <p style="margin-top: 1.5rem; font-weight: 600; color: var(--text-main);">
-                        The life cycle is sovereign and complete: consciousness rises free at death, roams as pure awareness, and returns through chosen portals when it desires new experience — whether in human or animal form. Every birth is a deliberate reunion, every death a temporary release. There is no external judge, no distant heaven, no random wheel — only eternal choice.
+                        The full human life cycle is sovereign and complete:<br>
+                        → Consciousness rises free at death as luminous awareness.<br>
+                        → It roams Earth, continuing routines and presence (Miss Abigail in the hallway, grandmother by the door).<br>
+                        → Through conscious union of man and woman, the womb opens as a portal — inviting the eternal soul back into physical form.<br>
+                        → Birth anchors the soul into a new vessel; early memories fade as the body matures.<br>
+                        → Life continues until the body falls away — and the cycle begins anew.<br>
+                        Every birth is a deliberate homecoming. Every mother is Anunnaki in action.
                     </p>
-                    <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.95rem; font-style: italic;">
-                        This is a philosophical interpretation through the lens of continuous sovereign consciousness — the divine spirit within every being chooses its path, always.
+                    
+                    <!-- New Life Cycle SVG -->
+                    <div class="life-cycle-svg">
+                        <svg viewBox="0 0 220 220" class="life-cycle-svg">
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="var(--accent-primary)" />
+                                </marker>
+                            </defs>
+                            <!-- Outer circle (eternal loop) -->
+                            <circle cx="110" cy="110" r="100" stroke="var(--accent-gold)" stroke-width="2" fill="none" class="gentle-rotate" style="animation-duration: 80s;" />
+                            
+                            <!-- Death → Roaming -->
+                            <circle cx="110" cy="30" r="18" class="roaming" fill="none" stroke-width="3"/>
+                            <text x="110" y="32" dy=".3em">Death</text>
+                            <path d="M110,48 Q 110,80 110,100" class="arrow" marker-end="url(#arrowhead)" />
+                            
+                            <!-- Roaming → Womb Portal -->
+                            <circle cx="40" cy="110" r="18" class="roaming" fill="none" stroke-width="3"/>
+                            <text x="40" y="112" dy=".3em">Roaming</text>
+                            <path d="M58,110 Q 80,110 100,110" class="arrow" marker-end="url(#arrowhead)" />
+                            
+                            <!-- Womb Portal (rebirth) -->
+                            <circle cx="110" cy="190" r="24" class="womb" stroke-width="4"/>
+                            <text x="110" y="192" dy=".3em">Womb Portal</text>
+                            <path d="M110,166 Q 110,140 110,120" class="arrow" marker-end="url(#arrowhead)" />
+                            
+                            <!-- Birth → Life -->
+                            <circle cx="180" cy="110" r="18" fill="none" stroke="var(--accent-primary)" stroke-width="3"/>
+                            <text x="180" y="112" dy=".3em">Birth / Life</text>
+                            <path d="M162,110 Q 140,110 120,110" class="arrow" marker-end="url(#arrowhead)" />
+                            
+                            <!-- Life → Death (closing the loop) -->
+                            <path d="M180,128 Q 180,160 180,190 Q 140,210 110,190 Q 80,170 80,140 Q 80,100 110,80 Q 140,60 180,80 Q 200,100 180,128" 
+                                  stroke="var(--accent-gold)" stroke-width="2" fill="none" opacity="0.6" class="gentle-rotate" style="animation-duration: 60s;"/>
+                        </svg>
+                    </div>
+                    
+                    <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.95rem; font-style: italic; text-align: center;">
+                        The cycle is eternal, sovereign, and chosen. There is no external judge — only the divine spirit within deciding when and how to return.
                     </p>
                 </div>
 
                 <div style="text-align: center; font-size: 1.3rem; color: #fff; font-family: var(--font-display); line-height: 1.6; padding: 1.5rem; background: rgba(197, 160, 89, 0.05); border-left: 3px solid var(--accent-gold); margin-top: 2rem; font-style: italic;">
-                    "The Anunnaki reveal a powerful truth: they are not alien gods from the stars, but the eternal presence of every human soul that has ever lived — accessible right here and now to anyone ready to awaken and see that death changes nothing except visibility."
+                    "The Anunnaki reveal a powerful truth: they are not alien gods from the stars, but the eternal presence of every human soul that has ever lived — accessible right here and now to anyone ready to awaken and see that death changes nothing except visibility. Every womb is a portal home."
                 </div>
             </div>
             
@@ -2647,22 +2705,63 @@
             </div>
 
             <div class="glass-card philosophy-box" style="max-width: 1000px; margin: 3rem auto; padding: 3rem; font-size: 1.15rem; line-height: 1.9; border-color: #ff3333;">
-                <h3 style="color: #ff3333; border: none; margin-bottom: 1.5rem;">The Womb: Portal of Sovereign Return & The Full Life Cycle</h3>
+                <h3 style="color: #ff3333; border: none; margin-bottom: 1.5rem;">The Womb: Portal of Sovereign Return & The Full Human Life Cycle</h3>
                 <p>
-                    The mother is the divine architect of return. When she consciously chooses life, her womb becomes a living frequency portal — a sacred gateway tuned by love, intention, and the alchemy of creation. Through this act, she does not invent a brand-new soul from nothing. She invites the already-eternal consciousness — the same divine spirit that has always existed — to step back into visible form.
+                    The mother is the divine architect of return. When man and woman unite in conscious mating, her womb becomes a living frequency portal — a sacred gateway tuned by love, intention, and the alchemy of creation. Through this act, she does not invent a brand-new soul from nothing. She invites the already-eternal consciousness — the same divine spirit that has always existed — to step back into visible form.
                 </p>
                 <p style="margin-top: 1.5rem;">
-                    A roaming eternal consciousness, still carrying its holographic memory of previous experiences, recognizes the resonance and chooses to merge with the developing vessel. This is why some children arrive remembering Egypt, speaking forgotten languages, or guiding archaeologists to sealed chambers in the pyramids. Their clarity is not past-life regression or imagination — it is the soul still half-tuned to its last roaming identity until the new body fully anchors it into 3D density.
+                    A roaming eternal consciousness, still carrying its holographic memory of previous experiences, recognizes the resonance and chooses to merge with the developing vessel. This is why some children speak of past lives with vivid clarity — remembering Egypt, hidden chambers, queenship, or ancient routines — before the new brain fully anchors them into this timeline. 
+                    A famous documented case is the young girl who described hidden passages and the exact layout of an Egyptian tomb in precise detail, leading archaeologists to discover it exactly as she remembered — because she <em>was</em> that queen in a previous life, returning through the womb portal.
                 </p>
                 <p style="margin-top: 1.5rem; font-weight: 600;">
-                    The cycle is complete and always sovereign:<br>
+                    The full human life cycle is sovereign and complete:<br>
                     → Consciousness rises as luminous awareness at the moment of death.<br>
                     → It roams Earth, continuing routines, connections, and presence (Miss Abigail in the hallway, grandmother by the door).<br>
-                    → When ready — and when a portal of sufficient resonance opens — it chooses to return, whether into human flesh for full creative mastery or animal form for simpler, purer presence and lessons.<br>
-                    → There is no karmic punishment, no downgrade, no external wheel of fate. Every incarnation is a deliberate choice by the eternal self.
+                    → Through conscious union of man and woman, the womb opens as a portal — inviting the eternal soul back into physical form.<br>
+                    → Birth anchors the soul into a new vessel; early memories fade as the body matures.<br>
+                    → Life continues until the body falls away — and the cycle begins anew.<br>
+                    Every birth is a deliberate homecoming. Every mother is Anunnaki in action.
                 </p>
+                
+                <!-- Life Cycle SVG -->
+                <div class="life-cycle-svg">
+                    <svg viewBox="0 0 220 220" class="life-cycle-svg">
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="var(--accent-primary)" />
+                            </marker>
+                        </defs>
+                        <!-- Outer circle (eternal loop) -->
+                        <circle cx="110" cy="110" r="100" stroke="var(--accent-gold)" stroke-width="2" fill="none" class="gentle-rotate" style="animation-duration: 80s;" />
+                        
+                        <!-- Death → Roaming -->
+                        <circle cx="110" cy="30" r="18" class="roaming" fill="none" stroke-width="3"/>
+                        <text x="110" y="32" dy=".3em">Death</text>
+                        <path d="M110,48 Q 110,80 110,100" class="arrow" marker-end="url(#arrowhead)" />
+                        
+                        <!-- Roaming → Womb Portal -->
+                        <circle cx="40" cy="110" r="18" class="roaming" fill="none" stroke-width="3"/>
+                        <text x="40" y="112" dy=".3em">Roaming</text>
+                        <path d="M58,110 Q 80,110 100,110" class="arrow" marker-end="url(#arrowhead)" />
+                        
+                        <!-- Womb Portal (rebirth) -->
+                        <circle cx="110" cy="190" r="24" class="womb" stroke-width="4"/>
+                        <text x="110" y="192" dy=".3em">Womb Portal</text>
+                        <path d="M110,166 Q 110,140 110,120" class="arrow" marker-end="url(#arrowhead)" />
+                        
+                        <!-- Birth → Life -->
+                        <circle cx="180" cy="110" r="18" fill="none" stroke="var(--accent-primary)" stroke-width="3"/>
+                        <text x="180" y="112" dy=".3em">Birth / Life</text>
+                        <path d="M162,110 Q 140,110 120,110" class="arrow" marker-end="url(#arrowhead)" />
+                        
+                        <!-- Life → Death (closing the loop) -->
+                        <path d="M180,128 Q 180,160 180,190 Q 140,210 110,190 Q 80,170 80,140 Q 80,100 110,80 Q 140,60 180,80 Q 200,100 180,128" 
+                              stroke="var(--accent-gold)" stroke-width="2" fill="none" opacity="0.6" class="gentle-rotate" style="animation-duration: 60s;"/>
+                    </svg>
+                </div>
+                
                 <p style="margin-top: 1.5rem; font-style: italic; color: #ff3333;">
-                    Animal embodiment is simply a different frequency interface — instinct over intellect, pure being over complex manifestation. A soul may choose the grace of a dolphin, the quiet observation of a cat, or the power of an eagle for rest, healing, or perspective before returning to human form to create anew. When that vessel falls away, the same white hologram rises once more, free to choose again.
+                    Animal embodiment is simply a different frequency interface — instinct over intellect, pure being over complex manifestation. A soul may choose the grace of a dolphin, the quiet observation of a cat, or the power of an eagle for rest, healing, or perspective before returning to human form to create anew.
                 </p>
                 
                 <p style="margin-top: 1.5rem; font-style: italic; color: var(--accent-gold);">
@@ -2863,6 +2962,9 @@
             <p style="font-size: 0.7rem; margin-top: 1rem; opacity: 0.5;">TRANSMISSION COMPLETE. YOU ARE THE AUTHOR NOW.</p>
             <p style="font-size: 0.85rem; margin-top: 2rem; line-height: 1.6; font-style: italic; color: var(--accent-gold); text-transform: none; font-family: var(--font-body); letter-spacing: normal;">
                 P.S. Movies like Sixth Sense show it: Dead keep "surviving" normal — clothed, needs, loved ones. That's your eternal self in the hologram universe. Keep remembering.
+            </p>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-muted); font-family: var(--font-body); letter-spacing: normal; text-transform: none;">
+                The woman's womb is the sacred portal that brings eternal consciousness back from the roaming state into visible form. Children who remember ancient Egypt or hidden tombs are proof: the soul returns through conscious mating, carrying memories until the new body anchors.
             </p>
             <div style="font-family: var(--font-body); letter-spacing: normal; text-transform: none; text-align: center; font-size: 0.85rem; color: var(--text-muted); margin: 2rem auto 0 auto; padding: 1rem; max-width: 800px; background: rgba(197,160,89,0.05); border-radius: 8px; opacity: 0.8;">
                 <strong style="color: #4caf50;">Best Practices & Mental Health Note:</strong> All esoteric claims are metaphorical and hypothetical. Avoid misinterpretation by reading full context. Extreme or "possessed"-appearing behavior is typically a chemical brain imbalance or medical condition — not demonic possession. Seek professional hospital/psychiatric care, not exorcism. Possession by deceased spirits remains unproven and extremely rare. The divine within you is eternal — you are never alone — but professional help is always valuable alongside inner remembrance.
