@@ -1068,6 +1068,273 @@
             .hero h1 { font-size: 1.8rem; }
             .lang-btn { padding: 0.4rem 0.8rem; font-size: 0.7rem; }
         }
+
+/* ==========================================================================
+   16. LIFECYCLE ANIMATION SECTION
+   ========================================================================== */
+.lifecycle-animation-section {
+    margin: 4rem auto;
+    padding: 0 1rem;
+    max-width: 1100px;
+}
+
+.lifecycle-anim-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--accent-gold);
+    text-align: center;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.lifecycle-anim-intro {
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Animation Container */
+.lifecycle-animation-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* Individual Stage */
+.anim-stage {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.anim-stage.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stage Header */
+.stage-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stage-num {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--accent-gold);
+    background: rgba(197,160,89,0.1);
+    border: 1px solid rgba(197,160,89,0.3);
+    padding: 0.3rem 0.8rem;
+    letter-spacing: 2px;
+}
+
+.stage-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: #F5F0E6;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+/* Visual Container */
+.anim-visual {
+    background: linear-gradient(135deg, rgba(18,15,12,0.95) 0%, rgba(22,18,14,0.9) 100%);
+    border: 1px solid rgba(197,160,89,0.15);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.anim-visual::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(197,160,89,0.1);
+    pointer-events: none;
+}
+
+/* SVG Styling */
+.death-scene,
+.reclothing-scene,
+.roaming-scene,
+.portal-scene,
+.birthmark-scene,
+.life-scene,
+.cycle-scene {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+}
+
+.portal-scene {
+    max-width: 550px;
+}
+
+.birthmark-scene {
+    max-width: 600px;
+}
+
+/* Caption */
+.anim-caption {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(197,160,89,0.05);
+    border-left: 3px solid var(--accent-gold);
+}
+
+.anim-caption p {
+    margin: 0;
+    color: var(--text-main);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.anim-caption strong {
+    color: var(--accent-gold);
+}
+
+/* Portal Stage Special */
+.portal-stage .anim-visual {
+    background: linear-gradient(135deg, rgba(18,15,12,0.95) 0%, rgba(255,105,180,0.05) 50%, rgba(22,18,14,0.9) 100%);
+    border-color: rgba(255,105,180,0.2);
+}
+
+/* Birthmark Stage Special */
+.birthmark-stage .anim-visual {
+    background: linear-gradient(135deg, rgba(139,69,19,0.05) 0%, rgba(18,15,12,0.95) 100%);
+}
+
+.birthmark-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Case Cards */
+.case-card {
+    transition: opacity 0.3s ease;
+    cursor: default;
+}
+
+.case-card:hover {
+    box-shadow: 0 4px 12px rgba(139,69,19,0.2);
+}
+
+/* Cycle Stage */
+.cycle-stage .anim-visual {
+    background: radial-gradient(ellipse at center, rgba(197,160,89,0.1) 0%, rgba(18,15,12,0.95) 70%);
+}
+
+/* Final Quote */
+.lifecycle-final-quote {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(197,160,89,0.08) 0%, transparent 50%);
+    border-top: 1px solid rgba(197,160,89,0.2);
+    border-bottom: 1px solid rgba(197,160,89,0.2);
+}
+
+.lifecycle-final-quote blockquote {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: var(--accent-gold);
+    line-height: 1.6;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+/* SVG Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes glow {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); }
+    50% { filter: drop-shadow(0 0 15px rgba(255,255,255,0.8)); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .anim-visual {
+        padding: 1rem;
+    }
+    
+    .death-scene,
+    .reclothing-scene,
+    .roaming-scene,
+    .portal-scene,
+    .birthmark-scene,
+    .life-scene,
+    .cycle-scene {
+        max-width: 100%;
+    }
+    
+    .stage-title {
+        font-size: 1.2rem;
+    }
+    
+    .case-cards {
+        transform: scale(0.9);
+        transform-origin: top center;
+    }
+}
+
+@media (max-width: 480px) {
+    .lifecycle-animation-section {
+        padding: 0 0.5rem;
+    }
+    
+    .anim-caption p {
+        font-size: 0.9rem;
+    }
+    
+    .lifecycle-final-quote blockquote {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* Fix for roaming scene sizing */
+.roaming-scene {
+    width: 100%;
+    height: auto;
+    max-width: 600px;  /* Increased from 500px */
+    min-width: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Ensure souls don't overflow */
+.roaming-soul-1,
+.roaming-soul-2,
+.roaming-soul-3 {
+    transform-origin: center center;
+}
+
+/* Adjust visual container for this stage */
+.anim-stage:nth-child(3) .anim-visual {
+    min-height: 250px;
+}
     </style>
 </head>
 <body>
@@ -1624,6 +1891,914 @@
         </circle>
     </svg>
 </div>
+
+<!-- ANIMATED LIFE CYCLE: Anime-Style Consciousness Journey -->
+<!-- Place after the Life Cycle SVG diagram -->
+
+<section class="lifecycle-animation-section">
+    <h3 class="lifecycle-anim-title">The Eternal Journey: Animated</h3>
+    <p class="lifecycle-anim-intro">Watch the complete cycle of consciousness — from death through the womb portal to rebirth.</p>
+    
+    <div class="lifecycle-animation-container">
+        
+        <!-- STAGE 1: DEATH - Body & Soul Separation -->
+        <div class="anim-stage" id="anim-stage-1">
+            <div class="stage-header">
+                <span class="stage-num">01</span>
+                <h4 class="stage-title">Death: The Separation</h4>
+            </div>
+            
+            <div class="anim-visual">
+                <svg class="death-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <!-- Gradient for physical body -->
+                        <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#4a3728"/>
+                            <stop offset="50%" stop-color="#3d2914"/>
+                            <stop offset="100%" stop-color="#2a1810"/>
+                        </linearGradient>
+                        
+                        <!-- Gradient for white holographic soul -->
+                        <linearGradient id="soulGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+                            <stop offset="30%" stop-color="rgba(255,255,255,0.8)"/>
+                            <stop offset="70%" stop-color="rgba(200,220,255,0.6)"/>
+                            <stop offset="100%" stop-color="rgba(150,180,255,0.3)"/>
+                        </linearGradient>
+                        
+                        <!-- Glow filter for soul -->
+                        <filter id="soulGlow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="3" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                        
+                        <!-- Pulse glow -->
+                        <filter id="pulseGlow" x="-100%" y="-100%" width="300%" height="300%">
+                            <feGaussianBlur stdDeviation="5" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Ground line -->
+                    <path d="M0,260 Q100,250 200,260 T400,255" stroke="rgba(197,160,89,0.3)" stroke-width="2" fill="none"/>
+                    
+                    <!-- Physical body (lying down, lifeless) -->
+                    <g class="physical-body" transform="translate(100, 180)">
+                        <!-- Body silhouette - realistic proportions -->
+                        <ellipse cx="40" cy="15" rx="18" ry="22" fill="url(#bodyGrad)"/>
+                        <!-- Hair -->
+                        <path d="M22,15 Q25,-5 40,-8 Q55,-5 58,15" fill="#1a0f05"/>
+                        <!-- Torso -->
+                        <path d="M25,35 Q40,30 55,35 L50,120 Q40,125 30,120 Z" fill="url(#bodyGrad)"/>
+                        <!-- Arms -->
+                        <path d="M25,40 Q5,50 0,80" stroke="url(#bodyGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        <path d="M55,40 Q75,50 80,85" stroke="url(#bodyGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        <!-- Legs -->
+                        <path d="M35,120 Q30,160 25,220" stroke="url(#bodyGrad)" stroke-width="14" fill="none" stroke-linecap="round"/>
+                        <path d="M45,120 Q55,160 60,225" stroke="url(#bodyGrad)" stroke-width="14" fill="none" stroke-linecap="round"/>
+                        <!-- Clothing suggestion -->
+                        <path d="M28,60 L28,100 M36,60 L36,100 M44,60 L44,100 M52,60 L52,100" stroke="rgba(74,55,40,0.4)" stroke-width="1"/>
+                    </g>
+                    
+                    <!-- WHITE HOLOGRAPHIC SOUL rising -->
+                    <g class="soul-body" filter="url(#pulseGlow)">
+                        <animateTransform attributeName="transform" type="translate" values="0,0; 0,-10; 0,0" dur="3s" repeatCount="indefinite"/>
+                        
+                        <!-- Soul head - anime style -->
+                        <ellipse cx="280" cy="40" rx="22" ry="28" fill="url(#soulGrad)">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                        </ellipse>
+                        
+                        <!-- Soul hair flowing upward -->
+                        <path d="M258,40 Q260,15 280,5 Q300,15 302,40" fill="rgba(255,255,255,0.8)" filter="url(#soulGlow)">
+                            <animate attributeName="d" values="M258,40 Q260,15 280,5 Q300,15 302,40; M256,38 Q260,10 280,0 Q300,10 304,38; M258,40 Q260,15 280,5 Q300,15 302,40" dur="4s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Soul face - subtle features -->
+                        <ellipse cx="272" cy="35" rx="3" ry="2" fill="rgba(200,220,255,0.5)"/>
+                        <ellipse cx="288" cy="35" rx="3" ry="2" fill="rgba(200,220,255,0.5)"/>
+                        <path d="M275,48 Q280,52 285,48" stroke="rgba(200,220,255,0.4)" stroke-width="1" fill="none"/>
+                        
+                        <!-- Soul torso -->
+                        <path d="M260,65 Q280,60 300,65 L295,150 Q280,155 265,150 Z" fill="url(#soulGrad)">
+                            <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Soul arms - reaching upward slightly -->
+                        <path d="M260,70 Q240,60 225,50" stroke="url(#soulGrad)" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#soulGlow)">
+                            <animate attributeName="d" values="M260,70 Q240,60 225,50; M260,70 Q235,55 220,40; M260,70 Q240,60 225,50" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        <path d="M300,70 Q320,60 335,50" stroke="url(#soulGrad)" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#soulGlow)">
+                            <animate attributeName="d" values="M300,70 Q320,60 335,50; M300,70 Q325,55 340,40; M300,70 Q320,60 335,50" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Soul legs -->
+                        <path d="M270,150 Q265,190 260,230" stroke="url(#soulGrad)" stroke-width="12" fill="none" stroke-linecap="round" filter="url(#soulGlow)"/>
+                        <path d="M290,150 Q295,190 300,230" stroke="url(#soulGrad)" stroke-width="12" fill="none" stroke-linecap="round" filter="url(#soulGlow)"/>
+                        
+                        <!-- Ethereal particles around soul -->
+                        <g class="soul-particles">
+                            <circle cx="250" cy="60" r="2" fill="rgba(255,255,255,0.8)">
+                                <animate attributeName="cy" values="60;40;60" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="310" cy="80" r="1.5" fill="rgba(255,255,255,0.7)">
+                                <animate attributeName="cy" values="80;60;80" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="240" cy="100" r="2" fill="rgba(200,220,255,0.6)">
+                                <animate attributeName="cx" values="240;230;240" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="320" cy="120" r="1.5" fill="rgba(255,255,255,0.7)">
+                                <animate attributeName="cy" values="120;100;120" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                    </g>
+                    
+                    <!-- Connection line between body and soul -->
+                    <path d="M150,150 Q200,120 250,100" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="5,5" fill="none">
+                        <animate attributeName="stroke-dashoffset" values="0;10" dur="1s" repeatCount="indefinite"/>
+                    </path>
+                    
+                    <!-- Light rays from above -->
+                    <g class="divine-light">
+                        <line x1="280" y1="0" x2="280" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="2">
+                            <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="260" y1="0" x2="265" y2="25" stroke="rgba(255,255,255,0.3)" stroke-width="1">
+                            <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2.5s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="300" y1="0" x2="295" y2="25" stroke="rgba(255,255,255,0.3)" stroke-width="1">
+                            <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2.5s" repeatCount="indefinite"/>
+                        </line>
+                    </g>
+                </svg>
+                
+                <div class="anim-caption">
+                    <p>At the moment of death, consciousness lifts free as a <strong>white holographic form</strong> — the naked luminous essence of who you truly are. The body remains. The soul rises.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- STAGE 2: RE-CLOTHING - Soul Takes Familiar Form -->
+        <div class="anim-stage" id="anim-stage-2">
+            <div class="stage-header">
+                <span class="stage-num">02</span>
+                <h4 class="stage-title">Re-Clothing: Taking Familiar Form</h4>
+            </div>
+            
+            <div class="anim-visual">
+                <svg class="reclothing-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="soulGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+                            <stop offset="50%" stop-color="rgba(240,245,255,0.85)"/>
+                            <stop offset="100%" stop-color="rgba(200,220,255,0.6)"/>
+                        </linearGradient>
+                        
+                        <linearGradient id="clothesGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4a5568"/>
+                            <stop offset="50%" stop-color="#2d3748"/>
+                            <stop offset="100%" stop-color="#1a202c"/>
+                        </linearGradient>
+                        
+                        <filter id="glowStrong" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="4" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Background glow -->
+                    <ellipse cx="200" cy="150" rx="120" ry="150" fill="rgba(255,255,255,0.03)">
+                        <animate attributeName="rx" values="120;140;120" dur="4s" repeatCount="indefinite"/>
+                    </ellipse>
+                    
+                    <!-- Fully formed soul - now with clothes -->
+                    <g class="clothed-soul" filter="url(#glowStrong)" transform="translate(200, 150)">
+                        <!-- Soul body base -->
+                        <g class="soul-body-base">
+                            <!-- Head -->
+                            <ellipse cx="0" cy="-95" rx="24" ry="30" fill="url(#soulGrad2)"/>
+                            
+                            <!-- Hair - styled -->
+                            <path d="M-24,-95 Q-26,-125 0,-130 Q26,-125 24,-95" fill="rgba(255,255,255,0.9)"/>
+                            <path d="M-22,-90 Q-20,-105 -10,-108" stroke="rgba(255,255,255,0.7)" stroke-width="3" fill="none"/>
+                            
+                            <!-- Face -->
+                            <ellipse cx="-8" cy="-98" rx="4" ry="2.5" fill="rgba(200,220,255,0.5)"/>
+                            <ellipse cx="8" cy="-98" rx="4" ry="2.5" fill="rgba(200,220,255,0.5)"/>
+                            <path d="M-5,-85 Q0,-82 5,-85" stroke="rgba(200,220,255,0.4)" stroke-width="1" fill="none"/>
+                            
+                            <!-- Neck -->
+                            <rect x="-10" y="-68" width="20" height="15" fill="url(#soulGrad2)"/>
+                            
+                            <!-- Torso - now clothed -->
+                            <path d="M-35,-53 Q0,-60 35,-53 L30,60 Q0,65 -30,60 Z" fill="url(#clothesGrad)" opacity="0.85"/>
+                            
+                            <!-- Clothing details -->
+                            <path d="M-20,-50 L-20,40" stroke="rgba(74,85,104,0.5)" stroke-width="1"/>
+                            <path d="M20,-50 L20,40" stroke="rgba(74,85,104,0.5)" stroke-width="1"/>
+                            <path d="M-10,-50 L-10,40" stroke="rgba(74,85,104,0.3)" stroke-width="0.5"/>
+                            <path d="M10,-50 L10,40" stroke="rgba(74,85,104,0.3)" stroke-width="0.5"/>
+                            
+                            <!-- Arms clothed -->
+                            <path d="M-35,-50 Q-55,-40 -60,-10 Q-55,20 -45,50" stroke="url(#clothesGrad)" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.85"/>
+                            <path d="M35,-50 Q55,-40 60,-10 Q55,20 45,50" stroke="url(#clothesGrad)" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.85"/>
+                            
+                            <!-- Hands (visible) -->
+                            <ellipse cx="-45" cy="55" rx="8" ry="12" fill="url(#soulGrad2)"/>
+                            <ellipse cx="45" cy="55" rx="8" ry="12" fill="url(#soulGrad2)"/>
+                            
+                            <!-- Legs clothed -->
+                            <path d="M-20,60 Q-22,90 -25,120" stroke="url(#clothesGrad)" stroke-width="16" fill="none" stroke-linecap="round" opacity="0.85"/>
+                            <path d="M20,60 Q22,90 25,120" stroke="url(#clothesGrad)" stroke-width="16" fill="none" stroke-linecap="round" opacity="0.85"/>
+                            
+                            <!-- Feet (visible) -->
+                            <ellipse cx="-25" cy="125" rx="10" ry="5" fill="url(#soulGrad2)"/>
+                            <ellipse cx="25" cy="125" rx="10" ry="5" fill="url(#soulGrad2)"/>
+                        </g>
+                        
+                        <!-- Particles of self-image forming -->
+                        <g class="form-particles">
+                            <circle cx="-50" cy="-30" r="3" fill="rgba(255,255,255,0.6)">
+                                <animate attributeName="cx" values="-50;-35" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0.6;0" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="50" cy="-20" r="2" fill="rgba(255,255,255,0.5)">
+                                <animate attributeName="cx" values="50;35" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0.5;0" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="-40" cy="30" r="2.5" fill="rgba(200,220,255,0.5)">
+                                <animate attributeName="cx" values="-40;-25" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="45" cy="40" r="2" fill="rgba(255,255,255,0.4)">
+                                <animate attributeName="cx" values="45;30" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0.4;0" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                        
+                        <!-- Gentle float animation -->
+                        <animateTransform attributeName="transform" type="translate" values="0,0; 0,-5; 0,0" dur="4s" repeatCount="indefinite" additive="sum"/>
+                    </g>
+                    
+                    <!-- Label -->
+                    <text x="200" y="285" text-anchor="middle" fill="rgba(197,160,89,0.8)" font-family="'Bebas Neue', sans-serif" font-size="12" letter-spacing="2">MISS ABIGAIL — FULLY FORMED, CONTINUING ROUTINES</text>
+                </svg>
+                
+                <div class="anim-caption">
+                    <p>Within moments, the soul instinctively <strong>re-clothes itself</strong> in the familiar appearance, outfit, and self-image it carried in life. Miss Abigail appeared in her work uniform. The grandmother stood by the door in her everyday clothes — continuing exactly as before.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- STAGE 3: ROAMING - Multiple Souls on Earth (FIXED) -->
+<div class="anim-stage" id="anim-stage-3">
+    <div class="stage-header">
+        <span class="stage-num">03</span>
+        <h4 class="stage-title">Roaming: Souls Walk Among Us</h4>
+    </div>
+    
+    <div class="anim-visual">
+        <svg class="roaming-scene" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <linearGradient id="soulGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+                    <stop offset="100%" stop-color="rgba(200,220,255,0.5)"/>
+                </linearGradient>
+                
+                <linearGradient id="groundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(197,160,89,0.1)"/>
+                    <stop offset="100%" stop-color="rgba(10,10,10,0)"/>
+                </linearGradient>
+                
+                <filter id="glowStrong" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <!-- Background -->
+            <rect x="0" y="0" width="600" height="320" fill="transparent"/>
+            
+            <!-- Earth plane -->
+            <rect x="0" y="200" width="600" height="120" fill="url(#groundGrad)"/>
+            <path d="M0,230 Q150,220 300,235 T600,225" stroke="rgba(197,160,89,0.2)" stroke-width="1" fill="none"/>
+            
+            <!-- Building silhouettes in background (scaled down) -->
+            <g class="background-scene" opacity="0.25" transform="translate(50, 100)">
+                <rect x="0" y="60" width="30" height="45" fill="rgba(30,25,20,0.6)"/>
+                <rect x="40" y="40" width="35" height="65" fill="rgba(30,25,20,0.5)"/>
+                <rect x="450" y="50" width="40" height="55" fill="rgba(30,25,20,0.6)"/>
+                <rect x="500" y="35" width="50" height="70" fill="rgba(30,25,20,0.5)"/>
+            </g>
+            
+            <!-- ROAMING SOUL 1: Miss Abigail -->
+            <g class="roaming-soul-1" transform="translate(80, 60)">
+                <g filter="url(#glowStrong)">
+                    <!-- Head -->
+                    <ellipse cx="0" cy="-50" rx="14" ry="18" fill="url(#soulGrad3)"/>
+                    <!-- Hair bun -->
+                    <ellipse cx="0" cy="-62" rx="10" ry="8" fill="rgba(255,255,255,0.85)"/>
+                    <path d="M-12,-50 Q-14,-58 0,-60 Q14,-58 12,-50" fill="rgba(255,255,255,0.9)"/>
+                    
+                    <!-- Security uniform body -->
+                    <path d="M-15,-35 Q0,-40 15,-35 L12,60 Q0,65 -12,60 Z" fill="rgba(60,60,80,0.65)"/>
+                    <!-- Badge -->
+                    <ellipse cx="-6" cy="-25" rx="5" ry="4" fill="rgba(197,160,89,0.6)"/>
+                    
+                    <!-- Arms -->
+                    <path d="M-15,-32 Q-22,-20 -25,-5" stroke="rgba(60,60,80,0.65)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M15,-32 Q22,-20 25,-5" stroke="rgba(60,60,80,0.65)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Legs -->
+                    <path d="M-6,60 L-8,95" stroke="url(#soulGrad3)" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M6,60 L8,95" stroke="url(#soulGrad3)" stroke-width="5" stroke-linecap="round"/>
+                </g>
+                <animateTransform attributeName="transform" type="translate" values="80,60; 85,55; 80,60" dur="5s" repeatCount="indefinite"/>
+            </g>
+            <!-- Label 1 -->
+            <text x="80" y="175" text-anchor="middle" fill="rgba(197,160,89,0.8)" font-family="'Inter', sans-serif" font-size="10" font-weight="500">Miss Abigail</text>
+            <text x="80" y="188" text-anchor="middle" fill="rgba(150,150,150,0.6)" font-family="'Inter', sans-serif" font-size="8">died 2 years ago</text>
+            
+            <!-- ROAMING SOUL 2: Grandmother -->
+            <g class="roaming-soul-2" transform="translate(300, 55)">
+                <g filter="url(#glowStrong)">
+                    <!-- Head -->
+                    <ellipse cx="0" cy="-48" rx="12" ry="15" fill="url(#soulGrad3)"/>
+                    <!-- Elderly hair -->
+                    <path d="M-12,-48 Q-14,-60 0,-62 Q14,-60 12,-48" fill="rgba(220,220,230,0.85)"/>
+                    <path d="M-12,-48 Q-16,-38 -15,-25" stroke="rgba(200,200,210,0.7)" stroke-width="4" fill="none"/>
+                    <path d="M12,-48 Q16,-38 15,-25" stroke="rgba(200,200,210,0.7)" stroke-width="4" fill="none"/>
+                    
+                    <!-- Dress -->
+                    <path d="M-16,-35 Q0,-40 16,-35 L18,55 Q0,62 -18,55 Z" fill="rgba(180,140,140,0.5)"/>
+                    <!-- Pattern -->
+                    <circle cx="-5" cy="-15" rx="2" ry="2" fill="rgba(150,100,100,0.3)"/>
+                    <circle cx="5" cy="-5" rx="1.5" ry="1.5" fill="rgba(150,100,100,0.3)"/>
+                    
+                    <!-- Arms -->
+                    <path d="M-16,-32 Q-25,-22 -28,-8" stroke="rgba(180,140,140,0.5)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    <path d="M16,-32 Q25,-22 28,-8" stroke="rgba(180,140,140,0.5)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Legs -->
+                    <path d="M-8,55 L-10,85" stroke="url(#soulGrad3)" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M8,55 L10,85" stroke="url(#soulGrad3)" stroke-width="4" stroke-linecap="round"/>
+                </g>
+                <animateTransform attributeName="transform" type="translate" values="300,55; 298,50; 300,55" dur="4s" repeatCount="indefinite"/>
+            </g>
+            <!-- Label 2 -->
+            <text x="300" y="165" text-anchor="middle" fill="rgba(197,160,89,0.8)" font-family="'Inter', sans-serif" font-size="10" font-weight="500">Grandmother</text>
+            <text x="300" y="178" text-anchor="middle" fill="rgba(150,150,150,0.6)" font-family="'Inter', sans-serif" font-size="8">standing by door</text>
+            
+            <!-- ROAMING SOUL 3: Past Queen (child-like) -->
+            <g class="roaming-soul-3" transform="translate(520, 70)">
+                <g filter="url(#glowStrong)">
+                    <!-- Head -->
+                    <ellipse cx="0" cy="-42" rx="10" ry="13" fill="url(#soulGrad3)"/>
+                    <!-- Long flowing hair -->
+                    <path d="M-10,-42 Q-12,-55 0,-58 Q12,-55 10,-42" fill="rgba(255,255,255,0.9)"/>
+                    <path d="M-10,-42 Q-15,-35 -16,-22" stroke="rgba(255,255,255,0.7)" stroke-width="3" fill="none"/>
+                    <path d="M10,-42 Q15,-35 16,-22" stroke="rgba(255,255,255,0.7)" stroke-width="3" fill="none"/>
+                    
+                    <!-- Royal dress -->
+                    <path d="M-12,-32 Q0,-36 12,-32 L15,48 Q0,52 -15,48 Z" fill="rgba(197,160,89,0.35)"/>
+                    <!-- Egyptian collar -->
+                    <path d="M-15,-32 Q0,-26 15,-32 Q12,-38 0,-35 Q-12,-38 -15,-32" fill="rgba(197,160,89,0.55)"/>
+                    
+                    <!-- Arms -->
+                    <path d="M-12,-30 Q-18,-22 -20,-10" stroke="url(#soulGrad3)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <path d="M12,-30 Q18,-22 20,-10" stroke="url(#soulGrad3)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Legs -->
+                    <path d="M-5,48 L-6,75" stroke="url(#soulGrad3)" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M5,48 L6,75" stroke="url(#soulGrad3)" stroke-width="4" stroke-linecap="round"/>
+                </g>
+                <animateTransform attributeName="transform" type="translate" values="520,70; 517,65; 520,70" dur="6s" repeatCount="indefinite"/>
+            </g>
+            <!-- Label 3 -->
+            <text x="520" y="175" text-anchor="middle" fill="rgba(197,160,89,0.8)" font-family="'Inter', sans-serif" font-size="10" font-weight="500">Past Queen</text>
+            <text x="520" y="188" text-anchor="middle" fill="rgba(150,150,150,0.6)" font-family="'Inter', sans-serif" font-size="8">ancient Egypt</text>
+            
+            <!-- Connection lines between souls -->
+            <g class="soul-connections" opacity="0.2">
+                <path d="M100,100 Q200,80 280,95" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="4,3" fill="none">
+                    <animate attributeName="stroke-dashoffset" values="0;7" dur="2s" repeatCount="indefinite"/>
+                </path>
+                <path d="M320,95 Q420,75 510,90" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="4,3" fill="none">
+                    <animate attributeName="stroke-dashoffset" values="0;7" dur="2.5s" repeatCount="indefinite"/>
+                </path>
+            </g>
+        </svg>
+        
+        <div class="anim-caption">
+            <p>Souls continue their routines — walking familiar paths, visiting loved ones, sometimes seen by those whose awareness naturally aligns. <strong>They never left.</strong> The dead do not haunt — they simply continue existing at a different frequency.</p>
+        </div>
+    </div>
+</div>
+        
+        <!-- STAGE 4: THE PORTAL - Man, Woman, Womb -->
+        <div class="anim-stage portal-stage" id="anim-stage-4">
+            <div class="stage-header">
+                <span class="stage-num">04</span>
+                <h4 class="stage-title">The Portal Opens: Conscious Union</h4>
+            </div>
+            
+            <div class="anim-visual">
+                <svg class="portal-scene" viewBox="0 0 500 320" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="manGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#5a4a3a"/>
+                            <stop offset="50%" stop-color="#4a3a2a"/>
+                            <stop offset="100%" stop-color="#3a2a1a"/>
+                        </linearGradient>
+                        
+                        <linearGradient id="womanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#6a5a4a"/>
+                            <stop offset="50%" stop-color="#5a4a3a"/>
+                            <stop offset="100%" stop-color="#4a3a2a"/>
+                        </linearGradient>
+                        
+                        <radialGradient id="portalGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="rgba(255,105,180,0.6)"/>
+                            <stop offset="40%" stop-color="rgba(255,105,180,0.3)"/>
+                            <stop offset="70%" stop-color="rgba(255,182,193,0.15)"/>
+                            <stop offset="100%" stop-color="transparent"/>
+                        </radialGradient>
+                        
+                        <radialGradient id="portalCoreGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+                            <stop offset="50%" stop-color="rgba(255,105,180,0.5)"/>
+                            <stop offset="100%" stop-color="rgba(255,105,180,0.2)"/>
+                        </radialGradient>
+                        
+                        <filter id="portalGlow" x="-100%" y="-100%" width="300%" height="300%">
+                            <feGaussianBlur stdDeviation="8" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Background energy field -->
+                    <ellipse cx="250" cy="160" rx="180" ry="120" fill="rgba(255,105,180,0.05)">
+                        <animate attributeName="rx" values="180;200;180" dur="4s" repeatCount="indefinite"/>
+                    </ellipse>
+                    
+                    <!-- MAN - Anime style silhouette -->
+                    <g class="man-figure" transform="translate(120, 80)">
+                        <!-- Head -->
+                        <ellipse cx="0" cy="-85" rx="18" ry="23" fill="url(#manGrad)"/>
+                        <!-- Hair - short masculine -->
+                        <path d="M-18,-85 Q-20,-100 -5,-105 Q10,-108 18,-100 L18,-85 Q15,-80 0,-82 Q-15,-80 -18,-85" fill="#1a1008"/>
+                        <!-- Face features -->
+                        <ellipse cx="-6" cy="-88" rx="2.5" ry="1.5" fill="#2a1a10"/>
+                        <ellipse cx="6" cy="-88" rx="2.5" ry="1.5" fill="#2a1a10"/>
+                        <path d="M-3,-77 Q0,-74 3,-77" stroke="#1a1008" stroke-width="1" fill="none"/>
+                        <!-- Jaw line -->
+                        <path d="M-12,-75 Q0,-65 12,-75" stroke="rgba(90,74,58,0.5)" stroke-width="1" fill="none"/>
+                        
+                        <!-- Neck -->
+                        <rect x="-8" y="-65" width="16" height="12" fill="url(#manGrad)"/>
+                        
+                        <!-- Torso - masculine broad shoulders -->
+                        <path d="M-30,-53 Q-35,-45 -35,-20 L-30,60 Q0,70 30,60 L35,-20 Q35,-45 30,-53 Q0,-60 -30,-53" fill="url(#manGrad)"/>
+                        
+                        <!-- Arms reaching toward center -->
+                        <path d="M30,-45 Q50,-35 70,-15" stroke="url(#manGrad)" stroke-width="10" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M30,-45 Q50,-35 70,-15; M30,-45 Q55,-30 75,-10; M30,-45 Q50,-35 70,-15" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Hands -->
+                        <ellipse cx="72" cy="-12" rx="8" ry="10" fill="url(#manGrad)"/>
+                        
+                        <!-- Legs -->
+                        <path d="M-20,60 Q-25,100 -30,145" stroke="url(#manGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        <path d="M20,60 Q25,100 30,145" stroke="url(#manGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        
+                        <!-- Label -->
+                        <text x="0" y="165" text-anchor="middle" fill="rgba(197,160,89,0.8)" font-family="'Bebas Neue', sans-serif" font-size="11" letter-spacing="1">MAN</text>
+                    </g>
+                    
+                    <!-- WOMAN - Anime style silhouette -->
+                    <g class="woman-figure" transform="translate(380, 80)">
+                        <!-- Head -->
+                        <ellipse cx="0" cy="-85" rx="16" ry="21" fill="url(#womanGrad)"/>
+                        <!-- Hair - long flowing -->
+                        <path d="M-16,-85 Q-20,-100 -10,-108 Q5,-112 16,-105 Q22,-95 16,-85" fill="#2a1808"/>
+                        <path d="M-16,-85 Q-22,-70 -25,-50" stroke="#1a1008" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <path d="M16,-85 Q22,-70 25,-50" stroke="#1a1808" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <!-- Face features -->
+                        <ellipse cx="-5" cy="-88" rx="2.5" ry="1.5" fill="#2a1a10"/>
+                        <ellipse cx="5" cy="-88" rx="2.5" ry="1.5" fill="#2a1a10"/>
+                        <path d="M-2,-78 Q0,-76 2,-78" stroke="#1a1008" stroke-width="1" fill="none"/>
+                        
+                        <!-- Neck -->
+                        <rect x="-7" y="-67" width="14" height="10" fill="url(#womanGrad)"/>
+                        
+                        <!-- Torso - feminine form -->
+                        <path d="M-25,-57 Q-30,-50 -30,-30 L-25,55 Q0,65 25,55 L30,-30 Q30,-50 25,-57 Q0,-65 -25,-57" fill="url(#womanGrad)"/>
+                        
+                        <!-- Womb area glow -->
+                        <ellipse cx="0" cy="20" rx="25" ry="30" fill="rgba(255,105,180,0.2)">
+                            <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2s" repeatCount="indefinite"/>
+                        </ellipse>
+                        
+                        <!-- Arms reaching toward center -->
+                        <path d="M-25,-50 Q-45,-35 -65,-15" stroke="url(#womanGrad)" stroke-width="8" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M-25,-50 Q-45,-35 -65,-15; M-25,-50 Q-50,-30 -70,-10; M-25,-50 Q-45,-35 -65,-15" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Hands -->
+                        <ellipse cx="-67" cy="-12" rx="7" ry="9" fill="url(#womanGrad)"/>
+                        
+                        <!-- Legs -->
+                        <path d="M-15,55 Q-18,100 -22,145" stroke="url(#womanGrad)" stroke-width="10" fill="none" stroke-linecap="round"/>
+                        <path d="M15,55 Q18,100 22,145" stroke="url(#womanGrad)" stroke-width="10" fill="none" stroke-linecap="round"/>
+                        
+                        <!-- Label -->
+                        <text x="0" y="165" text-anchor="middle" fill="rgba(255,105,180,0.9)" font-family="'Bebas Neue', sans-serif" font-size="11" letter-spacing="1">WOMAN</text>
+                    </g>
+                    
+                    <!-- WOMB PORTAL - Center focal point -->
+                    <g class="womb-portal" transform="translate(250, 160)" filter="url(#portalGlow)">
+                        <!-- Outer rings -->
+                        <circle cx="0" cy="0" r="60" fill="none" stroke="rgba(255,105,180,0.3)" stroke-width="2">
+                            <animate attributeName="r" values="60;70;60" dur="3s" repeatCount="indefinite"/>
+                            <animate attributeName="stroke-opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="0" cy="0" r="45" fill="none" stroke="rgba(255,105,180,0.4)" stroke-width="2">
+                            <animate attributeName="r" values="45;52;45" dur="2.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="0" cy="0" r="30" fill="none" stroke="rgba(255,105,180,0.5)" stroke-width="2">
+                            <animate attributeName="r" values="30;35;30" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <!-- Rotating energy rings -->
+                        <g>
+                            <circle cx="0" cy="0" r="55" fill="none" stroke="rgba(255,182,193,0.4)" stroke-width="1" stroke-dasharray="10,5">
+                                <animateTransform attributeName="transform" type="rotate" values="0;360" dur="10s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="0" cy="0" r="40" fill="none" stroke="rgba(255,182,193,0.3)" stroke-width="1" stroke-dasharray="8,4">
+                                <animateTransform attributeName="transform" type="rotate" values="360;0" dur="8s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                        
+                        <!-- Core glow -->
+                        <circle cx="0" cy="0" r="20" fill="url(#portalCoreGrad)">
+                            <animate attributeName="r" values="20;25;20" dur="1.5s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <!-- Central text -->
+                        <text x="0" y="-3" text-anchor="middle" fill="rgba(255,105,180,0.9)" font-family="'Bebas Neue', sans-serif" font-size="10" letter-spacing="1">WOMB</text>
+                        <text x="0" y="8" text-anchor="middle" fill="rgba(255,105,180,0.9)" font-family="'Bebas Neue', sans-serif" font-size="10" letter-spacing="1">PORTAL</text>
+                        
+                        <!-- Soul approaching from above -->
+                        <g class="approaching-soul" transform="translate(0, -100)">
+                            <!-- Mini soul figure -->
+                            <ellipse cx="0" cy="-15" rx="6" ry="8" fill="rgba(255,255,255,0.9)"/>
+                            <path d="M-8,0 Q0,5 8,0 L6,25 Q0,30 -6,25 Z" fill="rgba(255,255,255,0.8)"/>
+                            <path d="M-5,25 L-6,45" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M5,25 L6,45" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round"/>
+                            
+                            <animateTransform attributeName="transform" type="translate" values="0,-100; 0,-70; 0,-100" dur="4s" repeatCount="indefinite"/>
+                        </g>
+                        
+                        <!-- Energy lines connecting -->
+                        <g class="portal-energy-lines">
+                            <path d="M-70,-12 L-25,0" stroke="rgba(255,105,180,0.4)" stroke-width="1" stroke-dasharray="4,2">
+                                <animate attributeName="stroke-dashoffset" values="0;-6" dur="1s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M70,-12 L25,0" stroke="rgba(255,105,180,0.4)" stroke-width="1" stroke-dasharray="4,2">
+                                <animate attributeName="stroke-dashoffset" values="0;-6" dur="1s" repeatCount="indefinite"/>
+                            </path>
+                        </g>
+                    </g>
+                    
+                    <!-- Labels -->
+                    <text x="250" y="260" text-anchor="middle" fill="rgba(255,105,180,0.8)" font-family="'Playfair Display', serif" font-size="10" font-style="italic">Conscious Mating Opens the Frequency Gateway</text>
+                </svg>
+                
+                <div class="anim-caption">
+                    <p>When <strong>man and woman unite in conscious mating</strong>, the womb becomes a living frequency portal — a sacred gateway tuned by love and intention. A roaming eternal consciousness recognizes this resonance and chooses to enter.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- STAGE 5: BIRTHMARKS - The Evidence (FIXED) -->
+<div class="anim-stage birthmark-stage" id="anim-stage-5">
+    <div class="stage-header">
+        <span class="stage-num">05</span>
+        <h4 class="stage-title">Birth: The Evidence Carries Forward</h4>
+    </div>
+    
+    <div class="anim-visual birthmark-visual">
+        <svg class="birthmark-scene" viewBox="0 0 500 380" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <linearGradient id="babySkin" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#f5e6d3"/>
+                    <stop offset="50%" stop-color="#e8d4be"/>
+                    <stop offset="100%" stop-color="#d4c4a8"/>
+                </linearGradient>
+                
+                <linearGradient id="birthmarkColor" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#8B4513"/>
+                    <stop offset="50%" stop-color="#6B3510"/>
+                    <stop offset="100%" stop-color="#5a2d0e"/>
+                </linearGradient>
+                
+                <linearGradient id="memoryFadeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--accent-gold)"/>
+                    <stop offset="70%" stop-color="var(--accent-primary)"/>
+                    <stop offset="100%" stop-color="var(--text-muted)"/>
+                </linearGradient>
+            </defs>
+            
+            <!-- NEWBORN BABY - Realistic anime style -->
+            <g class="newborn-baby" transform="translate(120, 80)">
+                <!-- Baby blanket/swaddling -->
+                <path d="M-60,50 Q-70,80 -50,120 Q0,140 50,120 Q70,80 60,50 Q30,40 0,50 Q-30,40 -60,50" fill="rgba(200,180,160,0.6)"/>
+                
+                <!-- Baby body -->
+                <g transform="translate(0, 0)">
+                    <!-- Head -->
+                    <ellipse cx="0" cy="-20" rx="35" ry="40" fill="url(#babySkin)"/>
+                    <!-- Baby hair tuft -->
+                    <path d="M-15,-55 Q-10,-62 0,-60 Q10,-62 15,-55 Q5,-50 -15,-55" fill="#8B7355" opacity="0.6"/>
+                    
+                    <!-- Face -->
+                    <path d="M-18,-22 Q-12,-18 -6,-22" stroke="#4a3a2a" stroke-width="2" fill="none"/>
+                    <path d="M6,-22 Q12,-18 18,-22" stroke="#4a3a2a" stroke-width="2" fill="none"/>
+                    <ellipse cx="0" cy="-12" rx="3" ry="4" fill="#e8d4be"/>
+                    <path d="M-5,-3 Q0,2 5,-3" stroke="#c4a090" stroke-width="1" fill="none"/>
+                    <ellipse cx="-22" cy="-10" rx="8" ry="5" fill="rgba(255,180,180,0.3)"/>
+                    <ellipse cx="22" cy="-10" rx="8" ry="5" fill="rgba(255,180,180,0.3)"/>
+                    
+                    <!-- BIRTHMARK on shoulder/chest -->
+                    <g class="birthmark" transform="translate(28, -5)">
+                        <ellipse cx="0" cy="0" rx="12" ry="8" fill="url(#birthmarkColor)" opacity="0.85">
+                            <animate attributeName="opacity" values="0.85;1;0.85" dur="2s" repeatCount="indefinite"/>
+                        </ellipse>
+                        <ellipse cx="-2" cy="-2" rx="7" ry="5" fill="#6B3510" opacity="0.6"/>
+                        <ellipse cx="3" cy="2" rx="5" ry="3" fill="#5a2d0e" opacity="0.5"/>
+                        <ellipse cx="0" cy="0" rx="15" ry="10" fill="none" stroke="rgba(139,69,19,0.3)" stroke-width="1">
+                            <animate attributeName="rx" values="15;18;15" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="ry" values="10;12;10" dur="2s" repeatCount="indefinite"/>
+                        </ellipse>
+                    </g>
+                    
+                    <!-- Baby arm -->
+                    <path d="M-35,10 Q-50,20 -55,45" stroke="url(#babySkin)" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <ellipse cx="-55" cy="48" rx="12" ry="15" fill="url(#babySkin)"/>
+                    <path d="M-60,55 L-58,62" stroke="#f5e6d3" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M-55,57 L-54,65" stroke="#f5e6d3" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M-50,56 L-48,64" stroke="#f5e6d3" stroke-width="3" stroke-linecap="round"/>
+                    
+                    <!-- Torso -->
+                    <path d="M-25,18 Q0,25 25,18 L30,90 Q0,100 -30,90 Z" fill="url(#babySkin)"/>
+                </g>
+                
+                <!-- Label -->
+                <text x="0" y="145" text-anchor="middle" fill="rgba(139,69,19,0.9)" font-family="'Bebas Neue'" font-size="12" letter-spacing="1">BIRTHMARK</text>
+                <text x="0" y="158" text-anchor="middle" fill="rgba(150,120,100,0.7)" font-family="'Inter'" font-size="9">Physical proof from previous life</text>
+            </g>
+            
+            <!-- CASE STUDY CARDS - FIXED SPACING -->
+            <g class="case-cards" transform="translate(280, 30)">
+                <!-- Case 1: James Leininger -->
+                <g class="case-card" transform="translate(0, 0)">
+                    <rect x="0" y="0" width="200" height="85" rx="5" fill="rgba(20,15,12,0.9)" stroke="rgba(197,160,89,0.3)" stroke-width="1"/>
+                    <circle cx="20" cy="25" r="12" fill="rgba(139,69,19,0.3)"/>
+                    <text x="20" y="29" text-anchor="middle" fill="rgba(139,69,19,0.8)" font-size="12">✓</text>
+                    <text x="40" y="20" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="11">JAMES LEININGER</text>
+                    <text x="40" y="33" fill="var(--text-muted)" font-family="'Inter'" font-size="8">WWII Pilot, verified past life</text>
+                    <text x="40" y="46" fill="var(--text-muted)" font-family="'Inter'" font-size="8">Birthmarks matched fatal wounds</text>
+                    <text x="40" y="59" fill="rgba(139,69,19,0.8)" font-family="'Inter'" font-size="8" font-style="italic">Named aircraft carrier "Natoma Bay"</text>
+                    <text x="40" y="72" fill="rgba(139,69,19,0.8)" font-family="'Inter'" font-size="8" font-style="italic">Identified squadronmate "Jack Larsen"</text>
+                </g>
+                
+                <!-- Case 2: Verified Cases - MOVED DOWN -->
+                <g class="case-card" transform="translate(0, 100)">
+                    <rect x="0" y="0" width="200" height="70" rx="5" fill="rgba(20,15,12,0.9)" stroke="rgba(197,160,89,0.3)" stroke-width="1"/>
+                    <text x="15" y="20" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="14">2,500+ DOCUMENTED</text>
+                    <text x="15" y="35" fill="var(--text-muted)" font-family="'Inter'" font-size="9">UVA DOPS verified cases</text>
+                    <text x="15" y="48" fill="rgba(139,69,19,0.8)" font-family="'Inter'" font-size="9">Children led researchers to hidden tombs</text>
+                    <text x="15" y="61" fill="rgba(139,69,19,0.8)" font-family="'Inter'" font-size="9">Identified killers, described past lives</text>
+                </g>
+                
+                <!-- Memory fade timeline - FIXED -->
+                <g transform="translate(0, 185)">
+                    <rect x="0" y="0" width="200" height="75" rx="5" fill="rgba(20,15,12,0.9)" stroke="rgba(197,160,89,0.3)" stroke-width="1"/>
+                    <text x="100" y="18" text-anchor="middle" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="11">MEMORY FADES BY AGE 7-9</text>
+                    
+                    <!-- Timeline bar -->
+                    <rect x="15" y="28" width="170" height="10" rx="5" fill="rgba(197,160,89,0.2)"/>
+                    <rect x="15" y="28" width="140" height="10" rx="5" fill="url(#memoryFadeGrad)">
+                        <animate attributeName="width" values="140;40;140" dur="6s" repeatCount="indefinite"/>
+                    </rect>
+                    
+                    <!-- Memory label inside bar -->
+                    <text x="100" y="35" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="'Inter'" font-size="7" font-weight="500">Past Life Memory</text>
+                    
+                    <!-- Age markers -->
+                    <text x="15" y="55" fill="var(--text-muted)" font-family="'Inter'" font-size="7">Birth</text>
+                    <text x="65" y="55" fill="var(--text-muted)" font-family="'Inter'" font-size="7">Age 3</text>
+                    <text x="115" y="55" fill="var(--text-muted)" font-family="'Inter'" font-size="7">Age 7</text>
+                    <text x="165" y="55" fill="var(--text-muted)" font-family="'Inter'" font-size="7">Age 9</text>
+                </g>
+            </g>
+            
+            <!-- Evidence stat -->
+            <g transform="translate(250, 310)">
+                <text x="0" y="0" text-anchor="middle" fill="rgba(139,69,19,0.9)" font-family="'Bebas Neue'" font-size="16">70% of verified cases</text>
+                <text x="0" y="18" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="10">show birthmarks matching fatal wounds from previous life</text>
+                <text x="0" y="32" text-anchor="middle" fill="rgba(139,69,19,0.7)" font-family="'Inter'" font-size="9" font-style="italic">— Dr. Ian Stevenson, UVA DOPS</text>
+            </g>
+        </svg>
+        
+        <div class="anim-caption">
+            <p>The soul enters the new vessel, sometimes carrying <strong>physical proof</strong>. Birthmarks, birth defects, and specific memories match verified records. The boy who said "I was shot here" — pointing to his birthmark — led police to a body buried exactly where he described. <strong>His neighbor confessed.</strong></p>
+        </div>
+    </div>
+</div>
+        
+        <!-- STAGE 6: LIFE & MEMORY FADE -->
+        <div class="anim-stage" id="anim-stage-6">
+            <div class="stage-header">
+                <span class="stage-num">06</span>
+                <h4 class="stage-title">Life: Experience & Integration</h4>
+            </div>
+            
+            <div class="anim-visual">
+                <svg class="life-scene" viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="lifePathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="var(--accent-gold)"/>
+                            <stop offset="50%" stop-color="var(--accent-primary)"/>
+                            <stop offset="100%" stop-color="var(--text-muted)"/>
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Life path curve -->
+                    <path d="M20,100 Q100,50 250,100 T480,80" stroke="url(#lifePathGrad)" stroke-width="4" fill="none" class="life-curve-anim"/>
+                    
+                    <!-- Life stages -->
+                    <g class="life-stages">
+                        <!-- Birth -->
+                        <g transform="translate(20, 100)">
+                            <circle cx="0" cy="0" r="15" fill="var(--accent-gold)" opacity="0.9"/>
+                            <text x="0" y="30" text-anchor="middle" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="10">Birth</text>
+                            <text x="0" y="42" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="8">New soul</text>
+                            <!-- Baby icon -->
+                            <circle cx="0" cy="-2" r="6" fill="rgba(255,255,255,0.9)"/>
+                            <ellipse cx="0" cy="5" rx="4" ry="6" fill="rgba(255,255,255,0.8)"/>
+                        </g>
+                        
+                        <!-- Youth -->
+                        <g transform="translate(120, 75)">
+                            <circle cx="0" cy="0" r="12" fill="var(--accent-gold)" opacity="0.75"/>
+                            <text x="0" y="28" text-anchor="middle" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="10">Youth</text>
+                            <text x="0" y="40" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="8">Learning</text>
+                        </g>
+                        
+                        <!-- Prime (adult) -->
+                        <g transform="translate(250, 100)">
+                            <circle cx="0" cy="0" r="18" fill="var(--accent-primary)" opacity="0.9"/>
+                            <text x="0" y="35" text-anchor="middle" fill="var(--accent-primary)" font-family="'Bebas Neue'" font-size="10">Prime</text>
+                            <text x="0" y="47" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="8">Creating</text>
+                            <!-- Experience icons -->
+                            <text x="0" y="2" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="12">❤️</text>
+                        </g>
+                        
+                        <!-- Wisdom -->
+                        <g transform="translate(380, 85)">
+                            <circle cx="0" cy="0" r="12" fill="var(--text-muted)" opacity="0.7"/>
+                            <text x="0" y="28" text-anchor="middle" fill="var(--text-muted)" font-family="'Bebas Neue'" font-size="10">Wisdom</text>
+                            <text x="0" y="40" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="8">Elder</text>
+                        </g>
+                        
+                        <!-- Death/Return -->
+                        <g transform="translate(480, 80)">
+                            <circle cx="0" cy="0" r="10" fill="var(--text-muted)" opacity="0.5"/>
+                            <text x="0" y="26" text-anchor="middle" fill="var(--text-muted)" font-family="'Bebas Neue'" font-size="10">Death</text>
+                            <text x="0" y="38" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="8">Return</text>
+                        </g>
+                    </g>
+                    
+                    <!-- Memory fade indicator -->
+                    <g transform="translate(250, 160)">
+                        <rect x="-100" y="0" width="200" height="6" rx="3" fill="rgba(197,160,89,0.2)"/>
+                        <rect x="-100" y="0" width="140" height="6" rx="3" fill="var(--accent-gold)">
+                            <animate attributeName="width" values="140;20;140" dur="8s" repeatCount="indefinite"/>
+                        </rect>
+                        <text x="0" y="18" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="9" font-style="italic">Past-life memories fade by age 7-9</text>
+                    </g>
+                </svg>
+                
+                <div class="anim-caption">
+                    <p>The new vessel grows, lives, loves, creates, and experiences. Each life adds to the eternal soul's tapestry. <strong>Conscious access to past lives fades by age 7-9</strong> as the new brain anchors, but the lessons remain encoded in the soul's essence.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- STAGE 7: CYCLE REPEATS -->
+        <div class="anim-stage cycle-stage" id="anim-stage-7">
+            <div class="stage-header">
+                <span class="stage-num">07</span>
+                <h4 class="stage-title">Return: The Eternal Cycle</h4>
+            </div>
+            
+            <div class="anim-visual">
+                <svg class="cycle-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="cycleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="var(--accent-gold)"/>
+                            <stop offset="50%" stop-color="var(--accent-primary)"/>
+                            <stop offset="100%" stop-color="var(--accent-gold)"/>
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Infinity symbol representing eternal cycle -->
+                    <g transform="translate(200, 150)">
+                        <!-- Main infinity path -->
+                        <path d="M-80,0 C-80,-50 -40,-50 0,0 C40,50 80,50 80,0 C80,-50 40,-50 0,0 C-40,50 -80,50 -80,0" 
+                              stroke="url(#cycleGrad)" stroke-width="6" fill="none" class="infinity-path">
+                            <animate attributeName="stroke-dasharray" values="0,500;500,0" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Left loop - Death -->
+                        <g transform="translate(-60, 0)">
+                            <circle cx="0" cy="0" r="25" fill="rgba(139,0,0,0.3)" stroke="var(--accent-primary)" stroke-width="2"/>
+                            <text x="0" y="4" text-anchor="middle" fill="var(--accent-primary)" font-family="'Bebas Neue'" font-size="10">Birth</text>
+                        </g>
+                        
+                        <!-- Center - SOUL -->
+                        <g transform="translate(0, 0)">
+                            <circle cx="0" cy="0" r="30" fill="rgba(197,160,89,0.2)" stroke="var(--accent-gold)" stroke-width="2">
+                                <animate attributeName="r" values="30;35;30" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="0" y="5" text-anchor="middle" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="14" letter-spacing="2">SOUL</text>
+                            <!-- Glow -->
+                            <circle cx="0" cy="0" r="40" fill="none" stroke="rgba(197,160,89,0.3)" stroke-width="1">
+                                <animate attributeName="r" values="40;50;40" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-opacity" values="0.3;0.1;0.3" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                        
+                        <!-- Right loop - Death -->
+                        <g transform="translate(60, 0)">
+                            <circle cx="0" cy="0" r="25" fill="rgba(197,160,89,0.2)" stroke="var(--text-muted)" stroke-width="2"/>
+                            <text x="0" y="4" text-anchor="middle" fill="var(--text-muted)" font-family="'Bebas Neue'" font-size="10">Death</text>
+                        </g>
+                        
+                        <!-- Flowing arrows -->
+                        <g class="flow-arrows" opacity="0.6">
+                            <path d="M-30,-20 L-20,-15" stroke="var(--accent-gold)" stroke-width="2" fill="none" marker-end="url(#arrowGold)">
+                                <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="1.5s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M20,-20 L30,-15" stroke="var(--accent-gold)" stroke-width="2" fill="none">
+                                <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+                            </path>
+                        </g>
+                    </g>
+                    
+                    <!-- Final message -->
+                    <g transform="translate(200, 250)">
+                        <text x="0" y="0" text-anchor="middle" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="16" letter-spacing="3">THE CYCLE CONTINUES</text>
+                        <text x="0" y="20" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="11" font-style="italic">Every death is a homecoming. Every birth is a deliberate choice.</text>
+                        <text x="0" y="38" text-anchor="middle" fill="rgba(139,69,19,0.8)" font-family="'Inter'" font-size="10">You have always been choosing — and you always will.</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Final Quote -->
+    <div class="lifecycle-final-quote">
+        <blockquote>
+            "Every mother is Anunnaki in action.<br>
+            Every birth is a homecoming.<br>
+            Every death is only a change of visibility."
+        </blockquote>
+    </div>
+</section>
                     
                     
                     <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.95rem; font-style: italic; text-align: center;">
@@ -3125,6 +4300,914 @@
         </circle>
     </svg>
 </div>
+
+<!-- ANIMATED LIFE CYCLE: Anime-Style Consciousness Journey -->
+<!-- Place after the Life Cycle SVG diagram -->
+
+<section class="lifecycle-animation-section">
+    <h3 class="lifecycle-anim-title">The Eternal Journey: Animated</h3>
+    <p class="lifecycle-anim-intro">Watch the complete cycle of consciousness — from death through the womb portal to rebirth.</p>
+    
+    <div class="lifecycle-animation-container">
+        
+        <!-- STAGE 1: DEATH - Body & Soul Separation -->
+        <div class="anim-stage" id="anim-stage-1">
+            <div class="stage-header">
+                <span class="stage-num">01</span>
+                <h4 class="stage-title">Death: The Separation</h4>
+            </div>
+            
+            <div class="anim-visual">
+                <svg class="death-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <!-- Gradient for physical body -->
+                        <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#4a3728"/>
+                            <stop offset="50%" stop-color="#3d2914"/>
+                            <stop offset="100%" stop-color="#2a1810"/>
+                        </linearGradient>
+                        
+                        <!-- Gradient for white holographic soul -->
+                        <linearGradient id="soulGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+                            <stop offset="30%" stop-color="rgba(255,255,255,0.8)"/>
+                            <stop offset="70%" stop-color="rgba(200,220,255,0.6)"/>
+                            <stop offset="100%" stop-color="rgba(150,180,255,0.3)"/>
+                        </linearGradient>
+                        
+                        <!-- Glow filter for soul -->
+                        <filter id="soulGlow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="3" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                        
+                        <!-- Pulse glow -->
+                        <filter id="pulseGlow" x="-100%" y="-100%" width="300%" height="300%">
+                            <feGaussianBlur stdDeviation="5" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Ground line -->
+                    <path d="M0,260 Q100,250 200,260 T400,255" stroke="rgba(197,160,89,0.3)" stroke-width="2" fill="none"/>
+                    
+                    <!-- Physical body (lying down, lifeless) -->
+                    <g class="physical-body" transform="translate(100, 180)">
+                        <!-- Body silhouette - realistic proportions -->
+                        <ellipse cx="40" cy="15" rx="18" ry="22" fill="url(#bodyGrad)"/>
+                        <!-- Hair -->
+                        <path d="M22,15 Q25,-5 40,-8 Q55,-5 58,15" fill="#1a0f05"/>
+                        <!-- Torso -->
+                        <path d="M25,35 Q40,30 55,35 L50,120 Q40,125 30,120 Z" fill="url(#bodyGrad)"/>
+                        <!-- Arms -->
+                        <path d="M25,40 Q5,50 0,80" stroke="url(#bodyGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        <path d="M55,40 Q75,50 80,85" stroke="url(#bodyGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        <!-- Legs -->
+                        <path d="M35,120 Q30,160 25,220" stroke="url(#bodyGrad)" stroke-width="14" fill="none" stroke-linecap="round"/>
+                        <path d="M45,120 Q55,160 60,225" stroke="url(#bodyGrad)" stroke-width="14" fill="none" stroke-linecap="round"/>
+                        <!-- Clothing suggestion -->
+                        <path d="M28,60 L28,100 M36,60 L36,100 M44,60 L44,100 M52,60 L52,100" stroke="rgba(74,55,40,0.4)" stroke-width="1"/>
+                    </g>
+                    
+                    <!-- WHITE HOLOGRAPHIC SOUL rising -->
+                    <g class="soul-body" filter="url(#pulseGlow)">
+                        <animateTransform attributeName="transform" type="translate" values="0,0; 0,-10; 0,0" dur="3s" repeatCount="indefinite"/>
+                        
+                        <!-- Soul head - anime style -->
+                        <ellipse cx="280" cy="40" rx="22" ry="28" fill="url(#soulGrad)">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                        </ellipse>
+                        
+                        <!-- Soul hair flowing upward -->
+                        <path d="M258,40 Q260,15 280,5 Q300,15 302,40" fill="rgba(255,255,255,0.8)" filter="url(#soulGlow)">
+                            <animate attributeName="d" values="M258,40 Q260,15 280,5 Q300,15 302,40; M256,38 Q260,10 280,0 Q300,10 304,38; M258,40 Q260,15 280,5 Q300,15 302,40" dur="4s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Soul face - subtle features -->
+                        <ellipse cx="272" cy="35" rx="3" ry="2" fill="rgba(200,220,255,0.5)"/>
+                        <ellipse cx="288" cy="35" rx="3" ry="2" fill="rgba(200,220,255,0.5)"/>
+                        <path d="M275,48 Q280,52 285,48" stroke="rgba(200,220,255,0.4)" stroke-width="1" fill="none"/>
+                        
+                        <!-- Soul torso -->
+                        <path d="M260,65 Q280,60 300,65 L295,150 Q280,155 265,150 Z" fill="url(#soulGrad)">
+                            <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Soul arms - reaching upward slightly -->
+                        <path d="M260,70 Q240,60 225,50" stroke="url(#soulGrad)" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#soulGlow)">
+                            <animate attributeName="d" values="M260,70 Q240,60 225,50; M260,70 Q235,55 220,40; M260,70 Q240,60 225,50" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        <path d="M300,70 Q320,60 335,50" stroke="url(#soulGrad)" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#soulGlow)">
+                            <animate attributeName="d" values="M300,70 Q320,60 335,50; M300,70 Q325,55 340,40; M300,70 Q320,60 335,50" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Soul legs -->
+                        <path d="M270,150 Q265,190 260,230" stroke="url(#soulGrad)" stroke-width="12" fill="none" stroke-linecap="round" filter="url(#soulGlow)"/>
+                        <path d="M290,150 Q295,190 300,230" stroke="url(#soulGrad)" stroke-width="12" fill="none" stroke-linecap="round" filter="url(#soulGlow)"/>
+                        
+                        <!-- Ethereal particles around soul -->
+                        <g class="soul-particles">
+                            <circle cx="250" cy="60" r="2" fill="rgba(255,255,255,0.8)">
+                                <animate attributeName="cy" values="60;40;60" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="310" cy="80" r="1.5" fill="rgba(255,255,255,0.7)">
+                                <animate attributeName="cy" values="80;60;80" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="240" cy="100" r="2" fill="rgba(200,220,255,0.6)">
+                                <animate attributeName="cx" values="240;230;240" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="320" cy="120" r="1.5" fill="rgba(255,255,255,0.7)">
+                                <animate attributeName="cy" values="120;100;120" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                    </g>
+                    
+                    <!-- Connection line between body and soul -->
+                    <path d="M150,150 Q200,120 250,100" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="5,5" fill="none">
+                        <animate attributeName="stroke-dashoffset" values="0;10" dur="1s" repeatCount="indefinite"/>
+                    </path>
+                    
+                    <!-- Light rays from above -->
+                    <g class="divine-light">
+                        <line x1="280" y1="0" x2="280" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="2">
+                            <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="260" y1="0" x2="265" y2="25" stroke="rgba(255,255,255,0.3)" stroke-width="1">
+                            <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2.5s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="300" y1="0" x2="295" y2="25" stroke="rgba(255,255,255,0.3)" stroke-width="1">
+                            <animate attributeName="opacity" values="0.1;0.4;0.1" dur="2.5s" repeatCount="indefinite"/>
+                        </line>
+                    </g>
+                </svg>
+                
+                <div class="anim-caption">
+                    <p>At the moment of death, consciousness lifts free as a <strong>white holographic form</strong> — the naked luminous essence of who you truly are. The body remains. The soul rises.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- STAGE 2: RE-CLOTHING - Soul Takes Familiar Form -->
+        <div class="anim-stage" id="anim-stage-2">
+            <div class="stage-header">
+                <span class="stage-num">02</span>
+                <h4 class="stage-title">Re-Clothing: Taking Familiar Form</h4>
+            </div>
+            
+            <div class="anim-visual">
+                <svg class="reclothing-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="soulGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+                            <stop offset="50%" stop-color="rgba(240,245,255,0.85)"/>
+                            <stop offset="100%" stop-color="rgba(200,220,255,0.6)"/>
+                        </linearGradient>
+                        
+                        <linearGradient id="clothesGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4a5568"/>
+                            <stop offset="50%" stop-color="#2d3748"/>
+                            <stop offset="100%" stop-color="#1a202c"/>
+                        </linearGradient>
+                        
+                        <filter id="glowStrong" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="4" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Background glow -->
+                    <ellipse cx="200" cy="150" rx="120" ry="150" fill="rgba(255,255,255,0.03)">
+                        <animate attributeName="rx" values="120;140;120" dur="4s" repeatCount="indefinite"/>
+                    </ellipse>
+                    
+                    <!-- Fully formed soul - now with clothes -->
+                    <g class="clothed-soul" filter="url(#glowStrong)" transform="translate(200, 150)">
+                        <!-- Soul body base -->
+                        <g class="soul-body-base">
+                            <!-- Head -->
+                            <ellipse cx="0" cy="-95" rx="24" ry="30" fill="url(#soulGrad2)"/>
+                            
+                            <!-- Hair - styled -->
+                            <path d="M-24,-95 Q-26,-125 0,-130 Q26,-125 24,-95" fill="rgba(255,255,255,0.9)"/>
+                            <path d="M-22,-90 Q-20,-105 -10,-108" stroke="rgba(255,255,255,0.7)" stroke-width="3" fill="none"/>
+                            
+                            <!-- Face -->
+                            <ellipse cx="-8" cy="-98" rx="4" ry="2.5" fill="rgba(200,220,255,0.5)"/>
+                            <ellipse cx="8" cy="-98" rx="4" ry="2.5" fill="rgba(200,220,255,0.5)"/>
+                            <path d="M-5,-85 Q0,-82 5,-85" stroke="rgba(200,220,255,0.4)" stroke-width="1" fill="none"/>
+                            
+                            <!-- Neck -->
+                            <rect x="-10" y="-68" width="20" height="15" fill="url(#soulGrad2)"/>
+                            
+                            <!-- Torso - now clothed -->
+                            <path d="M-35,-53 Q0,-60 35,-53 L30,60 Q0,65 -30,60 Z" fill="url(#clothesGrad)" opacity="0.85"/>
+                            
+                            <!-- Clothing details -->
+                            <path d="M-20,-50 L-20,40" stroke="rgba(74,85,104,0.5)" stroke-width="1"/>
+                            <path d="M20,-50 L20,40" stroke="rgba(74,85,104,0.5)" stroke-width="1"/>
+                            <path d="M-10,-50 L-10,40" stroke="rgba(74,85,104,0.3)" stroke-width="0.5"/>
+                            <path d="M10,-50 L10,40" stroke="rgba(74,85,104,0.3)" stroke-width="0.5"/>
+                            
+                            <!-- Arms clothed -->
+                            <path d="M-35,-50 Q-55,-40 -60,-10 Q-55,20 -45,50" stroke="url(#clothesGrad)" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.85"/>
+                            <path d="M35,-50 Q55,-40 60,-10 Q55,20 45,50" stroke="url(#clothesGrad)" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.85"/>
+                            
+                            <!-- Hands (visible) -->
+                            <ellipse cx="-45" cy="55" rx="8" ry="12" fill="url(#soulGrad2)"/>
+                            <ellipse cx="45" cy="55" rx="8" ry="12" fill="url(#soulGrad2)"/>
+                            
+                            <!-- Legs clothed -->
+                            <path d="M-20,60 Q-22,90 -25,120" stroke="url(#clothesGrad)" stroke-width="16" fill="none" stroke-linecap="round" opacity="0.85"/>
+                            <path d="M20,60 Q22,90 25,120" stroke="url(#clothesGrad)" stroke-width="16" fill="none" stroke-linecap="round" opacity="0.85"/>
+                            
+                            <!-- Feet (visible) -->
+                            <ellipse cx="-25" cy="125" rx="10" ry="5" fill="url(#soulGrad2)"/>
+                            <ellipse cx="25" cy="125" rx="10" ry="5" fill="url(#soulGrad2)"/>
+                        </g>
+                        
+                        <!-- Particles of self-image forming -->
+                        <g class="form-particles">
+                            <circle cx="-50" cy="-30" r="3" fill="rgba(255,255,255,0.6)">
+                                <animate attributeName="cx" values="-50;-35" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0.6;0" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="50" cy="-20" r="2" fill="rgba(255,255,255,0.5)">
+                                <animate attributeName="cx" values="50;35" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0.5;0" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="-40" cy="30" r="2.5" fill="rgba(200,220,255,0.5)">
+                                <animate attributeName="cx" values="-40;-25" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0.5;0" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="45" cy="40" r="2" fill="rgba(255,255,255,0.4)">
+                                <animate attributeName="cx" values="45;30" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0.4;0" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                        
+                        <!-- Gentle float animation -->
+                        <animateTransform attributeName="transform" type="translate" values="0,0; 0,-5; 0,0" dur="4s" repeatCount="indefinite" additive="sum"/>
+                    </g>
+                    
+                    <!-- Label -->
+                    <text x="200" y="285" text-anchor="middle" fill="rgba(197,160,89,0.8)" font-family="'Bebas Neue', sans-serif" font-size="12" letter-spacing="2">MISS ABIGAIL — FULLY FORMED, CONTINUING ROUTINES</text>
+                </svg>
+                
+                <div class="anim-caption">
+                    <p>Within moments, the soul instinctively <strong>re-clothes itself</strong> in the familiar appearance, outfit, and self-image it carried in life. Miss Abigail appeared in her work uniform. The grandmother stood by the door in her everyday clothes — continuing exactly as before.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- STAGE 3: ROAMING - Multiple Souls on Earth (FIXED) -->
+<div class="anim-stage" id="anim-stage-3">
+    <div class="stage-header">
+        <span class="stage-num">03</span>
+        <h4 class="stage-title">Roaming: Souls Walk Among Us</h4>
+    </div>
+    
+    <div class="anim-visual">
+        <svg class="roaming-scene" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <linearGradient id="soulGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+                    <stop offset="100%" stop-color="rgba(200,220,255,0.5)"/>
+                </linearGradient>
+                
+                <linearGradient id="groundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(197,160,89,0.1)"/>
+                    <stop offset="100%" stop-color="rgba(10,10,10,0)"/>
+                </linearGradient>
+                
+                <filter id="glowStrong" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <!-- Background -->
+            <rect x="0" y="0" width="600" height="320" fill="transparent"/>
+            
+            <!-- Earth plane -->
+            <rect x="0" y="200" width="600" height="120" fill="url(#groundGrad)"/>
+            <path d="M0,230 Q150,220 300,235 T600,225" stroke="rgba(197,160,89,0.2)" stroke-width="1" fill="none"/>
+            
+            <!-- Building silhouettes in background (scaled down) -->
+            <g class="background-scene" opacity="0.25" transform="translate(50, 100)">
+                <rect x="0" y="60" width="30" height="45" fill="rgba(30,25,20,0.6)"/>
+                <rect x="40" y="40" width="35" height="65" fill="rgba(30,25,20,0.5)"/>
+                <rect x="450" y="50" width="40" height="55" fill="rgba(30,25,20,0.6)"/>
+                <rect x="500" y="35" width="50" height="70" fill="rgba(30,25,20,0.5)"/>
+            </g>
+            
+            <!-- ROAMING SOUL 1: Miss Abigail -->
+            <g class="roaming-soul-1" transform="translate(80, 60)">
+                <g filter="url(#glowStrong)">
+                    <!-- Head -->
+                    <ellipse cx="0" cy="-50" rx="14" ry="18" fill="url(#soulGrad3)"/>
+                    <!-- Hair bun -->
+                    <ellipse cx="0" cy="-62" rx="10" ry="8" fill="rgba(255,255,255,0.85)"/>
+                    <path d="M-12,-50 Q-14,-58 0,-60 Q14,-58 12,-50" fill="rgba(255,255,255,0.9)"/>
+                    
+                    <!-- Security uniform body -->
+                    <path d="M-15,-35 Q0,-40 15,-35 L12,60 Q0,65 -12,60 Z" fill="rgba(60,60,80,0.65)"/>
+                    <!-- Badge -->
+                    <ellipse cx="-6" cy="-25" rx="5" ry="4" fill="rgba(197,160,89,0.6)"/>
+                    
+                    <!-- Arms -->
+                    <path d="M-15,-32 Q-22,-20 -25,-5" stroke="rgba(60,60,80,0.65)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M15,-32 Q22,-20 25,-5" stroke="rgba(60,60,80,0.65)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Legs -->
+                    <path d="M-6,60 L-8,95" stroke="url(#soulGrad3)" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M6,60 L8,95" stroke="url(#soulGrad3)" stroke-width="5" stroke-linecap="round"/>
+                </g>
+                <animateTransform attributeName="transform" type="translate" values="80,60; 85,55; 80,60" dur="5s" repeatCount="indefinite"/>
+            </g>
+            <!-- Label 1 -->
+            <text x="80" y="175" text-anchor="middle" fill="rgba(197,160,89,0.8)" font-family="'Inter', sans-serif" font-size="10" font-weight="500">Miss Abigail</text>
+            <text x="80" y="188" text-anchor="middle" fill="rgba(150,150,150,0.6)" font-family="'Inter', sans-serif" font-size="8">died 2 years ago</text>
+            
+            <!-- ROAMING SOUL 2: Grandmother -->
+            <g class="roaming-soul-2" transform="translate(300, 55)">
+                <g filter="url(#glowStrong)">
+                    <!-- Head -->
+                    <ellipse cx="0" cy="-48" rx="12" ry="15" fill="url(#soulGrad3)"/>
+                    <!-- Elderly hair -->
+                    <path d="M-12,-48 Q-14,-60 0,-62 Q14,-60 12,-48" fill="rgba(220,220,230,0.85)"/>
+                    <path d="M-12,-48 Q-16,-38 -15,-25" stroke="rgba(200,200,210,0.7)" stroke-width="4" fill="none"/>
+                    <path d="M12,-48 Q16,-38 15,-25" stroke="rgba(200,200,210,0.7)" stroke-width="4" fill="none"/>
+                    
+                    <!-- Dress -->
+                    <path d="M-16,-35 Q0,-40 16,-35 L18,55 Q0,62 -18,55 Z" fill="rgba(180,140,140,0.5)"/>
+                    <!-- Pattern -->
+                    <circle cx="-5" cy="-15" rx="2" ry="2" fill="rgba(150,100,100,0.3)"/>
+                    <circle cx="5" cy="-5" rx="1.5" ry="1.5" fill="rgba(150,100,100,0.3)"/>
+                    
+                    <!-- Arms -->
+                    <path d="M-16,-32 Q-25,-22 -28,-8" stroke="rgba(180,140,140,0.5)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    <path d="M16,-32 Q25,-22 28,-8" stroke="rgba(180,140,140,0.5)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Legs -->
+                    <path d="M-8,55 L-10,85" stroke="url(#soulGrad3)" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M8,55 L10,85" stroke="url(#soulGrad3)" stroke-width="4" stroke-linecap="round"/>
+                </g>
+                <animateTransform attributeName="transform" type="translate" values="300,55; 298,50; 300,55" dur="4s" repeatCount="indefinite"/>
+            </g>
+            <!-- Label 2 -->
+            <text x="300" y="165" text-anchor="middle" fill="rgba(197,160,89,0.8)" font-family="'Inter', sans-serif" font-size="10" font-weight="500">Grandmother</text>
+            <text x="300" y="178" text-anchor="middle" fill="rgba(150,150,150,0.6)" font-family="'Inter', sans-serif" font-size="8">standing by door</text>
+            
+            <!-- ROAMING SOUL 3: Past Queen (child-like) -->
+            <g class="roaming-soul-3" transform="translate(520, 70)">
+                <g filter="url(#glowStrong)">
+                    <!-- Head -->
+                    <ellipse cx="0" cy="-42" rx="10" ry="13" fill="url(#soulGrad3)"/>
+                    <!-- Long flowing hair -->
+                    <path d="M-10,-42 Q-12,-55 0,-58 Q12,-55 10,-42" fill="rgba(255,255,255,0.9)"/>
+                    <path d="M-10,-42 Q-15,-35 -16,-22" stroke="rgba(255,255,255,0.7)" stroke-width="3" fill="none"/>
+                    <path d="M10,-42 Q15,-35 16,-22" stroke="rgba(255,255,255,0.7)" stroke-width="3" fill="none"/>
+                    
+                    <!-- Royal dress -->
+                    <path d="M-12,-32 Q0,-36 12,-32 L15,48 Q0,52 -15,48 Z" fill="rgba(197,160,89,0.35)"/>
+                    <!-- Egyptian collar -->
+                    <path d="M-15,-32 Q0,-26 15,-32 Q12,-38 0,-35 Q-12,-38 -15,-32" fill="rgba(197,160,89,0.55)"/>
+                    
+                    <!-- Arms -->
+                    <path d="M-12,-30 Q-18,-22 -20,-10" stroke="url(#soulGrad3)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <path d="M12,-30 Q18,-22 20,-10" stroke="url(#soulGrad3)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Legs -->
+                    <path d="M-5,48 L-6,75" stroke="url(#soulGrad3)" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M5,48 L6,75" stroke="url(#soulGrad3)" stroke-width="4" stroke-linecap="round"/>
+                </g>
+                <animateTransform attributeName="transform" type="translate" values="520,70; 517,65; 520,70" dur="6s" repeatCount="indefinite"/>
+            </g>
+            <!-- Label 3 -->
+            <text x="520" y="175" text-anchor="middle" fill="rgba(197,160,89,0.8)" font-family="'Inter', sans-serif" font-size="10" font-weight="500">Past Queen</text>
+            <text x="520" y="188" text-anchor="middle" fill="rgba(150,150,150,0.6)" font-family="'Inter', sans-serif" font-size="8">ancient Egypt</text>
+            
+            <!-- Connection lines between souls -->
+            <g class="soul-connections" opacity="0.2">
+                <path d="M100,100 Q200,80 280,95" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="4,3" fill="none">
+                    <animate attributeName="stroke-dashoffset" values="0;7" dur="2s" repeatCount="indefinite"/>
+                </path>
+                <path d="M320,95 Q420,75 510,90" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="4,3" fill="none">
+                    <animate attributeName="stroke-dashoffset" values="0;7" dur="2.5s" repeatCount="indefinite"/>
+                </path>
+            </g>
+        </svg>
+        
+        <div class="anim-caption">
+            <p>Souls continue their routines — walking familiar paths, visiting loved ones, sometimes seen by those whose awareness naturally aligns. <strong>They never left.</strong> The dead do not haunt — they simply continue existing at a different frequency.</p>
+        </div>
+    </div>
+</div>
+        
+        <!-- STAGE 4: THE PORTAL - Man, Woman, Womb -->
+        <div class="anim-stage portal-stage" id="anim-stage-4">
+            <div class="stage-header">
+                <span class="stage-num">04</span>
+                <h4 class="stage-title">The Portal Opens: Conscious Union</h4>
+            </div>
+            
+            <div class="anim-visual">
+                <svg class="portal-scene" viewBox="0 0 500 320" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="manGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#5a4a3a"/>
+                            <stop offset="50%" stop-color="#4a3a2a"/>
+                            <stop offset="100%" stop-color="#3a2a1a"/>
+                        </linearGradient>
+                        
+                        <linearGradient id="womanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#6a5a4a"/>
+                            <stop offset="50%" stop-color="#5a4a3a"/>
+                            <stop offset="100%" stop-color="#4a3a2a"/>
+                        </linearGradient>
+                        
+                        <radialGradient id="portalGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="rgba(255,105,180,0.6)"/>
+                            <stop offset="40%" stop-color="rgba(255,105,180,0.3)"/>
+                            <stop offset="70%" stop-color="rgba(255,182,193,0.15)"/>
+                            <stop offset="100%" stop-color="transparent"/>
+                        </radialGradient>
+                        
+                        <radialGradient id="portalCoreGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+                            <stop offset="50%" stop-color="rgba(255,105,180,0.5)"/>
+                            <stop offset="100%" stop-color="rgba(255,105,180,0.2)"/>
+                        </radialGradient>
+                        
+                        <filter id="portalGlow" x="-100%" y="-100%" width="300%" height="300%">
+                            <feGaussianBlur stdDeviation="8" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Background energy field -->
+                    <ellipse cx="250" cy="160" rx="180" ry="120" fill="rgba(255,105,180,0.05)">
+                        <animate attributeName="rx" values="180;200;180" dur="4s" repeatCount="indefinite"/>
+                    </ellipse>
+                    
+                    <!-- MAN - Anime style silhouette -->
+                    <g class="man-figure" transform="translate(120, 80)">
+                        <!-- Head -->
+                        <ellipse cx="0" cy="-85" rx="18" ry="23" fill="url(#manGrad)"/>
+                        <!-- Hair - short masculine -->
+                        <path d="M-18,-85 Q-20,-100 -5,-105 Q10,-108 18,-100 L18,-85 Q15,-80 0,-82 Q-15,-80 -18,-85" fill="#1a1008"/>
+                        <!-- Face features -->
+                        <ellipse cx="-6" cy="-88" rx="2.5" ry="1.5" fill="#2a1a10"/>
+                        <ellipse cx="6" cy="-88" rx="2.5" ry="1.5" fill="#2a1a10"/>
+                        <path d="M-3,-77 Q0,-74 3,-77" stroke="#1a1008" stroke-width="1" fill="none"/>
+                        <!-- Jaw line -->
+                        <path d="M-12,-75 Q0,-65 12,-75" stroke="rgba(90,74,58,0.5)" stroke-width="1" fill="none"/>
+                        
+                        <!-- Neck -->
+                        <rect x="-8" y="-65" width="16" height="12" fill="url(#manGrad)"/>
+                        
+                        <!-- Torso - masculine broad shoulders -->
+                        <path d="M-30,-53 Q-35,-45 -35,-20 L-30,60 Q0,70 30,60 L35,-20 Q35,-45 30,-53 Q0,-60 -30,-53" fill="url(#manGrad)"/>
+                        
+                        <!-- Arms reaching toward center -->
+                        <path d="M30,-45 Q50,-35 70,-15" stroke="url(#manGrad)" stroke-width="10" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M30,-45 Q50,-35 70,-15; M30,-45 Q55,-30 75,-10; M30,-45 Q50,-35 70,-15" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Hands -->
+                        <ellipse cx="72" cy="-12" rx="8" ry="10" fill="url(#manGrad)"/>
+                        
+                        <!-- Legs -->
+                        <path d="M-20,60 Q-25,100 -30,145" stroke="url(#manGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        <path d="M20,60 Q25,100 30,145" stroke="url(#manGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        
+                        <!-- Label -->
+                        <text x="0" y="165" text-anchor="middle" fill="rgba(197,160,89,0.8)" font-family="'Bebas Neue', sans-serif" font-size="11" letter-spacing="1">MAN</text>
+                    </g>
+                    
+                    <!-- WOMAN - Anime style silhouette -->
+                    <g class="woman-figure" transform="translate(380, 80)">
+                        <!-- Head -->
+                        <ellipse cx="0" cy="-85" rx="16" ry="21" fill="url(#womanGrad)"/>
+                        <!-- Hair - long flowing -->
+                        <path d="M-16,-85 Q-20,-100 -10,-108 Q5,-112 16,-105 Q22,-95 16,-85" fill="#2a1808"/>
+                        <path d="M-16,-85 Q-22,-70 -25,-50" stroke="#1a1008" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <path d="M16,-85 Q22,-70 25,-50" stroke="#1a1808" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <!-- Face features -->
+                        <ellipse cx="-5" cy="-88" rx="2.5" ry="1.5" fill="#2a1a10"/>
+                        <ellipse cx="5" cy="-88" rx="2.5" ry="1.5" fill="#2a1a10"/>
+                        <path d="M-2,-78 Q0,-76 2,-78" stroke="#1a1008" stroke-width="1" fill="none"/>
+                        
+                        <!-- Neck -->
+                        <rect x="-7" y="-67" width="14" height="10" fill="url(#womanGrad)"/>
+                        
+                        <!-- Torso - feminine form -->
+                        <path d="M-25,-57 Q-30,-50 -30,-30 L-25,55 Q0,65 25,55 L30,-30 Q30,-50 25,-57 Q0,-65 -25,-57" fill="url(#womanGrad)"/>
+                        
+                        <!-- Womb area glow -->
+                        <ellipse cx="0" cy="20" rx="25" ry="30" fill="rgba(255,105,180,0.2)">
+                            <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2s" repeatCount="indefinite"/>
+                        </ellipse>
+                        
+                        <!-- Arms reaching toward center -->
+                        <path d="M-25,-50 Q-45,-35 -65,-15" stroke="url(#womanGrad)" stroke-width="8" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M-25,-50 Q-45,-35 -65,-15; M-25,-50 Q-50,-30 -70,-10; M-25,-50 Q-45,-35 -65,-15" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Hands -->
+                        <ellipse cx="-67" cy="-12" rx="7" ry="9" fill="url(#womanGrad)"/>
+                        
+                        <!-- Legs -->
+                        <path d="M-15,55 Q-18,100 -22,145" stroke="url(#womanGrad)" stroke-width="10" fill="none" stroke-linecap="round"/>
+                        <path d="M15,55 Q18,100 22,145" stroke="url(#womanGrad)" stroke-width="10" fill="none" stroke-linecap="round"/>
+                        
+                        <!-- Label -->
+                        <text x="0" y="165" text-anchor="middle" fill="rgba(255,105,180,0.9)" font-family="'Bebas Neue', sans-serif" font-size="11" letter-spacing="1">WOMAN</text>
+                    </g>
+                    
+                    <!-- WOMB PORTAL - Center focal point -->
+                    <g class="womb-portal" transform="translate(250, 160)" filter="url(#portalGlow)">
+                        <!-- Outer rings -->
+                        <circle cx="0" cy="0" r="60" fill="none" stroke="rgba(255,105,180,0.3)" stroke-width="2">
+                            <animate attributeName="r" values="60;70;60" dur="3s" repeatCount="indefinite"/>
+                            <animate attributeName="stroke-opacity" values="0.3;0.5;0.3" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="0" cy="0" r="45" fill="none" stroke="rgba(255,105,180,0.4)" stroke-width="2">
+                            <animate attributeName="r" values="45;52;45" dur="2.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="0" cy="0" r="30" fill="none" stroke="rgba(255,105,180,0.5)" stroke-width="2">
+                            <animate attributeName="r" values="30;35;30" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <!-- Rotating energy rings -->
+                        <g>
+                            <circle cx="0" cy="0" r="55" fill="none" stroke="rgba(255,182,193,0.4)" stroke-width="1" stroke-dasharray="10,5">
+                                <animateTransform attributeName="transform" type="rotate" values="0;360" dur="10s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="0" cy="0" r="40" fill="none" stroke="rgba(255,182,193,0.3)" stroke-width="1" stroke-dasharray="8,4">
+                                <animateTransform attributeName="transform" type="rotate" values="360;0" dur="8s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                        
+                        <!-- Core glow -->
+                        <circle cx="0" cy="0" r="20" fill="url(#portalCoreGrad)">
+                            <animate attributeName="r" values="20;25;20" dur="1.5s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <!-- Central text -->
+                        <text x="0" y="-3" text-anchor="middle" fill="rgba(255,105,180,0.9)" font-family="'Bebas Neue', sans-serif" font-size="10" letter-spacing="1">WOMB</text>
+                        <text x="0" y="8" text-anchor="middle" fill="rgba(255,105,180,0.9)" font-family="'Bebas Neue', sans-serif" font-size="10" letter-spacing="1">PORTAL</text>
+                        
+                        <!-- Soul approaching from above -->
+                        <g class="approaching-soul" transform="translate(0, -100)">
+                            <!-- Mini soul figure -->
+                            <ellipse cx="0" cy="-15" rx="6" ry="8" fill="rgba(255,255,255,0.9)"/>
+                            <path d="M-8,0 Q0,5 8,0 L6,25 Q0,30 -6,25 Z" fill="rgba(255,255,255,0.8)"/>
+                            <path d="M-5,25 L-6,45" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M5,25 L6,45" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round"/>
+                            
+                            <animateTransform attributeName="transform" type="translate" values="0,-100; 0,-70; 0,-100" dur="4s" repeatCount="indefinite"/>
+                        </g>
+                        
+                        <!-- Energy lines connecting -->
+                        <g class="portal-energy-lines">
+                            <path d="M-70,-12 L-25,0" stroke="rgba(255,105,180,0.4)" stroke-width="1" stroke-dasharray="4,2">
+                                <animate attributeName="stroke-dashoffset" values="0;-6" dur="1s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M70,-12 L25,0" stroke="rgba(255,105,180,0.4)" stroke-width="1" stroke-dasharray="4,2">
+                                <animate attributeName="stroke-dashoffset" values="0;-6" dur="1s" repeatCount="indefinite"/>
+                            </path>
+                        </g>
+                    </g>
+                    
+                    <!-- Labels -->
+                    <text x="250" y="260" text-anchor="middle" fill="rgba(255,105,180,0.8)" font-family="'Playfair Display', serif" font-size="10" font-style="italic">Conscious Mating Opens the Frequency Gateway</text>
+                </svg>
+                
+                <div class="anim-caption">
+                    <p>When <strong>man and woman unite in conscious mating</strong>, the womb becomes a living frequency portal — a sacred gateway tuned by love and intention. A roaming eternal consciousness recognizes this resonance and chooses to enter.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- STAGE 5: BIRTHMARKS - The Evidence (FIXED) -->
+<div class="anim-stage birthmark-stage" id="anim-stage-5">
+    <div class="stage-header">
+        <span class="stage-num">05</span>
+        <h4 class="stage-title">Birth: The Evidence Carries Forward</h4>
+    </div>
+    
+    <div class="anim-visual birthmark-visual">
+        <svg class="birthmark-scene" viewBox="0 0 500 380" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <linearGradient id="babySkin" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#f5e6d3"/>
+                    <stop offset="50%" stop-color="#e8d4be"/>
+                    <stop offset="100%" stop-color="#d4c4a8"/>
+                </linearGradient>
+                
+                <linearGradient id="birthmarkColor" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#8B4513"/>
+                    <stop offset="50%" stop-color="#6B3510"/>
+                    <stop offset="100%" stop-color="#5a2d0e"/>
+                </linearGradient>
+                
+                <linearGradient id="memoryFadeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--accent-gold)"/>
+                    <stop offset="70%" stop-color="var(--accent-primary)"/>
+                    <stop offset="100%" stop-color="var(--text-muted)"/>
+                </linearGradient>
+            </defs>
+            
+            <!-- NEWBORN BABY - Realistic anime style -->
+            <g class="newborn-baby" transform="translate(120, 80)">
+                <!-- Baby blanket/swaddling -->
+                <path d="M-60,50 Q-70,80 -50,120 Q0,140 50,120 Q70,80 60,50 Q30,40 0,50 Q-30,40 -60,50" fill="rgba(200,180,160,0.6)"/>
+                
+                <!-- Baby body -->
+                <g transform="translate(0, 0)">
+                    <!-- Head -->
+                    <ellipse cx="0" cy="-20" rx="35" ry="40" fill="url(#babySkin)"/>
+                    <!-- Baby hair tuft -->
+                    <path d="M-15,-55 Q-10,-62 0,-60 Q10,-62 15,-55 Q5,-50 -15,-55" fill="#8B7355" opacity="0.6"/>
+                    
+                    <!-- Face -->
+                    <path d="M-18,-22 Q-12,-18 -6,-22" stroke="#4a3a2a" stroke-width="2" fill="none"/>
+                    <path d="M6,-22 Q12,-18 18,-22" stroke="#4a3a2a" stroke-width="2" fill="none"/>
+                    <ellipse cx="0" cy="-12" rx="3" ry="4" fill="#e8d4be"/>
+                    <path d="M-5,-3 Q0,2 5,-3" stroke="#c4a090" stroke-width="1" fill="none"/>
+                    <ellipse cx="-22" cy="-10" rx="8" ry="5" fill="rgba(255,180,180,0.3)"/>
+                    <ellipse cx="22" cy="-10" rx="8" ry="5" fill="rgba(255,180,180,0.3)"/>
+                    
+                    <!-- BIRTHMARK on shoulder/chest -->
+                    <g class="birthmark" transform="translate(28, -5)">
+                        <ellipse cx="0" cy="0" rx="12" ry="8" fill="url(#birthmarkColor)" opacity="0.85">
+                            <animate attributeName="opacity" values="0.85;1;0.85" dur="2s" repeatCount="indefinite"/>
+                        </ellipse>
+                        <ellipse cx="-2" cy="-2" rx="7" ry="5" fill="#6B3510" opacity="0.6"/>
+                        <ellipse cx="3" cy="2" rx="5" ry="3" fill="#5a2d0e" opacity="0.5"/>
+                        <ellipse cx="0" cy="0" rx="15" ry="10" fill="none" stroke="rgba(139,69,19,0.3)" stroke-width="1">
+                            <animate attributeName="rx" values="15;18;15" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="ry" values="10;12;10" dur="2s" repeatCount="indefinite"/>
+                        </ellipse>
+                    </g>
+                    
+                    <!-- Baby arm -->
+                    <path d="M-35,10 Q-50,20 -55,45" stroke="url(#babySkin)" stroke-width="18" fill="none" stroke-linecap="round"/>
+                    <ellipse cx="-55" cy="48" rx="12" ry="15" fill="url(#babySkin)"/>
+                    <path d="M-60,55 L-58,62" stroke="#f5e6d3" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M-55,57 L-54,65" stroke="#f5e6d3" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M-50,56 L-48,64" stroke="#f5e6d3" stroke-width="3" stroke-linecap="round"/>
+                    
+                    <!-- Torso -->
+                    <path d="M-25,18 Q0,25 25,18 L30,90 Q0,100 -30,90 Z" fill="url(#babySkin)"/>
+                </g>
+                
+                <!-- Label -->
+                <text x="0" y="145" text-anchor="middle" fill="rgba(139,69,19,0.9)" font-family="'Bebas Neue'" font-size="12" letter-spacing="1">BIRTHMARK</text>
+                <text x="0" y="158" text-anchor="middle" fill="rgba(150,120,100,0.7)" font-family="'Inter'" font-size="9">Physical proof from previous life</text>
+            </g>
+            
+            <!-- CASE STUDY CARDS - FIXED SPACING -->
+            <g class="case-cards" transform="translate(280, 30)">
+                <!-- Case 1: James Leininger -->
+                <g class="case-card" transform="translate(0, 0)">
+                    <rect x="0" y="0" width="200" height="85" rx="5" fill="rgba(20,15,12,0.9)" stroke="rgba(197,160,89,0.3)" stroke-width="1"/>
+                    <circle cx="20" cy="25" r="12" fill="rgba(139,69,19,0.3)"/>
+                    <text x="20" y="29" text-anchor="middle" fill="rgba(139,69,19,0.8)" font-size="12">✓</text>
+                    <text x="40" y="20" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="11">JAMES LEININGER</text>
+                    <text x="40" y="33" fill="var(--text-muted)" font-family="'Inter'" font-size="8">WWII Pilot, verified past life</text>
+                    <text x="40" y="46" fill="var(--text-muted)" font-family="'Inter'" font-size="8">Birthmarks matched fatal wounds</text>
+                    <text x="40" y="59" fill="rgba(139,69,19,0.8)" font-family="'Inter'" font-size="8" font-style="italic">Named aircraft carrier "Natoma Bay"</text>
+                    <text x="40" y="72" fill="rgba(139,69,19,0.8)" font-family="'Inter'" font-size="8" font-style="italic">Identified squadronmate "Jack Larsen"</text>
+                </g>
+                
+                <!-- Case 2: Verified Cases - MOVED DOWN -->
+                <g class="case-card" transform="translate(0, 100)">
+                    <rect x="0" y="0" width="200" height="70" rx="5" fill="rgba(20,15,12,0.9)" stroke="rgba(197,160,89,0.3)" stroke-width="1"/>
+                    <text x="15" y="20" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="14">2,500+ DOCUMENTED</text>
+                    <text x="15" y="35" fill="var(--text-muted)" font-family="'Inter'" font-size="9">UVA DOPS verified cases</text>
+                    <text x="15" y="48" fill="rgba(139,69,19,0.8)" font-family="'Inter'" font-size="9">Children led researchers to hidden tombs</text>
+                    <text x="15" y="61" fill="rgba(139,69,19,0.8)" font-family="'Inter'" font-size="9">Identified killers, described past lives</text>
+                </g>
+                
+                <!-- Memory fade timeline - FIXED -->
+                <g transform="translate(0, 185)">
+                    <rect x="0" y="0" width="200" height="75" rx="5" fill="rgba(20,15,12,0.9)" stroke="rgba(197,160,89,0.3)" stroke-width="1"/>
+                    <text x="100" y="18" text-anchor="middle" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="11">MEMORY FADES BY AGE 7-9</text>
+                    
+                    <!-- Timeline bar -->
+                    <rect x="15" y="28" width="170" height="10" rx="5" fill="rgba(197,160,89,0.2)"/>
+                    <rect x="15" y="28" width="140" height="10" rx="5" fill="url(#memoryFadeGrad)">
+                        <animate attributeName="width" values="140;40;140" dur="6s" repeatCount="indefinite"/>
+                    </rect>
+                    
+                    <!-- Memory label inside bar -->
+                    <text x="100" y="35" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="'Inter'" font-size="7" font-weight="500">Past Life Memory</text>
+                    
+                    <!-- Age markers -->
+                    <text x="15" y="55" fill="var(--text-muted)" font-family="'Inter'" font-size="7">Birth</text>
+                    <text x="65" y="55" fill="var(--text-muted)" font-family="'Inter'" font-size="7">Age 3</text>
+                    <text x="115" y="55" fill="var(--text-muted)" font-family="'Inter'" font-size="7">Age 7</text>
+                    <text x="165" y="55" fill="var(--text-muted)" font-family="'Inter'" font-size="7">Age 9</text>
+                </g>
+            </g>
+            
+            <!-- Evidence stat -->
+            <g transform="translate(250, 310)">
+                <text x="0" y="0" text-anchor="middle" fill="rgba(139,69,19,0.9)" font-family="'Bebas Neue'" font-size="16">70% of verified cases</text>
+                <text x="0" y="18" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="10">show birthmarks matching fatal wounds from previous life</text>
+                <text x="0" y="32" text-anchor="middle" fill="rgba(139,69,19,0.7)" font-family="'Inter'" font-size="9" font-style="italic">— Dr. Ian Stevenson, UVA DOPS</text>
+            </g>
+        </svg>
+        
+        <div class="anim-caption">
+            <p>The soul enters the new vessel, sometimes carrying <strong>physical proof</strong>. Birthmarks, birth defects, and specific memories match verified records. The boy who said "I was shot here" — pointing to his birthmark — led police to a body buried exactly where he described. <strong>His neighbor confessed.</strong></p>
+        </div>
+    </div>
+</div>
+        
+        <!-- STAGE 6: LIFE & MEMORY FADE -->
+        <div class="anim-stage" id="anim-stage-6">
+            <div class="stage-header">
+                <span class="stage-num">06</span>
+                <h4 class="stage-title">Life: Experience & Integration</h4>
+            </div>
+            
+            <div class="anim-visual">
+                <svg class="life-scene" viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="lifePathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="var(--accent-gold)"/>
+                            <stop offset="50%" stop-color="var(--accent-primary)"/>
+                            <stop offset="100%" stop-color="var(--text-muted)"/>
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Life path curve -->
+                    <path d="M20,100 Q100,50 250,100 T480,80" stroke="url(#lifePathGrad)" stroke-width="4" fill="none" class="life-curve-anim"/>
+                    
+                    <!-- Life stages -->
+                    <g class="life-stages">
+                        <!-- Birth -->
+                        <g transform="translate(20, 100)">
+                            <circle cx="0" cy="0" r="15" fill="var(--accent-gold)" opacity="0.9"/>
+                            <text x="0" y="30" text-anchor="middle" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="10">Birth</text>
+                            <text x="0" y="42" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="8">New soul</text>
+                            <!-- Baby icon -->
+                            <circle cx="0" cy="-2" r="6" fill="rgba(255,255,255,0.9)"/>
+                            <ellipse cx="0" cy="5" rx="4" ry="6" fill="rgba(255,255,255,0.8)"/>
+                        </g>
+                        
+                        <!-- Youth -->
+                        <g transform="translate(120, 75)">
+                            <circle cx="0" cy="0" r="12" fill="var(--accent-gold)" opacity="0.75"/>
+                            <text x="0" y="28" text-anchor="middle" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="10">Youth</text>
+                            <text x="0" y="40" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="8">Learning</text>
+                        </g>
+                        
+                        <!-- Prime (adult) -->
+                        <g transform="translate(250, 100)">
+                            <circle cx="0" cy="0" r="18" fill="var(--accent-primary)" opacity="0.9"/>
+                            <text x="0" y="35" text-anchor="middle" fill="var(--accent-primary)" font-family="'Bebas Neue'" font-size="10">Prime</text>
+                            <text x="0" y="47" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="8">Creating</text>
+                            <!-- Experience icons -->
+                            <text x="0" y="2" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="12">❤️</text>
+                        </g>
+                        
+                        <!-- Wisdom -->
+                        <g transform="translate(380, 85)">
+                            <circle cx="0" cy="0" r="12" fill="var(--text-muted)" opacity="0.7"/>
+                            <text x="0" y="28" text-anchor="middle" fill="var(--text-muted)" font-family="'Bebas Neue'" font-size="10">Wisdom</text>
+                            <text x="0" y="40" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="8">Elder</text>
+                        </g>
+                        
+                        <!-- Death/Return -->
+                        <g transform="translate(480, 80)">
+                            <circle cx="0" cy="0" r="10" fill="var(--text-muted)" opacity="0.5"/>
+                            <text x="0" y="26" text-anchor="middle" fill="var(--text-muted)" font-family="'Bebas Neue'" font-size="10">Death</text>
+                            <text x="0" y="38" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="8">Return</text>
+                        </g>
+                    </g>
+                    
+                    <!-- Memory fade indicator -->
+                    <g transform="translate(250, 160)">
+                        <rect x="-100" y="0" width="200" height="6" rx="3" fill="rgba(197,160,89,0.2)"/>
+                        <rect x="-100" y="0" width="140" height="6" rx="3" fill="var(--accent-gold)">
+                            <animate attributeName="width" values="140;20;140" dur="8s" repeatCount="indefinite"/>
+                        </rect>
+                        <text x="0" y="18" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="9" font-style="italic">Past-life memories fade by age 7-9</text>
+                    </g>
+                </svg>
+                
+                <div class="anim-caption">
+                    <p>The new vessel grows, lives, loves, creates, and experiences. Each life adds to the eternal soul's tapestry. <strong>Conscious access to past lives fades by age 7-9</strong> as the new brain anchors, but the lessons remain encoded in the soul's essence.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- STAGE 7: CYCLE REPEATS -->
+        <div class="anim-stage cycle-stage" id="anim-stage-7">
+            <div class="stage-header">
+                <span class="stage-num">07</span>
+                <h4 class="stage-title">Return: The Eternal Cycle</h4>
+            </div>
+            
+            <div class="anim-visual">
+                <svg class="cycle-scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="cycleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="var(--accent-gold)"/>
+                            <stop offset="50%" stop-color="var(--accent-primary)"/>
+                            <stop offset="100%" stop-color="var(--accent-gold)"/>
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Infinity symbol representing eternal cycle -->
+                    <g transform="translate(200, 150)">
+                        <!-- Main infinity path -->
+                        <path d="M-80,0 C-80,-50 -40,-50 0,0 C40,50 80,50 80,0 C80,-50 40,-50 0,0 C-40,50 -80,50 -80,0" 
+                              stroke="url(#cycleGrad)" stroke-width="6" fill="none" class="infinity-path">
+                            <animate attributeName="stroke-dasharray" values="0,500;500,0" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        
+                        <!-- Left loop - Death -->
+                        <g transform="translate(-60, 0)">
+                            <circle cx="0" cy="0" r="25" fill="rgba(139,0,0,0.3)" stroke="var(--accent-primary)" stroke-width="2"/>
+                            <text x="0" y="4" text-anchor="middle" fill="var(--accent-primary)" font-family="'Bebas Neue'" font-size="10">Birth</text>
+                        </g>
+                        
+                        <!-- Center - SOUL -->
+                        <g transform="translate(0, 0)">
+                            <circle cx="0" cy="0" r="30" fill="rgba(197,160,89,0.2)" stroke="var(--accent-gold)" stroke-width="2">
+                                <animate attributeName="r" values="30;35;30" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="0" y="5" text-anchor="middle" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="14" letter-spacing="2">SOUL</text>
+                            <!-- Glow -->
+                            <circle cx="0" cy="0" r="40" fill="none" stroke="rgba(197,160,89,0.3)" stroke-width="1">
+                                <animate attributeName="r" values="40;50;40" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-opacity" values="0.3;0.1;0.3" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                        
+                        <!-- Right loop - Death -->
+                        <g transform="translate(60, 0)">
+                            <circle cx="0" cy="0" r="25" fill="rgba(197,160,89,0.2)" stroke="var(--text-muted)" stroke-width="2"/>
+                            <text x="0" y="4" text-anchor="middle" fill="var(--text-muted)" font-family="'Bebas Neue'" font-size="10">Death</text>
+                        </g>
+                        
+                        <!-- Flowing arrows -->
+                        <g class="flow-arrows" opacity="0.6">
+                            <path d="M-30,-20 L-20,-15" stroke="var(--accent-gold)" stroke-width="2" fill="none" marker-end="url(#arrowGold)">
+                                <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="1.5s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M20,-20 L30,-15" stroke="var(--accent-gold)" stroke-width="2" fill="none">
+                                <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+                            </path>
+                        </g>
+                    </g>
+                    
+                    <!-- Final message -->
+                    <g transform="translate(200, 250)">
+                        <text x="0" y="0" text-anchor="middle" fill="var(--accent-gold)" font-family="'Bebas Neue'" font-size="16" letter-spacing="3">THE CYCLE CONTINUES</text>
+                        <text x="0" y="20" text-anchor="middle" fill="var(--text-muted)" font-family="'Inter'" font-size="11" font-style="italic">Every death is a homecoming. Every birth is a deliberate choice.</text>
+                        <text x="0" y="38" text-anchor="middle" fill="rgba(139,69,19,0.8)" font-family="'Inter'" font-size="10">You have always been choosing — and you always will.</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Final Quote -->
+    <div class="lifecycle-final-quote">
+        <blockquote>
+            "Every mother is Anunnaki in action.<br>
+            Every birth is a homecoming.<br>
+            Every death is only a change of visibility."
+        </blockquote>
+    </div>
+</section>
                 
                 <p style="margin-top: 1.5rem; font-style: italic; color: #ff3333;">
                     Animal embodiment is simply a different frequency interface — instinct over intellect, pure being over complex manifestation. A soul may choose the grace of a dolphin, the quiet observation of a cat, or the power of an eagle for rest, healing, or perspective before returning to human form to create anew.
@@ -4108,6 +6191,29 @@
                 currentTimeEl.textContent = "0:00";
             });
         }
+
+// Scroll-triggered reveal animation
+document.addEventListener('DOMContentLoaded', function() {
+    const stages = document.querySelectorAll('.anim-stage');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+    
+    const stageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+    
+    stages.forEach(stage => {
+        stageObserver.observe(stage);
+    });
+});
     </script>
 </body>
 </html>
