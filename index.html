@@ -2348,6 +2348,486 @@
     }
 }
 
+/* ==========================================================================
+   MOBILE-OPTIMIZED LIFE CYCLE ANIMATIONS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Simplify animations for mobile */
+    .lifecycle-animation-section {
+        padding: 1rem 0.5rem;
+        margin: 1rem auto;
+    }
+    
+    .lifecycle-anim-title {
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .lifecycle-anim-intro {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    /* Stack stages vertically with proper spacing */
+    .lifecycle-animation-container {
+        gap: 1.5rem;
+    }
+    
+    .anim-stage {
+        margin-bottom: 2rem;
+        padding: 0.5rem;
+    }
+    
+    /* Simplify stage headers */
+    .stage-header {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .stage-num {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .stage-title {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+    
+    /* Optimize visual containers */
+    .anim-visual {
+        padding: 0.5rem;
+        margin: 1rem auto;
+        min-height: auto;
+    }
+    
+    /* Scale down SVGs for mobile */
+    .death-scene,
+    .reclothing-scene,
+    .roaming-scene,
+    .portal-scene,
+    .birthmark-scene,
+    .life-scene,
+    .cycle-scene {
+        max-width: 100%;
+        height: auto;
+        transform: scale(0.9);
+        transform-origin: center;
+    }
+    
+    /* Specific SVG sizing for mobile */
+    .death-scene { min-height: 200px; }
+    .reclothing-scene { min-height: 180px; }
+    .roaming-scene { min-height: 220px; }
+    .portal-scene { min-height: 250px; }
+    .birthmark-scene { min-height: 280px; }
+    .life-scene { min-height: 150px; }
+    .cycle-scene { min-height: 200px; }
+    
+    /* Simplify captions */
+    .anim-caption {
+        padding: 0.5rem;
+        margin: 1rem auto;
+    }
+    
+    .anim-caption p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    /* Final quote adjustments */
+    .lifecycle-final-quote {
+        padding: 1.5rem 1rem;
+        margin: 2rem auto;
+    }
+    
+    .lifecycle-final-quote blockquote {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        line-height: 1.4;
+    }
+    
+    /* Disable complex animations on mobile */
+    .soul-particles circle,
+    .form-particles circle,
+    .portal-ring,
+    .infinity-path {
+        animation: none !important;
+    }
+    
+    /* Simplify floating animations */
+    .anim-float {
+        animation: mobileFloat 4s ease-in-out infinite;
+    }
+    
+    @keyframes mobileFloat {
+        0%, 100% { transform: translateY(0) scale(0.9); }
+        50% { transform: translateY(-5px) scale(0.9); }
+    }
+    
+    /* Reduce pulse animation intensity */
+    .anim-pulse {
+        animation: mobilePulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes mobilePulse {
+        0%, 100% { opacity: 0.7; transform: scale(0.95); }
+        50% { opacity: 1; transform: scale(1); }
+    }
+    
+    /* Stop spinning animations on mobile */
+    .anim-spin {
+        animation: none;
+    }
+}
+
+/* Extra small screen optimizations */
+@media (max-width: 480px) {
+    .lifecycle-animation-section {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    .anim-stage {
+        padding: 0.25rem;
+    }
+    
+    .stage-title {
+        font-size: 1rem;
+    }
+    
+    .anim-caption p {
+        font-size: 0.85rem;
+    }
+    
+    /* Further scale down SVGs */
+    .death-scene,
+    .reclothing-scene,
+    .roaming-scene,
+    .portal-scene,
+    .birthmark-scene,
+    .life-scene,
+    .cycle-scene {
+        transform: scale(0.8);
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 900px) and (orientation: landscape) {
+    .lifecycle-animation-section {
+        padding: 0.5rem;
+    }
+    
+    .anim-visual {
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+    
+    .lifecycle-animation-container {
+        gap: 1rem;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .lifecycle-animation-section * {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .anim-stage {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .anim-stage {
+        padding: 1rem 0.5rem;
+    }
+    
+    /* Increase tap targets */
+    .stage-header {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Ensure text remains readable */
+@media (max-width: 768px) {
+    .lifecycle-stage text,
+    .anim-stage text {
+        font-size: 12px !important;
+        font-weight: 600;
+    }
+    
+    /* Fix overlapping elements */
+    .case-cards,
+    .case-cards-v12 {
+        transform: scale(0.8);
+        transform-origin: top center;
+        margin: 0 auto;
+    }
+    
+    /* Ensure proper containment */
+    .anim-visual {
+        overflow: hidden;
+        position: relative;
+    }
+}
+
+/* ==========================================================================
+   LANDSCAPE MOBILE SCROLLING FIXES
+   ========================================================================== */
+
+@media (max-width: 900px) and (orientation: landscape) {
+    /* Main container fixes */
+    .lifecycle-animation-section {
+        padding: 0.5rem;
+        margin: 0.5rem auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+    
+    .lifecycle-animation-container {
+        gap: 1rem;
+        padding: 0.5rem;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+    
+    /* Make each stage scrollable individually */
+    .anim-stage {
+        min-height: auto;
+        height: auto;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border: 1px solid rgba(197, 160, 89, 0.1);
+        border-radius: 8px;
+        background: rgba(20, 15, 12, 0.8);
+    }
+    
+    /* Visual container - scrollable with max height */
+    .anim-visual {
+        max-height: 50vh;
+        min-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 1rem;
+        margin: 1rem auto;
+        -webkit-overflow-scrolling: touch;
+        border: 1px solid rgba(197, 160, 89, 0.05);
+        border-radius: 4px;
+    }
+    
+    /* Ensure SVGs are properly contained */
+    .anim-visual svg {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    /* Specific SVG sizing for landscape */
+    .death-scene,
+    .reclothing-scene,
+    .roaming-scene,
+    .portal-scene,
+    .birthmark-scene,
+    .life-scene,
+    .cycle-scene {
+        width: 100%;
+        height: auto;
+        max-height: 45vh;
+        transform: scale(0.85);
+        transform-origin: center;
+    }
+    
+    /* Stage-specific landscape optimizations */
+    .roaming-scene {
+        max-height: 40vh;
+        transform: scale(0.8);
+    }
+    
+    .portal-scene {
+        max-height: 35vh;
+    }
+    
+    .birthmark-scene {
+        max-height: 50vh;
+        transform: scale(0.75);
+    }
+    
+    /* Caption adjustments */
+    .anim-caption {
+        padding: 0.75rem;
+        margin: 0.5rem auto;
+        max-width: 100%;
+    }
+    
+    .anim-caption p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    /* Header adjustments for landscape */
+    .stage-header {
+        margin-bottom: 0.75rem;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        background: rgba(20, 15, 12, 0.95);
+        padding: 0.5rem;
+        z-index: 10;
+        border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+    }
+    
+    .stage-title {
+        font-size: 1rem;
+        margin: 0;
+    }
+    
+    .stage-num {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+    }
+    
+    /* Final quote adjustments */
+    .lifecycle-final-quote {
+        margin: 1.5rem auto;
+        padding: 1rem;
+        max-height: none;
+    }
+    
+    .lifecycle-final-quote blockquote {
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+}
+
+/* Extra small landscape devices (phones in landscape) */
+@media (max-width: 700px) and (orientation: landscape) {
+    .anim-visual {
+        max-height: 45vh;
+        min-height: 180px;
+    }
+    
+    .death-scene,
+    .reclothing-scene,
+    .roaming-scene,
+    .portal-scene,
+    .birthmark-scene,
+    .life-scene,
+    .cycle-scene {
+        max-height: 40vh;
+        transform: scale(0.75);
+    }
+    
+    .stage-header {
+        padding: 0.25rem;
+    }
+    
+    .stage-title {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet landscape optimization */
+@media (min-width: 701px) and (max-width: 900px) and (orientation: landscape) {
+    .anim-visual {
+        max-height: 55vh;
+        min-height: 250px;
+    }
+    
+    .death-scene,
+    .reclothing-scene,
+    .roaming-scene,
+    .portal-scene,
+    .birthmark-scene,
+    .life-scene,
+    .cycle-scene {
+        max-height: 50vh;
+        transform: scale(0.9);
+    }
+}
+
+
+/* Additional CSS for JavaScript enhancements */
+.landscape-mode .anim-visual {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-gold) rgba(197, 160, 89, 0.1);
+}
+
+.landscape-mode .anim-visual::-webkit-scrollbar {
+    width: 4px;
+}
+
+.landscape-mode .anim-visual::-webkit-scrollbar-track {
+    background: rgba(197, 160, 89, 0.1);
+    border-radius: 2px;
+}
+
+.landscape-mode .anim-visual::-webkit-scrollbar-thumb {
+    background: var(--accent-gold);
+    border-radius: 2px;
+}
+
+/* Touch-friendly scroll improvements */
+@media (max-width: 900px) and (orientation: landscape) {
+    .anim-visual {
+        /* Better touch scrolling on iOS */
+        -webkit-overflow-scrolling: touch;
+        /* Momentum scrolling */
+        overflow-scrolling: touch;
+    }
+    
+    /* Improve scroll performance */
+    .anim-stage {
+        transform: translateZ(0);
+        will-change: transform;
+    }
+}
+
+/* Emergency fallback for very small landscape screens */
+@media (max-width: 600px) and (orientation: landscape) and (max-height: 300px) {
+    .lifecycle-animation-section {
+        padding: 0.25rem;
+    }
+    
+    .anim-stage {
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .anim-visual {
+        max-height: 35vh;
+        min-height: 150px;
+        padding: 0.5rem;
+    }
+    
+    .death-scene,
+    .reclothing-scene,
+    .roaming-scene,
+    .portal-scene,
+    .birthmark-scene,
+    .life-scene,
+    .cycle-scene {
+        max-height: 30vh;
+        transform: scale(0.7);
+    }
+    
+    /* Hide less important elements in extreme cases */
+    .lifecycle-final-quote {
+        display: none;
+    }
+}
     </style>
 </head>
 <body>
@@ -7414,6 +7894,142 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Add mobile detection and optimization
+function optimizeForMobile() {
+    const isMobile = window.innerWidth <= 768;
+    const isTouch = 'ontouchstart' in window;
+    
+    if (isMobile) {
+        document.body.classList.add('mobile-device');
+        
+        // Simplify SVG animations
+        document.querySelectorAll('animate, animateTransform').forEach(anim => {
+            const parent = anim.parentElement;
+            if (parent && (parent.classList.contains('soul-particles') || 
+                          parent.classList.contains('form-particles'))) {
+                anim.remove();
+            }
+        });
+        
+        // Reduce animation complexity
+        const styles = `
+            .soul-body, .clothed-soul, .roaming-soul-1, .roaming-soul-2, .roaming-soul-3 {
+                animation-duration: 3s !important;
+            }
+            .lifecycle-svg * {
+                animation-duration: 4s !important;
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = styles;
+        document.head.appendChild(styleSheet);
+    }
+}
+
+// Enhanced landscape mobile handling
+function optimizeLandscapeScrolling() {
+    const isLandscape = window.innerWidth > window.innerHeight && window.innerWidth <= 900;
+    
+    if (isLandscape) {
+        // Add landscape-specific classes
+        document.body.classList.add('landscape-mode');
+        
+        // Make stages more compact for landscape
+        const stages = document.querySelectorAll('.anim-stage');
+        stages.forEach(stage => {
+            stage.style.minHeight = 'auto';
+            stage.style.height = 'auto';
+        });
+        
+        // Ensure visual containers are scrollable
+        const visuals = document.querySelectorAll('.anim-visual');
+        visuals.forEach(visual => {
+            visual.style.overflowY = 'auto';
+            visual.style.webkitOverflowScrolling = 'touch';
+        });
+    }
+}
+
+// Detect orientation changes
+function handleOrientationChange() {
+    const isLandscape = window.innerWidth > window.innerHeight;
+    
+    if (isLandscape && window.innerWidth <= 900) {
+        document.body.classList.add('landscape-mobile');
+        // Add subtle scroll indicators
+        const visuals = document.querySelectorAll('.anim-visual');
+        visuals.forEach(visual => {
+            if (visual.scrollHeight > visual.clientHeight) {
+                visual.style.borderRight = '2px solid rgba(197, 160, 89, 0.3)';
+            }
+        });
+    } else {
+        document.body.classList.remove('landscape-mobile');
+    }
+}
+
+// Add scroll indicators for landscape
+function addScrollIndicators() {
+    const isLandscape = window.innerWidth > window.innerHeight && window.innerWidth <= 900;
+    
+    if (isLandscape) {
+        const visuals = document.querySelectorAll('.anim-visual');
+        visuals.forEach(visual => {
+            // Remove existing indicators
+            const existingIndicator = visual.querySelector('.scroll-indicator');
+            if (existingIndicator) existingIndicator.remove();
+            
+            // Add new indicator if content is scrollable
+            if (visual.scrollHeight > visual.clientHeight) {
+                const indicator = document.createElement('div');
+                indicator.className = 'scroll-indicator';
+                indicator.innerHTML = '↑↓';
+                indicator.style.cssText = `
+                    position: absolute;
+                    right: 5px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: var(--accent-gold);
+                    font-size: 12px;
+                    opacity: 0.6;
+                    z-index: 5;
+                    pointer-events: none;
+                `;
+                visual.style.position = 'relative';
+                visual.appendChild(indicator);
+            }
+        });
+    }
+}
+
+// Initialize on load and resize
+document.addEventListener('DOMContentLoaded', function() {
+    optimizeLandscapeScrolling();
+    handleOrientationChange();
+    addScrollIndicators();
+});
+
+window.addEventListener('resize', function() {
+    optimizeLandscapeScrolling();
+    handleOrientationChange();
+    setTimeout(addScrollIndicators, 100);
+});
+
+window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
+        optimizeLandscapeScrolling();
+        handleOrientationChange();
+        addScrollIndicators();
+    }, 300);
+});
+
+
+// Run on load and resize
+document.addEventListener('DOMContentLoaded', optimizeForMobile);
+window.addEventListener('resize', optimizeForMobile);
+
     </script>
 </body>
 </html>
