@@ -2828,6 +2828,38 @@
         display: none;
     }
 }
+
+/* =============================================================
+   AUDIO PLAYER ICON FIX - MOBILE VISIBILITY
+   ============================================================= */
+.play-pause-btn svg {
+    width: 26px !important;
+    height: 26px !important;
+    fill: #0a0908 !important;           /* matches your gold button text color */
+}
+
+.play-pause-btn svg path {
+    fill: #0a0908 !important;
+}
+
+/* Slightly larger on very small phones for finger-friendly tap target */
+@media (max-width: 768px) {
+    .play-pause-btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .play-pause-btn svg {
+        width: 28px !important;
+        height: 28px !important;
+    }
+}
+
+/* Optional: make the button feel more premium */
+.play-pause-btn {
+    padding: 0;
+    box-sizing: content-box;
+}
     </style>
 </head>
 <body>
