@@ -2860,6 +2860,106 @@
     padding: 0;
     box-sizing: content-box;
 }
+
+/* ==========================================================================
+   EXOTIC MOBILE ENHANCEMENTS (Native App Feel)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. App-like Physics & Typography */
+    html, body {
+        overscroll-behavior-y: none; /* Prevents harsh rubber-banding */
+    }
+    body {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    /* 2. Tactile Glass Cards with Active Touch States */
+    .glass-card {
+        border-radius: 16px !important; /* Rounder, modern app feel */
+        background: linear-gradient(135deg, rgba(20, 16, 12, 0.85) 0%, rgba(10, 8, 6, 0.95) 100%) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(197, 160, 89, 0.2) !important;
+        transform: scale(1);
+        transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s ease !important;
+    }
+    /* Haptic-style visual feedback on tap */
+    .glass-card:active {
+        transform: scale(0.97) !important; 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(197, 160, 89, 0.3) !important;
+    }
+
+    /* 3. Exotic SVG Rendering (Hardware Accelerated) */
+    .sacred-geometry svg,
+    .lifecycle-svg,
+    .anim-visual svg {
+        opacity: 0.6;
+        transform: scale(0.95) translateY(10px);
+        filter: drop-shadow(0px 0px 2px rgba(197, 160, 89, 0.1));
+        /* will-change tells the phone GPU to prepare for these animations, preventing glitches */
+        will-change: transform, opacity, filter; 
+        transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease !important;
+    }
+
+    /* This class is triggered by the lightweight JavaScript */
+    .sacred-geometry svg.exotic-reveal,
+    .lifecycle-svg.exotic-reveal,
+    .anim-visual svg.exotic-reveal {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: drop-shadow(0px 0px 15px rgba(197, 160, 89, 0.6));
+    }
+
+    /* 4. Interactive SVG Panning (Prevents squishing) */
+    .anim-visual {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Hide scrollbar for a clean, app-like look */
+        padding-bottom: 10px !important;
+    }
+    .anim-visual::-webkit-scrollbar { display: none; }
+    .anim-visual svg {
+        scroll-snap-align: center;
+        min-width: 115%; /* Forces it to be slightly wider so the user can interactively pan */
+        margin-left: -7.5%; /* Centers the widened SVG initially */
+    }
+
+    /* 5. Sticky Bottom Navigation (Thumb-friendly iOS style) */
+    .vol-controls {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 8, 6, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(197, 160, 89, 0.3) !important;
+        padding: 12px 15px 25px 15px !important; /* Extra bottom padding for iPhone home bar */
+        margin-top: 0 !important;
+        z-index: 2000;
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-between;
+        box-shadow: 0 -15px 40px rgba(0,0,0,0.9);
+    }
+    .vol-controls .btn-nav {
+        flex: 1;
+        margin: 0 5px;
+        padding: 12px 10px !important;
+        font-size: 0.75rem !important;
+        border-radius: 8px;
+        background: rgba(197, 160, 89, 0.05);
+        text-align: center;
+    }
+    
+    /* Pad the bottom of the page so content doesn't get hidden behind the new sticky nav */
+    .page-view {
+        padding-bottom: 100px !important;
+    }
+}
     </style>
 </head>
 <body>
@@ -8101,6 +8201,34 @@ window.addEventListener('orientationchange', function() {
 document.addEventListener('DOMContentLoaded', optimizeForMobile);
 window.addEventListener('resize', optimizeForMobile);
 
+// ==========================================================================
+// EXOTIC MOBILE ENHANCEMENTS JS (Optimized for Zero Jank)
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+        // Use IntersectionObserver to simply add/remove a CSS class.
+        // This is 100x lighter on the phone's processor than calculating math on scroll.
+        const exoticObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('exotic-reveal');
+                } else {
+                    entry.target.classList.remove('exotic-reveal');
+                }
+            });
+        }, { 
+            rootMargin: '0px 0px -15% 0px', // Triggers slightly before it enters the viewport
+            threshold: 0.1 
+        });
+
+        // Target the SVGs to give them the breathing/glow effect
+        document.querySelectorAll('.sacred-geometry svg, .lifecycle-svg, .anim-visual svg').forEach(svg => {
+            exoticObserver.observe(svg);
+        });
+    }
+});
     </script>
 </body>
 </html>
