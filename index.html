@@ -2960,6 +2960,124 @@
         padding-bottom: 100px !important;
     }
 }
+
+/* ==========================================================================
+   MOBILE LAYOUT FLATTENING & SVG OPTIMIZATION (All Volumes)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Maximize Screen Real Estate */
+    .container {
+        width: 96% !important; /* Push content closer to the edges */
+        padding: 0 !important;
+    }
+    
+    /* 2. Flatten the "Section Inside Section" Cards */
+    .glass-card {
+        padding: 1.25rem 1rem !important; /* Reduce thick inner padding */
+        margin: 1.5rem 0 !important; /* Remove side margins */
+        border-radius: 12px !important;
+        /* Make the background slightly more transparent to blend with the body */
+        background: linear-gradient(135deg, rgba(20, 16, 12, 0.7) 0%, rgba(10, 8, 6, 0.85) 100%) !important;
+    }
+
+    /* If you have a box inside a box, neutralize the inner box completely */
+    .glass-card > div[style*="background"], 
+    .glass-card > div[style*="border"],
+    .mental-health-note {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 1rem 0 !important;
+        box-shadow: none !important;
+    }
+
+    /* 3. Kill the Inline "min-width" causing horizontal squishing */
+    div[style*="display: flex"] {
+        flex-direction: column !important; /* Force everything into one single column */
+        gap: 1.5rem !important;
+    }
+    
+    div[style*="min-width"] {
+        min-width: 100% !important; /* Override the 300px limits */
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    /* 4. Exotic SVG Mobile Scaling */
+    .sacred-geometry {
+        margin: 0.5rem auto 1.5rem auto !important;
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .sacred-geometry svg {
+        width: 100% !important;
+        max-width: 260px !important; /* Prevent SVGs from taking up the whole screen */
+        height: auto !important;
+        max-height: 25vh !important; /* Never let an SVG be taller than 25% of the phone screen */
+        filter: drop-shadow(0px 0px 10px rgba(197, 160, 89, 0.4)); /* Exotic glow */
+    }
+
+    /* 5. Typography Tweaks for readability in flat layout */
+    .glass-card p, .glass-card ul, .glass-card li {
+        font-size: 1.05rem !important;
+        line-height: 1.65 !important;
+        text-align: left !important;
+    }
+
+    .glass-card h2, .glass-card h3 {
+        text-align: left !important; /* Left alignment feels cleaner and flatter on mobile */
+        padding-bottom: 0.5rem !important;
+    }
+}
+
+/* ==========================================================================
+   VOLUME 1 & 12: SVG & BUBBLE FACT PERFECTION
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Force the SVG containers to be 100% width of the card */
+    .sacred-geometry, .anim-visual {
+        width: 100% !important;
+        overflow: visible !important; /* Allow glowing filters to show */
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Make the SVG itself scale proportionally */
+    .sacred-geometry svg, .anim-visual svg {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 70vh; /* Prevents vertical stretching */
+        overflow: visible;
+    }
+
+    /* FIX: Section 5 Birth Marks & Bubble Facts */
+    /* We force the foreignObject (the text bubbles) to respect the box */
+    svg foreignObject {
+        width: 100% !important;
+        overflow: visible;
+    }
+
+    /* This targets the actual text inside the SVG bubbles */
+    .bubble-fact, [class*="fact-box"], .birth-mark-label {
+        font-size: 12px !important; /* Smaller text for mobile */
+        width: 90% !important;
+        padding: 5px !important;
+        word-wrap: break-word !important;
+        white-space: normal !important; /* Force text to wrap instead of going offline */
+        background: rgba(197, 160, 89, 0.15) !important;
+        border: 1px solid rgba(197, 160, 89, 0.4) !important;
+        backdrop-filter: blur(5px);
+    }
+
+    /* Volume 12 Complex Animations: Ensure they don't clip */
+    #v12-animation-container svg {
+        transform: scale(0.9); /* Slight downscale to ensure no edge clipping */
+        transform-origin: center;
+    }
+}
     </style>
 </head>
 <body>
@@ -8229,6 +8347,72 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// ==========================================================================
+// SVG & LAYOUT NORMALIZER FOR MOBILE
+// ==========================================================================
+function normalizeSVGs() {
+    const svgs = document.querySelectorAll('.sacred-geometry svg, .lifecycle-svg');
+    const isMobile = window.innerWidth <= 768;
+
+    svgs.forEach(svg => {
+        // Ensure SVGs always preserve their aspect ratio so they don't stretch
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+        
+        // Remove hardcoded width/height attributes that conflict with our CSS
+        if (isMobile) {
+            if (svg.hasAttribute('width')) svg.style.width = '100%';
+            if (svg.hasAttribute('height')) svg.style.height = 'auto';
+        }
+    });
+}
+
+// Run on load
+document.addEventListener('DOMContentLoaded', normalizeSVGs);
+
+// Run on orientation change (flipping phone sideways) or window resize
+window.addEventListener('resize', () => {
+    // Small debounce to prevent jitter
+    clearTimeout(window.svgResizeTimer);
+    window.svgResizeTimer = setTimeout(normalizeSVGs, 100);
+});
+
+/**
+ * REPAIR_SVG_VIEWBOX: 
+ * Ensures Volume 1 & 12 SVGs are fluid and text-wrapped
+ */
+function perfectMobileSVGs() {
+    if (window.innerWidth > 768) return;
+
+    const allSVGs = document.querySelectorAll('svg');
+    
+    allSVGs.forEach(svg => {
+        // 1. If it has a fixed width/height, convert it to a viewBox ratio
+        const w = svg.getAttribute('width');
+        const h = svg.getAttribute('height');
+        
+        if (w && h && !svg.getAttribute('viewBox')) {
+            svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+        }
+
+        // 2. Remove fixed attributes to let CSS take over
+        svg.removeAttribute('width');
+        svg.removeAttribute('height');
+        
+        // 3. Fix foreignObject text wrapping (The "Bubble Facts")
+        const foreignObjects = svg.querySelectorAll('foreignObject');
+        foreignObjects.forEach(fo => {
+            // Set a responsive width based on the SVG coordinate system
+            // This prevents "Section 5" text from flying off-screen
+            fo.setAttribute('width', '200'); // Adjust this number based on your SVG design
+            fo.style.overflow = "visible";
+        });
+    });
+}
+
+// Execute on load and resize
+window.addEventListener('load', perfectMobileSVGs);
+window.addEventListener('resize', perfectMobileSVGs);
     </script>
 </body>
 </html>
