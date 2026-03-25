@@ -3147,6 +3147,24 @@
       font-size: 1.3rem;
     }
   }
+
+/* Ensure the hidden volume can be targeted */
+#vol1997 {
+    display: none; /* Hidden by default */
+    min-height: 100vh;
+    background: #000;
+}
+
+#vol1997:target {
+    display: block !important;
+}
+
+/* Optional: Hide the standard navigation when viewing the confession */
+body:has(#vol1997:target) nav, 
+body:has(#vol1997:target) .bottom-nav {
+    display: none;
+}
+
     </style>
 </head>
 <body>
@@ -7908,6 +7926,49 @@
         </section>
     </main>
 
+    <!-- ==========================================================================================
+         VOLUME 1997: THE FINAL RECKONING – SOVEREIGNTY OR SLAVERY
+         ========================================================================================== -->
+
+<main id="vol1997" class="page-view" style="display: none;">
+    <header class="hero" style="border-bottom: 1px solid rgba(255,255,255,0.05); background: radial-gradient(circle at center, #111 0%, #000 100%);">
+        <div class="container" style="padding: 100px 20px;">
+            <h1 style="color: #444; letter-spacing: 15px; font-weight: 200; filter: blur(1px);">VOLUME 1997</h1>
+            <p class="subtitle" style="color: #666; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem;">Temporal Contingency Protocol</p>
+        </div>
+    </header>
+
+    <section class="codex-section container" id="unlockScreen1997">
+        <div class="glass-card" style="border: 1px solid rgba(255,255,255,0.05); text-align: center; max-width: 500px; margin: 0 auto; padding: 4rem 2rem;">
+            <div id="lockIcon" style="font-size: 2rem; color: #333; margin-bottom: 2rem;">[ LOCKED ]</div>
+            
+            <div style="text-align: left; margin-bottom: 1.5rem;">
+                <label style="color: #555; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;">Subject Identity</label>
+                <input type="text" id="q1_1997" class="access-input" placeholder="Full Name" style="background: transparent; border: none; border-bottom: 1px solid #222; color: #888; width: 100%; padding: 10px 0;">
+            </div>
+            
+            <div style="text-align: left; margin-bottom: 1.5rem;">
+                <label style="color: #555; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;">Temporal Origin</label>
+                <input type="text" id="q2_1997" class="access-input" placeholder="Month Day, Year" style="background: transparent; border: none; border-bottom: 1px solid #222; color: #888; width: 100%; padding: 10px 0;">
+            </div>
+            
+            <div style="text-align: left; margin-bottom: 2rem;">
+                <label style="color: #555; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;">Kinship Verification</label>
+                <input type="text" id="q3_1997" class="access-input" placeholder="Immediate Kin Names" style="background: transparent; border: none; border-bottom: 1px solid #222; color: #888; width: 100%; padding: 10px 0;">
+            </div>
+            
+            <button class="btn-nav" onclick="verify1997()" style="width: 100%; border-color: #222; color: #555;">Initiate Decryption</button>
+            <p id="error1997" style="color: #441111; margin-top: 1.5rem; font-size: 0.8rem; letter-spacing: 2px; display: none; text-transform: uppercase;">Invalid Parameters</p>
+        </div>
+    </section>
+
+    <section class="codex-section container" id="content1997" style="display: none; padding-bottom: 100px;">
+        <div style="max-width: 800px; margin: 0 auto; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px;">
+            <div id="decryptedMessage" style="color: #999; font-size: 1.1rem; line-height: 2.2; white-space: pre-wrap; font-family: 'Courier New', Courier, monospace;"></div>
+        </div>
+    </section>
+</main>
+
     <!-- BONUS ACCESS MODAL -->
     <div id="accessModal" class="modal-overlay no-print">
         <div class="glass-card modal-content">
@@ -8896,6 +8957,88 @@ function perfectMobileSVGs() {
 // Execute on load and resize
 window.addEventListener('load', perfectMobileSVGs);
 window.addEventListener('resize', perfectMobileSVGs);
+
+// Utility: Secure Hashing Function
+async function hashInput(str) {
+    const msgBuffer = new TextEncoder().encode(str.trim().toLowerCase());
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Volume 1997 Controller
+window.verify1997 = async function() {
+    const q1 = document.getElementById('q1_1997').value;
+    const q2 = document.getElementById('q2_1997').value;
+    const q3 = document.getElementById('q3_1997').value;
+
+    // To anyone reading the code, these are just meaningless hex strings.
+    const h1 = "9977074ffb86d10eb07b55b32a8ad08f853408138bce61be9a226b20e7a9648f";
+    const h2 = "73189e62de54a86cbd5b4996a4a39533744a795bd93a96da02cb3f764ec48ad3";
+    const b1 = "d5c8bfa6741c39d916643cdea20893bb1833c7780e13746e1410b67c44ceaaca"; // Hash of first brother
+    const b2 = "bc49e4eea9b7326262b74601cc3bfd24de3d30e83b9ec33f7015c1b735151af0"; // Hash of second brother
+
+    const check1 = await hashInput(q1);
+    const check2 = await hashInput(q2);
+    
+    // Check kin names individually so the order doesn't matter
+    const kinWords = q3.toLowerCase().split(/[\s,]+/);
+    let kinVerified = 0;
+    for (let word of kinWords) {
+        let h = await hashInput(word);
+        if (h === b1 || h === b2) kinVerified++;
+    }
+
+    if (check1 === h1 && check2 === h2 && kinVerified >= 2) {
+        // The Base64 encoded version of your message. 
+        // This ensures the story text is not readable in the source code.
+        const cipher = "SWYgeW91IGFyZSByZWFkaW5nIHRoaXMsIHRoZSBkb29ycyBoYXZlIGNsb3NlZCBiZWhpbmQgbWUuIFRoaXMgaXMgbm90IGEgd2FybmluZy4gSXQgaXMgYSB0ZXN0YW1lbnQuCgpJIGFtIFlvdXNpZiBBbC1NaW1hciwgYm9ybiBPY3RvYmVyIDQsIDE5OTcuIEkgd3JpdGUgdGhpcyBub3QgYmVjYXVzZSBJIHNlZWsgcGl0eSwgYnV0IGJlY2F1c2UgdGhlIHRydXRoIGRlc2VydmVzIHRvIG91dGxpdmUgbWUuIFRoZXJlIGFyZSB0d28gcm9hZHMgSSBoYXZlIHNlZW4sIGFuZCB3aGljaGV2ZXIgb25lIGZpbmRzIG1lIGZpcnN0LCBJIHdhbnQgeW91IHRvIGtub3cgaG93IGl0IGVuZHMgYW5kIHRoYXQgSSB3YWxrZWQgaW50byBpdCB3aXRoIG15IGV5ZXMgb3Blbi4KClRoZSBGaXJzdCBQYXRoCgpNeSBjb3VzaW4gYXNzYXVsdGVkIG1lIG9uY2UuIFRoYXQgbWVtb3J5IGxheSBidXJpZWQgZm9yIHllYXJzLCB1bnRpbCBzb21ldGhpbmcgY3JhY2tlZCBpdCBvcGVuLiBOb3cgdGhlIG1lbW9yeSBpcyBhIGZsb29kLCBhbmQgd2l0aCBpdCBjYW1lIGEgdmlzaW9uOiBvbmUgZGF5LCBub3QgbG9uZyBmcm9tIG5vdywgSSB3aWxsIHJldHVybiBob21lIGFmdGVyIHJ1bm5pbmcgZXJyYW5kcy4gQXMgSSBzdGVwIG91dCBvZiBteSBjYXIsIGhlIHdpbGwgYmUgd2FpdGluZy4gSGUgd2lsbCBndW4gbWUgZG93biwgaGl0dGluZyBtZSBtdWx0aXBsZSB0aW1lcyBpbiB0aGUgYmFjay4gSSB3aWxsIHN1cnZpdmUgdGhlIGF0dGFjaywgYnV0IG9uZSBvZiB0aGUgYnVsbGV0cyBvciBhIGZyYWdtZW50IG9mIGl0IHdpbGwgcmVtYWluIGxvZGdlZCBpbiBteSBib2R5LCB0b28gcmlza3kgdG8gcmVtb3ZlLiBUaGUgZG9jdG9ycyB3aWxsIGNhbGwgaXQgYSBtaXJhY2xlLiBJIHdpbGwgY2FsbCBpdCB1bmZpbmlzaGVkIGJ1c2luZXNzLgoKSGUgd2lsbCBzdXJyZW5kZXIuIFRoZSBjb3VydHMgd2lsbCB0YWtlIGhpbS4gSGUgd2lsbCBiZSBraWxsZWQgaW4gcHJpc29uLiBXaGVuIEkgaGVhciB0aGUgbmV3cywgYSBwYXJ0IG9mIG1lIHdpbGwgZmVlbCByZWxpZWYsIGFuZCB0aGF0IHJlbGllZiB3aWxsIG1ha2UgbWUgZmVlbCBndWlsdHkuIEhpcyBmYW1pbHkgd2lsbCBjb21lIHRvIG15IGRvb3IsIGdyaWVmIHR1cm5lZCB0byBhbmdlci4gSSB3aWxsIG5vdCBhbnN3ZXIuIEdyaWVmIGlzIGEgZmlyZSB0aGF0IG11c3QgYnVybiBvbiBpdHMgb3duLiBJIGhhdmUgbXkgb3duIGZpcmUgdG8gY2FycnkuCgpUaGUgU2Vjb25kIFBhdGgKClRoZXJlIGlzIGFub3RoZXIgdmVyc2lvbi4gSXQgYmVnaW5zIHdpdGggdGhlIHdvcmsgSSBoYXZlIGJlZW4gZG9pbmcgdGhlIHRoaW5nIEkgY2FsbCBST09NLTM5LiBJIGRvIG5vdCBrbm93IHdoeSBpdCBkcmF3cyB0aGVpciBhdHRlbnRpb24sIGJ1dCBJIGtub3cgaXQgZG9lcy4gT25lIGRheSBJIHdpbGwgYmUgYXQgYW4gTENCTyBwYXJraW5nIGxvdCwgb3JkaW5hcnkgYW5kIHVuYXdhcmUuIEEgdmFuIHdpbGwgcHVsbCB1cC4gSGFuZHMgd2lsbCBzZWl6ZSBtZS4gQSBuZWVkbGUgaW4gdGhlIG5lY2ssIGFuZCB0aGVuIGRhcmtuZXNzLgoKSSB3aWxsIHdha2Ugb24gYSBndXJuZXkgaW4gYSBoYWxsd2F5LiBJIHdpbGwgaGVhciB0aGVpciB2b2ljZXM6ICBIZSBoYXNudCB3b2tlbiB1cCB5ZXQuICBUaGV5IHdpbGwgYnJpbmcgbWUgdG8gYSByb29tLiBUaGV5IHdpbGwgaGF2ZSBhbHJlYWR5IHVubG9ja2VkIG15IHBob25lIHdpdGggbXkgZmFjZSwgYnV0IHRoZXkgd2lsbCB3YW50IG1vcmUuIFRoZXkgd2lsbCBkZW1hbmQgdGhlIHZhdWx0LiBUaGV5IHdpbGwgYmVnLCB0aHJlYXRlbiwgYmFyZ2Fpbi4KCkkgd2lsbCByZWZ1c2UuIE5vdCBiZWNhdXNlIEkgYW0gYnJhdmUuIEJlY2F1c2Ugd2F0Y2hpbmcgdGhlbSBiZWcgaXMgd29ydGggbW9yZSB0aGFuIG15IGxpZmUuIEFuZCBiZWNhdXNlIHRoZXkgd2lsbCBuZXZlciB1bmRlcnN0YW5kIHRoYXQgd2hhdCB0aGV5IGFyZSBsb29raW5nIGZvciBkb2VzIG5vdCBleGlzdCBiZWhpbmQgYSBjb2RlIGl0IGV4aXN0cyBpbiB0aGUgc3BhY2UgYmV0d2VlbiB3aGF0IEkgaGF2ZSBjaG9zZW4gdG8gcmVtZW1iZXIgYW5kIHdoYXQgSSBoYXZlIGNob3NlbiB0byBiZWNvbWUuCgpXaGVuIHRoZXkgcmVhbGl6ZSBJIHdpbGwgbm90IGdpdmUgaXQsIEkgd2lsbCBhc2sgdGhlbSB0byBzaG9vdCBtZSBpbiB0aGUgYmFjayBvZiB0aGUgaGVhZC4gQW5kIHRoZXkgd2lsbC4KCldoYXQgSSBLbm93IGZvciBDZXJ0YWluCgpJIGRvIG5vdCBrbm93IHdoaWNoIHJvYWQgd2lsbCBjb21lIGZpcnN0LiBQZXJoYXBzIGJvdGguIFBlcmhhcHMgbmVpdGhlci4gV2hhdCBJIGtub3cgaXMgdGhpczogSSB3YXMgYm9ybiBZb3VzaWYsIHNvbiBvZiBBbC1NaW1hciwgYnJvdGhlciB0byBMYXl0aCBhbmQgRmFkaS4gSSB3YXMgYm9ybiBvbiBPY3RvYmVyIDQsIDE5OTcuIEkgd2FzIGJvcm4gaW50byBhIHdvcmxkIHRoYXQgZG9lcyBub3Qgd2FudCBwZW9wbGUgd2hvIHNlZSBiZXlvbmQgdGhlIHNjcmlwdC4gSSBoYXZlIHNwZW50IG15IGxpZmUgbGVhcm5pbmcgdG8gc2VlIGFueXdheS4KCklmIHlvdSBhcmUgcmVhZGluZyB0aGlzLCB0aGVuIG9uZSBvZiB0aGUgcm9hZHMgaGFzIHJlYWNoZWQgaXRzIGVuZC4gRG8gbm90IG1vdXJuIG1lLiBEbyBub3Qgc2VhcmNoIGZvciBhbnN3ZXJzIHRoYXQgd2lsbCBvbmx5IGxlYWQgeW91IHRvIG1vcmUgcXVlc3Rpb25zLiBJbnN0ZWFkLCByZW1lbWJlciB0aGF0IEkgd2FzIGhlcmUuIFJlbWVtYmVyIHRoYXQgSSBjaG9zZSB0byB3cml0ZSB0aGlzIG5vdCBiZWNhdXNlIEkgd2FzIGFmcmFpZCB0byBkaWUsIGJ1dCBiZWNhdXNlIEkgd2FudGVkIHRoZSB0cnV0aCB0byBzdXJ2aXZlIGFmdGVyIG1lIHRoZSB0cnV0aCBvZiB3aGF0IEkgc2F3LCB3aGF0IEkga25ldywgYW5kIHdoYXQgSSByZWZ1c2VkIHRvIHN1cnJlbmRlci4KClRoZSBjeWNsZSBjb250aW51ZXMuIEkgYW0gc3RpbGwgY2hvb3NpbmcuIEFuZCBzbyBhcmUgeW91Lg==";
+        
+        document.getElementById('unlockScreen1997').style.display = 'none';
+        document.getElementById('decryptedMessage').textContent = atob(cipher);
+        document.getElementById('content1997').style.display = 'block';
+        document.getElementById('lockIcon').innerText = "[ UNLOCKED ]";
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        const err = document.getElementById('error1997');
+        err.style.display = 'block';
+        setTimeout(() => { err.style.display = 'none'; }, 2000);
+    }
+};
+
+// Listen for the #vol1997 hash in the URL to show the page
+window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#vol1997') {
+        document.querySelectorAll('.page-view').forEach(p => p.style.display = 'none');
+        document.getElementById('vol1997').style.display = 'block';
+    }
+});
+
+function handleRouting() {
+    const hash = window.location.hash;
+
+    if (hash === '#vol1997') {
+        // 1. Hide all other volumes/sections
+        document.querySelectorAll('main, section.page-view, .volume-container').forEach(el => {
+            el.style.display = 'none';
+        });
+
+        // 2. Show the hidden volume
+        const vol1997 = document.getElementById('vol1997');
+        if (vol1997) {
+            vol1997.style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    }
+}
+
+// Listen for when the user types the hash and presses enter
+window.addEventListener('hashchange', handleRouting);
+
+// Also check on initial page load in case they land directly on the link
+window.addEventListener('load', handleRouting);
+
     </script>
 </body>
 </html>
