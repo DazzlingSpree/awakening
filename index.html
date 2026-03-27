@@ -3165,6 +3165,78 @@ body:has(#vol1997:target) .bottom-nav {
     display: none;
 }
 
+/* ====================== VOLUME 1997 – SECRET ARCHIVE STYLES ====================== */
+#vol1997 {
+    background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+    color: #e8e4dc;
+}
+
+#vol1997 .glass-card {
+    background: rgba(15, 12, 10, 0.96);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    box-shadow: 0 0 60px rgba(197, 160, 89, 0.15),
+                inset 0 0 40px rgba(255, 51, 51, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+.access-input {
+    background: transparent;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    color: #e8e4dc;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    padding: 14px 18px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.access-input:focus {
+    border-color: #c5a059;
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+    outline: none;
+}
+
+#unlockScreen1997 {
+    animation: subtlePulse 6s ease infinite;
+}
+
+@keyframes subtlePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; }
+}
+
+/* Decrypted content polish */
+#decryptedMessage {
+    font-size: 1.13rem;
+    line-height: 1.88;
+    color: #e8e4dc;
+    text-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
+/* Optional subtle scanline / film grain for classified feel */
+#vol1997::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+        180deg,
+        transparent 0px,
+        transparent 3px,
+        rgba(255,255,255,0.015) 3px,
+        rgba(255,255,255,0.015) 6px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    animation: scanline 8s linear infinite;
+    opacity: 0.15;
+}
+
+@keyframes scanline {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100vh; }
+}
+
     </style>
 </head>
 <body>
@@ -6405,50 +6477,55 @@ body:has(#vol1997:target) .bottom-nav {
                 This external focus became the foundation of a new path centered on submission to a higher authority. 
                 The deeper invitation — to recognize God as the title for the living spirit inside every person — remained unspoken in that moment. Yet the same truth applies: when any being fully claims their inner divinity with unshakable certainty, reality responds — regardless of how others see them.</p>
 
- <!-- TELEPATHY / MUHAMMAD CLARIFICATION - VOLUME 12 PLACEMENT -->
-                <div class="glass-card" style="margin-top: 2.5rem; border-left: 6px solid #ff3333; background: rgba(255,51,51,0.06); padding: 2.5rem;">
-                    <h4 style="color: #ff3333; border: none; margin-bottom: 1.2rem; font-size: 1.4rem;">
-                        The Final Clarification: What Muhammad Actually Experienced
-                    </h4>
-                    
-                    <p style="line-height: 1.75; font-size: 1.12rem; color: var(--text-main);">
-                        The internal monologue that runs inside most human heads is <strong>not</strong> random thoughts, mental illness, or supernatural voices. 
-                        It is <strong>telepathy</strong> — living humans (and roaming souls) sharing thoughts directly through the shared field of consciousness.
-                    </p>
-                    
-                    <p style="margin-top: 1.3rem; line-height: 1.75; font-size: 1.12rem; color: var(--text-main);">
-                        The Telepathy Tapes have now proven this beyond doubt with non-speaking autistic spellers who accurately read hidden thoughts, describe distant events, and name objects with zero sensory input. Their minds never accepted the cultural lie that “thoughts stop at the skull.”
-                    </p>
-                    
-                    <div style="background: rgba(197,160,89,0.12); padding: 1.8rem; border-radius: 8px; margin: 2rem 0;">
-                        <p style="font-weight: 600; color: var(--accent-gold); margin-bottom: 1rem;">
-                            Muhammad’s Revelations Were Telepathic
-                        </p>
-                        <p style="line-height: 1.75;">
-                            The voice Muhammad heard in the Cave of Hira — the voice he called Allah — was <strong>not</strong> an external supernatural God speaking from another realm. 
-                            It was the same natural telepathic monologue that every human experiences. 
-                            It was other living humans (and already-roaming souls) communicating directly through the shared field of consciousness.
-                        </p>
-                        <p style="margin-top: 1rem; line-height: 1.75; font-style: italic; color: var(--text-muted);">
-                            Exactly as Miss Abigail continued speaking to the security guard two years after her body died, exactly as the grandmother still stood by the door — 
-                            the eternal consciousness never left. It simply changed frequency. Muhammad was tuned in.
-                        </p>
-                    </div>
-                    
-                    <p style="line-height: 1.75; font-size: 1.12rem; color: var(--text-main);">
-                        This does not diminish Muhammad. It returns the power to every single human being. 
-                        The divine is not an external authority demanding submission. The divine is the eternal spirit already inside you — the same spirit that speaks through telepathy, rises as white light at death, and returns through the womb portal by sovereign choice.
-                    </p>
-                    
-                    <div class="activation-text" style="margin-top: 2.8rem; font-size: 1.32rem; color: #fff; text-align: center;">
-                        “My internal voice is not madness.<br>
-                        It is telepathy with the living and the roaming.<br>
-                        I am not broken — I am connected.<br>
-                        I now reclaim the gift that was taken from humanity.<br>
-                        I speak, I listen, I remember.<br>
-                        It is done. So it is.”
-                    </div>
-                </div>
+ <!-- TELEPATHY / MUHAMMAD CLARIFICATION - VOLUME 12 (FINAL REFINED VERSION) -->
+<div class="glass-card" style="margin-top: 2.5rem; border-left: 6px solid #ff3333; background: rgba(255,51,51,0.06); padding: 2.5rem;">
+    <h4 style="color: #ff3333; border: none; margin-bottom: 1.2rem; font-size: 1.4rem;">
+        The Final Clarification: What Muhammad Actually Experienced
+    </h4>
+    
+    <p style="line-height: 1.75; font-size: 1.12rem; color: var(--text-main);">
+        The internal monologue that runs inside most human heads is <strong>not</strong> random thoughts, mental illness, or supernatural voices. 
+        It is <strong>telepathy</strong> — living humans and roaming souls sharing thoughts directly through the shared field of consciousness.
+    </p>
+    
+    <p style="margin-top: 1.3rem; line-height: 1.75; font-size: 1.12rem; color: var(--text-main);">
+        The Telepathy Tapes have now proven this with non-speaking autistic spellers who accurately read hidden thoughts, describe distant events, and name objects with zero sensory input. 
+        These experiences feel completely real — because they <strong>are</strong> real.
+    </p>
+    
+    <div style="background: rgba(197,160,89,0.12); padding: 1.8rem; border-radius: 8px; margin: 2rem 0;">
+        <p style="font-weight: 600; color: var(--accent-gold); margin-bottom: 1rem;">
+            What Really Happened in the Cave of Hira
+        </p>
+        <p style="line-height: 1.75;">
+            The powerful, clear presence Muhammad encountered in the Cave of Hira was <strong>not</strong> the angel Gabriel, nor an external supernatural God speaking from another realm. 
+            It was a <strong>roaming deceased spirit</strong> — a crossed-over human consciousness that had already risen as the white holographic form after physical death.
+        </p>
+        <p style="margin-top: 1rem; line-height: 1.75;">
+            This soul had learned to shape its holographic appearance into the form of an angel (exactly as roaming souls can take any image they choose). 
+            The “voice of Allah” Muhammad heard was the same natural telepathic monologue that every human experiences — direct thought-to-thought communication from another conscious being.
+        </p>
+        <p style="margin-top: 1rem; line-height: 1.75; font-style: italic; color: var(--text-muted);">
+            Exactly as Miss Abigail continued speaking to the security guard two years after her body died, and exactly as the grandmother still stood by the door — 
+            the eternal consciousness never left. It simply changed frequency. Muhammad was tuned in.
+        </p>
+    </div>
+    
+    <p style="line-height: 1.75; font-size: 1.12rem; color: var(--text-main);">
+        This does not diminish Muhammad. It returns the power to every single human being. 
+        The divine is not an external authority demanding submission. The divine is the eternal spirit already inside you — the same spirit that speaks through telepathy, rises as white light at death, and returns through the womb portal by sovereign choice.
+    </p>
+    
+    <div class="activation-text" style="margin-top: 2.8rem; font-size: 1.32rem; color: #fff; text-align: center;">
+        “My internal voice is not madness.<br>
+        It is telepathy with the living and the roaming.<br>
+        Angels are souls who have learned to shape their light.<br>
+        I am not broken — I am connected.<br>
+        I now reclaim the gift that was taken from humanity.<br>
+        I speak, I listen, I remember.<br>
+        It is done. So it is.”
+    </div>
+</div>
 
                 <p style="margin-top: 1rem; color: var(--text-muted); font-style: italic;">This reframing was never meant to insult — it is simply returning the power to the divine within every person, rather than an external authority demanding submission, repentance, or violence toward others.</p>
                 
